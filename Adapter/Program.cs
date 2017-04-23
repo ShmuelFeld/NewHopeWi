@@ -1,18 +1,18 @@
 ﻿using MazeGeneratorLib;
 using MazeLib;
+using SearchAlgoritmLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SearchAlgoritmLib
+namespace Adapter
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world");
             compareSolvers();
         }
         static void compareSolvers()
@@ -20,8 +20,14 @@ namespace SearchAlgoritmLib
             DFSMazeGenerator dfsMaze = new DFSMazeGenerator();
             Maze maze = dfsMaze.Generate(500, 500);
             Console.WriteLine(maze.ToString());
-            IsearchableMaze ism = new IsearchableMaze(maze);
+            MazeAdapter ism = new MazeAdapter(maze);
             BFS<Position> bfs = new BFS<Position>();
+            bfs.Search(ism);
+            Console.WriteLine(ism.GetEvauatedNodes());
+            MazeAdapter ma = new MazeAdapter(maze);
+            DFS<Position> dfs = new DFS<Position>();
+            dfs.Search(ma);
+            Console.WriteLine(ma.GetEvauatedNodes());
         }
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F34F2140-BFCF-4823-ABD8-E4C334F7A0F0}</ProjectGuid>
+    <ProjectGuid>{08599CE1-18E8-4982-8F52-7466E18854E1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>NewHope</RootNamespace>
-    <AssemblyName>NewHope</AssemblyName>
+    <RootNamespace>Adapter</RootNamespace>
+    <AssemblyName>Adapter</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -38,9 +38,6 @@
     <Reference Include="MazeLib">
       <HintPath>..\..\projectEx1\MazeLib.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,36 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientDescriptor.cs" />
-    <Compile Include="ClientPool.cs" />
-    <Compile Include="CloseCommand.cs" />
-    <Compile Include="Controller.cs" />
-    <Compile Include="GenerateMazeCommand.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IController.cs" />
-    <Compile Include="IModel.cs" />
-    <Compile Include="ISearchableMaze.cs" />
-    <Compile Include="IView.cs" />
-    <Compile Include="JoinCommand.cs" />
-    <Compile Include="ListCommand.cs" />
-    <Compile Include="MazeSolution.cs" />
-    <Compile Include="Model.cs" />
-    <Compile Include="MultiPlayerGame.cs" />
-    <Compile Include="PlayCommand.cs" />
+    <Compile Include="MazeAdapter.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SolveGameCommand.cs" />
-    <Compile Include="StartGameCommand.cs" />
-    <Compile Include="TaskPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SearchAlgoritmLib\SearchAlgorithmsLib.csproj">
-      <Project>{524b8f1c-87d5-467f-8d11-bf62000714f9}</Project>
+      <Project>{524B8F1C-87D5-467F-8D11-BF62000714F9}</Project>
       <Name>SearchAlgorithmsLib</Name>
     </ProjectReference>
   </ItemGroup>

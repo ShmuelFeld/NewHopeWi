@@ -80,7 +80,7 @@ namespace NewHope
             Maze maze = dfsMaze.Generate(rows, cols);
             maze.Name = name;
             mazes.Add(name, maze);
-            IsearchableMaze ism = new IsearchableMaze(maze);
+            ISearchableMaze ism = new ISearchableMaze(maze);
             Task bfsSolutionTask = new Task(() =>
             {
                 BFS<Position> bfs = new BFS<Position>();

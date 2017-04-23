@@ -1,18 +1,18 @@
 ﻿using MazeLib;
+using SearchAlgoritmLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace SearchAlgoritmLib
+namespace Adapter
 {
     /// <summary>
     /// 
     /// </summary>
     /// <seealso cref="ex1.ISearchable{MazeLib.Position}" />
-    public class IsearchableMaze : ISearchable<Position>
+    public class MazeAdapter : ISearchable<Position>
     {
         /// <summary>
         /// The maze
@@ -31,7 +31,7 @@ namespace SearchAlgoritmLib
         /// Initializes a new instance of the <see cref="IsearchableMaze"/> class.
         /// </summary>
         /// <param name="maze">The maze.</param>
-        public IsearchableMaze(Maze maze)
+        public MazeAdapter(Maze maze)
         {
             this.maze = maze;
             this.initialPosition = maze.InitialPos;
