@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// represent the play command
     /// </summary>
     /// <seealso cref="ex1.ICommand" />
     public class PlayCommand : ICommand

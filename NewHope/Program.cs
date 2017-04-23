@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// the main.
     /// </summary>
     class Program
     {

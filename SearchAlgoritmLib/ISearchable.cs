@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SearchAlgoritmLib
 {
     /// <summary>
-    /// 
+    /// if an object implement this interface we can use our algorithm in this object.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface ISearchable<T>

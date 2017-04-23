@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// represent the model tier.
     /// </summary>
     /// <seealso cref="ex1.IModel" />
     public class Model : IModel

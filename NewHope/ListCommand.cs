@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// represent the list command.
     /// </summary>
     /// <seealso cref="ex1.ICommand" />
     public class ListCommand : ICommand

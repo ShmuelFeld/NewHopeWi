@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// adapter from maze to search problem.
     /// </summary>
     /// <seealso cref="ex1.ISearchable{MazeLib.Position}" />
     public class ISearchableMaze : ISearchable<Position>

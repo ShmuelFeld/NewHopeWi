@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// represenet the join commant
     /// </summary>
     /// <seealso cref="ex1.ICommand" />
     public class JoinCommand : ICommand

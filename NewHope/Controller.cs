@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// this class seperate between the model tier and the view tier.
     /// </summary>
     /// <seealso cref="ex1.IController" />
     public class Controller : IController

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// object that implement this interface is the view tier.
     /// </summary>
     public interface IView
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SearchAlgoritmLib
 {
     /// <summary>
-    /// 
+    /// by given an isearchable object the algorithm finds the shortest way from a to b using DFS algorithm.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="ex1.Searcher{T}" />

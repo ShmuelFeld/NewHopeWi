@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Adapter
 {
     /// <summary>
-    /// 
+    /// this class create adapter from a maze to search problem
     /// </summary>
     /// <seealso cref="ex1.ISearchable{MazeLib.Position}" />
     public class MazeAdapter : ISearchable<Position>
@@ -19,11 +19,11 @@ namespace Adapter
         /// </summary>
         private Maze maze;
         /// <summary>
-        /// The initial position
+        /// The entery point to the maze
         /// </summary>
         private Position initialPosition;
         /// <summary>
-        /// The goal position
+        /// The goal point of the maze.
         /// </summary>
         private Position goalPosition;
         private int numberOfNodesEvaluated;
@@ -38,7 +38,7 @@ namespace Adapter
             this.goalPosition = maze.GoalPos;
         }
         /// <summary>
-        /// Gets all possible states.
+        /// Gets all possible states from a specific position.
         /// </summary>
         /// <param name="s">The s.</param>
         /// <returns></returns>
@@ -74,7 +74,7 @@ namespace Adapter
             return neighbors;
         }
         /// <summary>
-        /// Determines whether the specified p is valid.
+        /// Determines whether the specified position p is valid.
         /// </summary>
         /// <param name="p">The p.</param>
         /// <returns>

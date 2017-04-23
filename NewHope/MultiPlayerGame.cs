@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// this objects holds two clients that play with the same game.
     /// </summary>
     public class MultiPlayerGame
     {

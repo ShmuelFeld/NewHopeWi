@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace SearchAlgoritmLib
 {
     /// <summary>
-    /// 
+    /// this abstract class defins the algorithms that using priority queues.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="ex1.Searcher{T}" />
     public abstract class PrioritySearcher<T> : Searcher<T>
     {
         /// <summary>
-        /// The open
+        /// everey state that just got discoverd.
         /// </summary>
         protected Priority_Queue.SimplePriorityQueue<State<T>> open;
         /// <summary>
@@ -25,7 +25,7 @@ namespace SearchAlgoritmLib
             open = new Priority_Queue.SimplePriorityQueue<State<T>>();
         }
         /// <summary>
-        /// Pops the open list.
+        /// Pops from the open list.
         /// </summary>
         /// <returns></returns>
         protected State<T> PopOpenList()

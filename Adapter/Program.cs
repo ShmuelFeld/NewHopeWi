@@ -15,6 +15,9 @@ namespace Adapter
         {
             compareSolvers();
         }
+        /// <summary>
+        /// crete test for search algorithm lib dll
+        /// </summary>
         static void compareSolvers()
         {
             DFSMazeGenerator dfsMaze = new DFSMazeGenerator();
@@ -22,7 +25,8 @@ namespace Adapter
             Console.WriteLine(maze.ToString());
             MazeAdapter ism = new MazeAdapter(maze);
             BFS<Position> bfs = new BFS<Position>();
-            bfs.Search(ism);
+            Solution<Position> sol = bfs.Search(ism);
+
             Console.WriteLine(ism.GetEvauatedNodes());
             MazeAdapter ma = new MazeAdapter(maze);
             DFS<Position> dfs = new DFS<Position>();

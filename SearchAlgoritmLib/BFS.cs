@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace SearchAlgoritmLib
 {
+
     /// <summary>
-    /// 
+    /// by given an isearchable object the algorithm finds the shortest way from a to b using BFS algorithm.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <seealso cref="ex1.PrioritySearcher{T}" />
     public class BFS<T> : PrioritySearcher<T>
     {
         /// <summary>
-        /// The closed
+        /// all the states that were evaluated.
         /// </summary>
         private HashSet<State<T>> closed = new HashSet<State<T>>();
         /// <summary>
@@ -59,7 +59,7 @@ namespace SearchAlgoritmLib
         }
 
         /// <summary>
-        /// Backs the trace.
+        /// returns the path from a to b.
         /// </summary>
         /// <param name="isearchable">The isearchable.</param>
         /// <returns></returns>

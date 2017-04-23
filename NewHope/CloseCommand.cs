@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// the close command
     /// </summary>
     /// <seealso cref="ex1.ICommand" />
     class CloseCommand : ICommand

@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 namespace Client
 {
     /// <summary>
-    /// 
+    /// represent the client.
     /// </summary>
     class Client
     {
         /// <summary>
-        /// The client
+        /// The communication protocol.
         /// </summary>
         private TcpClient client;
         /// <summary>
-        /// The end of communication
+        /// flag for end of communication.
         /// </summary>
         private bool endOfCommunication;
         /// <summary>
-        /// The ep
+        /// The IPEndPoint.
         /// </summary>
         IPEndPoint ep;
         /// <summary>
@@ -38,10 +38,10 @@ namespace Client
         }
 
         /// <summary>
-        /// Sends some message.
+        /// manage the flow.
         /// </summary>
         /// <param name="str">The string.</param>
-        public void SendSomeMessage(string str)
+        public void ClientFlow()
         {
             string command = null;
             bool isExecuted = true;

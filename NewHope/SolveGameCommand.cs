@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// represent the solve command.
     /// </summary>
     /// <seealso cref="ex1.ICommand" />
     public class SolveGameCommand : ICommand

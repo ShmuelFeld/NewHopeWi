@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// the server flow.
     /// </summary>
     class Server
     {

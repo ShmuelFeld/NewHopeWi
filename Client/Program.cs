@@ -18,7 +18,7 @@ namespace Client
         static void Main(string[] args)
         {
             Client cl = new Client();
-            cl.SendSomeMessage("success");
+            cl.ClientFlow();
         }
     }
 }

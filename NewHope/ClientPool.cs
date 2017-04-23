@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// holds all the clients.
     /// </summary>
     class ClientPool
     {
@@ -36,7 +36,7 @@ namespace NewHope
             controller = new Controller();
         }
         /// <summary>
-        /// Adds the client.
+        /// Adds a client.
         /// </summary>
         /// <param name="client">The client.</param>
         /// <param name="ser">The ser.</param>
@@ -46,12 +46,13 @@ namespace NewHope
             cli.AddCommandToClose("generate");
             cli.AddCommandToClose("solve");
             cli.AddCommandToClose("close");
+            cli.AddCommandToClose("list");
             this.listOfClients.Add(cli);
             //  cli.addObserver(ser);
 
         }
         /// <summary>
-        /// Closes the communication.
+        /// Closes the communication with all clients.
         /// </summary>
         public void CloseCommunication()
         {
@@ -61,7 +62,7 @@ namespace NewHope
             }
         }
         /// <summary>
-        /// Closes the communication.
+        /// Closes the communication with a specific client.
         /// </summary>
         /// <param name="client">The client.</param>
         public void CloseCommunication(TcpClient client)

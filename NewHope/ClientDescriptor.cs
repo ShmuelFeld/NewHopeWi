@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// this class handels the client request. 
     /// </summary>
     /// <seealso cref="ex1.IView" />
     class ClientDescriptor : IView
     {
         /// <summary>
-        /// The TCP
+        /// The Client TCP
         /// </summary>
         private TcpClient tcp;
         /// <summary>
-        /// The task
+        /// The task that represent 
         /// </summary>
         private Task task;
         /// <summary>
@@ -54,7 +54,7 @@ namespace NewHope
         /// <param name="command">The command.</param>
         public void AddCommandToClose(string command) { commandsToClose.Add(command); }
         /// <summary>
-        /// Starts the listening.
+        /// Starts listen to the client.
         /// </summary>
         public void StartListening()
         {

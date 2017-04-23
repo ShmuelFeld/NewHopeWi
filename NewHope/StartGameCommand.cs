@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// represent the start command.
     /// </summary>
     /// <seealso cref="ex1.ICommand" />
     public class StartGameCommand : ICommand

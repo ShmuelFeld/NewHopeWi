@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace NewHope
 {
     /// <summary>
-    /// 
+    /// holds pool of tasks.
     /// </summary>
     class TaskPool
     {
