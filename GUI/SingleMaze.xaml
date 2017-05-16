@@ -6,14 +6,11 @@
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         Title="SingleMaze" Height="300" Width="300">
-    <Viewbox Name="wraper">
-        <Canvas Name="mazecanvas" >
-        
-        </Canvas> 
-    </Viewbox>
 
-    <Canvas Name="mazeCanvas" Height="300" Width="300" HorizontalAlignment="Left" Canvas.Left="0" Canvas.Right="300">
-        
+
+    <Viewbox>
+    <Canvas Name="mazeCanvas" Height="300" Width="300" HorizontalAlignment="Left" Canvas.Left="0" Canvas.Right="300">       
     </Canvas>
+    </Viewbox>
 
 </Window>
