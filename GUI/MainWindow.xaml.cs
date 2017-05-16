@@ -26,11 +26,24 @@ namespace GUI
 
         }
 
-        private void singlePlayer(object sender, RoutedEventArgs e)
+        private void SinglePlayer(object sender, RoutedEventArgs e)
         {
             SinglePlayer sp = new SinglePlayer();
             sp.Show();
             this.Close();
+        }
+
+        private void MultyPlayer(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Settings(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Picture(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

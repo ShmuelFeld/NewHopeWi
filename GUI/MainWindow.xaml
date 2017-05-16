@@ -8,17 +8,21 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="SinglePlayer" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="singlePlayer"/>
-        <Button Content="Multy Player" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="singlePlayer"/>
+        <Button Content="picture" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="Picture"/>
+        <Button Content="SinglePlayer" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="SinglePlayer"/>
+        <Button Content="Multy Player" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="MultyPlayer"/>
+        <Button Content="Settings" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="181,0,181,3" VerticalAlignment="Bottom" Width="74" Padding="3" Click="Settings"/>
 
     </Grid>
 </Window>
