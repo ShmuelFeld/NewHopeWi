@@ -31,7 +31,7 @@ namespace GUI
             SinglePlayer sp = new SinglePlayer();
             sp.Show();
             this.Close();
-        }//
+        }
 
         private void MultyPlayer(object sender, RoutedEventArgs e)
         {

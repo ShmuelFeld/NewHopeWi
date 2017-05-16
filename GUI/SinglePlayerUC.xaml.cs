@@ -10,25 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for SinglePlayer.xaml
+    /// Interaction logic for SinglePlayerUC.xaml
     /// </summary>
-    public partial class SinglePlayer : Window
+    public partial class SinglePlayerUC : UserControl
     {
-        public SinglePlayer()
+        public SinglePlayerUC()
         {
             InitializeComponent();
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            SingleMaze m = new SingleMaze(3, 3, "000110000");
-            m.Show();
-            this.Close();
+           
         }
     }
 }
