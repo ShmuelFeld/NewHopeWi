@@ -6,27 +6,18 @@
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         Title="SinglePlayer" Height="187.234" Width="300">
-    <Grid TextBlock.FontSize="14">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Padding="3" Margin="3">Maze name:</TextBlock>
-        <TextBox x:Name="txtMazeName" Grid.Column="2"  Padding="3" Margin="3" Text="{Binding Maze name}" ></TextBox>
-        <TextBlock Grid.Row="1" Padding="3" Margin="3">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" Grid.Row="1" Grid.Column="2" Padding="3"
-Margin="3" Text="{Binding Maze rows}"></TextBox>
-        <TextBlock Grid.Row="2" Padding="3" Margin="3">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" Grid.Row="2" Grid.Column="2" Padding="3"
-Margin="3" Text="{Binding Maze columns}"></TextBox>
-        <Button x:Name="btnStart" Grid.Row="3" HorizontalAlignment="Center"
-Grid.ColumnSpan="2" Click="btnStart_Click" Margin="5" Padding="5">Start Game</Button>
+        <local:SinglePlayerUC HorizontalAlignment="Center" Grid.Row="0" Height="155" Margin="1" VerticalAlignment="Top" Width="300"/>
+        <Button x:Name="btnStart" Grid.Row="1" HorizontalAlignment="Center"
+Grid.ColumnSpan="2" Click="btnStart_Click" Margin="5" Padding="5">Start Game</Button>
+
 
     </Grid>
 </Window>
