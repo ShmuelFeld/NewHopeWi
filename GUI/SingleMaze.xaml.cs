@@ -56,8 +56,6 @@ namespace GUI
                         u.Fill = Brushes.White;
                     }
                     u.Visibility = Visibility.Visible;
-                    Canvas.SetTop(u, 0);
-                    Canvas.SetLeft(u, 100);
                     mazeCanvas.Children.Add(u);
                     counter++;
                 }
