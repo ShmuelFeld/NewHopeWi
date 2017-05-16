@@ -54,8 +54,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ApplicationSettingsModel.cs" />
+    <Compile Include="ApplicationSinglePlayerModel.cs" />
+    <Compile Include="ISettingsModel.cs" />
+    <Compile Include="ISinglePlayerModel.cs" />
     <Compile Include="Maze.xaml.cs">
       <DependentUpon>Maze.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsViewModel.cs" />
+    <Compile Include="SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleMaze.xaml.cs">
       <DependentUpon>SingleMaze.xaml</DependentUpon>
@@ -66,6 +74,8 @@
     <Compile Include="SinglePlayerUC.xaml.cs">
       <DependentUpon>SinglePlayerUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SinglePlayerVM.cs" />
+    <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Maze.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

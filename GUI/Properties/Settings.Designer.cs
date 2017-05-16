@@ -18,7 +18,12 @@ namespace GUI.Properties
     {
 
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
+        internal string ServerIP;
+        internal int ServerPort;
+        internal int MazeRows;
+        internal int MazeCols;
+        internal int SearchAlgorithm;
+        internal string MazeName;
         public static Settings Default
         {
             get

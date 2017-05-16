@@ -19,14 +19,19 @@ namespace GUI
     /// </summary>
     public partial class SinglePlayer : Window
     {
+        private SinglePlayerVM spvm;
         public SinglePlayer()
         {
             InitializeComponent();
+            ISinglePlayerModel model = new ApplicationSinglePlayerModel();
+            spvm = new SinglePlayerVM(model);
+            this.DataContext = spvm;
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            SingleMaze m = new SingleMaze(3, 3, "000110000");
+            spvm.SaveSettings();
+            SingleMaze m = new SingleMaze(spvm.MazeRows, spvm.MazeRows);
             m.Show();
             this.Close();
         }

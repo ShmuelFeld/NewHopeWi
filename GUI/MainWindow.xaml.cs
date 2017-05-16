@@ -39,6 +39,9 @@ namespace GUI
 
         private void Settings(object sender, RoutedEventArgs e)
         {
+            SettingsWindow sw = new SettingsWindow();
+            sw.Show();
+            this.Close();
         }
 
         private void Picture(object sender, RoutedEventArgs e)

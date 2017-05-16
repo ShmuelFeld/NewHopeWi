@@ -3,21 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         Title="SinglePlayer" Height="187.234" Width="300">
-    <Grid>
+    <Grid TextBlock.FontSize="14">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:SinglePlayerUC HorizontalAlignment="Center" Grid.Row="0" Height="155" Margin="1" VerticalAlignment="Top" Width="300"/>
-        <Button x:Name="btnStart" Grid.Row="1" HorizontalAlignment="Center"
-Grid.ColumnSpan="2" Click="btnStart_Click" Margin="5" Padding="5">Start Game</Button>
-
+        <TextBlock Padding="3" Margin="3">Maze name:</TextBlock>
+        <TextBox x:Name="txtMazeName" Grid.Column="2"  Padding="3" Margin="3" Text="{Binding MazeName}" ></TextBox>
+        <TextBlock Grid.Row="1" Padding="3" Margin="3">Maze rows:</TextBlock>
+        <TextBox x:Name="txtRows" Grid.Row="1" Grid.Column="2" Padding="3"
+Margin="3" Text="{Binding MazeRows}"></TextBox>
+        <TextBlock Grid.Row="2" Padding="3" Margin="3">Maze columns:</TextBlock>
+        <TextBox x:Name="txtCols" Grid.Row="2" Grid.Column="2" Padding="3"
+Margin="3" Text="{Binding MazeCols}"></TextBox>
+        <Button Content="OK" Grid.Column="0" Grid.Row="3" Padding="3" Height="30" HorizontalAlignment="Right" Margin="0,13,115,14" Click="btnStart_Click" Background="#FF2BC7C7" BorderBrush="#FF450404" Grid.ColumnSpan="2" Width="105"/>
 
     </Grid>
 </Window>

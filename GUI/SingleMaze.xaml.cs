@@ -23,20 +23,29 @@ namespace GUI
         public int Cols { get; set; }
         public string MazeString { get; set; }
 
-        public SingleMaze(int rows, int cols, string mazeString)
+        public SingleMaze(int rows, int cols)
         {
             InitializeComponent();
             this.Rows = rows;
             this.Cols = cols;
-            this.MazeString = mazeString;
+            
+           // this.MazeString = mazeChars.ToString();
             drawMaze();
         }
 
         public void drawMaze()
         {
+            //TEMP
+            char[] mazeChars = new char[Rows * Cols];
+            for (int i = 0; i < mazeChars.Length; i++)
+            {
+                // Random rnd = new Random(1);
+                mazeChars[i] = '0';
+            }
+
             int height = (int)mazeCanvas.Height / Rows;
             int width =  (int)mazeCanvas.Width / Cols;
-            char[] charArr = MazeString.ToCharArray();
+           // char[] charArr = MazeString.ToCharArray();
             int counter = 0;
             for (int i = 0; i < Rows; i++)
             {
@@ -47,17 +56,19 @@ namespace GUI
                     RectangleGeometry rg = new RectangleGeometry(rect);
                     Path u = new Path();
                     u.Data = rg;
-                    if (charArr[counter] == '0')
-                    {
-                        u.Fill = Brushes.Black;
-                    }
-                    else
-                    {
-                        u.Fill = Brushes.White;
-                    }
-                    u.Visibility = Visibility.Visible;
-                    mazeCanvas.Children.Add(u);
-                    counter++;
+                   
+                        if (mazeChars[counter] == '0')
+                        {
+                            u.Fill = Brushes.Black;
+                        }
+                        else
+                        {
+                            u.Fill = Brushes.Aquamarine;
+                        }
+                        u.Visibility = Visibility.Visible;
+                        mazeCanvas.Children.Add(u);
+                        counter++;
+                  
                 }
             }
         }
