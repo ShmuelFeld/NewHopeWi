@@ -20,14 +20,25 @@ namespace GUI
     /// </summary>
     public partial class SinglePlayerUC : UserControl
     {
+        public string MazeName
+        {
+            get
+            {
+                return (string)GetValue(MazeNameProperty);
+            }
+            set
+            {
+                SetValue(MazeNameProperty, value);
+            }
+        }
+        public static readonly DependencyProperty MazeNameProperty =
+    DependencyProperty.Register("MazeName", typeof(string),
+      typeof(SinglePlayerUC), new PropertyMetadata(""));
         public SinglePlayerUC()
         {
             InitializeComponent();
-        }
-
-        private void btnStart_Click(object sender, RoutedEventArgs e)
-        {
-           
+            //this.DataContext = this;
+            //LayoutRoot.DataContext = this;
         }
     }
 }
