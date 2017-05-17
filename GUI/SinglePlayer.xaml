@@ -15,8 +15,15 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <local:SinglePlayerUC Grid.Row="0"
-            Height="Auto"/>
+        <local:BasicUC Grid.Row="0" Label="Maze name:" Label_1="Maze rows:" Label_2="Maze columns:"
+                       Value="{Binding MazeName}" Value_1="{Binding MazeRows}" Value_2="{Binding MazeCols}"
+        />
+        <DockPanel Grid.Row="1">
+            <Button Content="Start Game" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center"
+                    Width="75" Padding="3" Click="btnStart_Click"/>
+            <Button Content="Cancel" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center"
+                    Width="75" Padding="3" Click="btnCancel_Click"/>
+        </DockPanel>
     </Grid>
     
 </Window>

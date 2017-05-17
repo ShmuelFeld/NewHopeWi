@@ -22,7 +22,7 @@ namespace GUI
         private SinglePlayerVM spvm;
         public SinglePlayer()
         {
-            //InitializeComponent();
+            InitializeComponent();
             ISinglePlayerModel model = new ApplicationSinglePlayerModel();
             spvm = new SinglePlayerVM(model);
             this.DataContext = spvm;
@@ -34,6 +34,11 @@ namespace GUI
             SingleMaze m = new SingleMaze(spvm.MazeRows, spvm.MazeRows);
             m.Show();
             this.Close();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

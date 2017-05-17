@@ -1,0 +1,27 @@
+﻿<Window x:Class="GUI.MultiPlayer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="MultiPlayer" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <local:BasicMPUC Grid.Row="0" Label="List of games:"/>
+        <local:BasicUC Grid.Row="2" Label="Maze name:" Label_1="Maze rows:" Label_2="Maze columns:"
+                       Value="{Binding MazeName}" Value_1="{Binding MazeRows}" Value_2="{Binding MazeCols}"
+                       />
+        <Button Content="Join Game" Click="JoinGame_Click" Width="Auto" FontSize="20" Grid.Row="1"/>
+        <DockPanel Grid.Row="3">
+            <Button Content="Start Game" Click="StartGame_Click" Width="Auto"/>
+            <Button Content="Cancel" Click="Cancel_Click" Width="Auto" />
+            
+        </DockPanel>
+    </Grid>
+</Window>

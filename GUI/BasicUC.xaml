@@ -8,18 +8,37 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Path=Label}" Grid.Column="0"
-               Width="100"
-                   FontSize="20"
-               VerticalAlignment="Center"/>
-        <TextBox Text="{Binding Path=Value}" Grid.Column="1"
+        <TextBlock Text="{Binding Path=Label}" Grid.Column="0" Grid.Row="0"
+               Width="Auto"
+                   FontSize="18"
+               VerticalAlignment="Center"
+                   HorizontalAlignment="Left"/>
+        <TextBox Text="{Binding Path=Value}" Grid.Column="1" Grid.Row="0"
              Width="100"
-                 Height="30"/>
+                 Height="30" HorizontalAlignment="Right" />
+        <TextBlock Text="{Binding Path=Label_1}" Grid.Column="0" Grid.Row="1"
+               Width="Auto"
+                   FontSize="18"
+               VerticalAlignment="Center"
+                   HorizontalAlignment="Left"/>
+        <TextBox Text="{Binding Path=Value_1}" Grid.Column="1" Grid.Row="1"
+             Width="100"
+                 Height="30" HorizontalAlignment="Right"/>
+        <TextBlock Text="{Binding Path=Label_2}" Grid.Column="0" Grid.Row="2"
+               Width="Auto"
+                   FontSize="18"
+               VerticalAlignment="Center"
+                   HorizontalAlignment="Left"/>
+        <TextBox Text="{Binding Path=Value_1}" Grid.Column="1" Grid.Row="2"
+             Width="100"
+                 Height="30" HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>
