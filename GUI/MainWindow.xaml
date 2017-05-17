@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="300" Width="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="picture" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="Picture"/>
+        <Rectangle Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="11,12,11,0" VerticalAlignment="Center" Width="75" Fill="#FF2AB3C9" Height="78"></Rectangle>
         <Button Content="SinglePlayer" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="SinglePlayer"/>
         <Button Content="Multy Player" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="MultyPlayer"/>
         <Button Content="Settings" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Bottom" Width="74" Padding="3" Click="Settings"/>
