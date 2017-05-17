@@ -56,6 +56,9 @@
     </ApplicationDefinition>
     <Compile Include="ApplicationSettingsModel.cs" />
     <Compile Include="ApplicationSinglePlayerModel.cs" />
+    <Compile Include="BasicUC.xaml.cs">
+      <DependentUpon>BasicUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
     <Compile Include="Maze.xaml.cs">
@@ -76,6 +79,10 @@
     </Compile>
     <Compile Include="SinglePlayerVM.cs" />
     <Compile Include="ViewModel.cs" />
+    <Page Include="BasicUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -5,25 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI"
              mc:Ignorable="d" d:DesignWidth="300" Height="164.039">
-    <Grid TextBlock.FontSize="14">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Padding="3" Margin="3">Maze name:</TextBlock>
-        <TextBox x:Name="txtMazeName" Grid.Column="2"  Padding="3" Margin="3" Text="{Binding Maze name}" ></TextBox>
-        <TextBlock Grid.Row="1" Padding="3" Margin="3">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" Grid.Row="1" Grid.Column="2" Padding="3"
-Margin="3" Text="{Binding Maze rows}"></TextBox>
-        <TextBlock Grid.Row="2" Padding="3" Margin="3">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" Grid.Row="2" Grid.Column="2" Padding="3"
-Margin="3" Text="{Binding Maze columns}"></TextBox>
-       
-    </Grid>
+    <StackPanel>
+        <local:BasicUC Height="Auto" Width="Auto" Label="Maze name:"/>
+        <local:BasicUC Height="Auto" Width="Auto" Label="Maze rows:"/>
+        <local:BasicUC Height="Auto" Width="Auto" Label="Maze colunms:"/>
+    </StackPanel>
 </UserControl>

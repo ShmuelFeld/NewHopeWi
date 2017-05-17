@@ -22,7 +22,7 @@ namespace GUI
         private SinglePlayerVM spvm;
         public SinglePlayer()
         {
-            InitializeComponent();
+            //InitializeComponent();
             ISinglePlayerModel model = new ApplicationSinglePlayerModel();
             spvm = new SinglePlayerVM(model);
             this.DataContext = spvm;
