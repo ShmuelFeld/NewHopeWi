@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="SingleMaze" Height="300" Width="300">
     <Viewbox>
-        <Controls:MazeUC Rows="{Binding MazeVM.Rows}" Cols="{Binding MazeVM.Cols}" MazeName="{Binding MazeVM.Name}" MazeString="{Binding MazeVM.ToString()}"></Controls:MazeUC>
+        <Controls:MazeUC MazeRows="{Binding MazeVM.Rows}" MazeCols="{Binding MazeVM.Cols}" MazeName="{Binding MazeVM.Name}" MazeString="{Binding MazeVM.ToString()}"></Controls:MazeUC>
     </Viewbox>
 
 </Window>

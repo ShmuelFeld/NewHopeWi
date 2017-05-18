@@ -19,8 +19,8 @@ namespace GUI
     /// </summary>
     public partial class SingleMaze : Window
     {
-        public int Rows { get; set; }
-        public int Cols { get; set; }
+        public int MazeRows { get; set; }
+        public int MazeCols { get; set; }
         public string MazeString { get; set; }
         private SingleMazeVM smVM;
 
