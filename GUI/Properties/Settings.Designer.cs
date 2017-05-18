@@ -24,6 +24,7 @@ namespace GUI.Properties
         internal int MazeCols;
         internal int SearchAlgorithm;
         internal string MazeName;
+        internal string MazeString;
         public static Settings Default
         {
             get

@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MazeGeneratorLib">
+      <HintPath>..\..\..\..\Desktop\אוניברסיטה\MazeGeneratorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MazeLib">
+      <HintPath>..\..\..\..\Desktop\אוניברסיטה\MazeLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -66,8 +72,8 @@
     </Compile>
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
-    <Compile Include="Maze.xaml.cs">
-      <DependentUpon>Maze.xaml</DependentUpon>
+    <Compile Include="MazeUC.xaml.cs">
+      <DependentUpon>MazeUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="MultiPlayer.xaml.cs">
       <DependentUpon>MultiPlayer.xaml</DependentUpon>
@@ -79,6 +85,8 @@
     <Compile Include="SingleMaze.xaml.cs">
       <DependentUpon>SingleMaze.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SingleMazeModel.cs" />
+    <Compile Include="SingleMazeVM.cs" />
     <Compile Include="SinglePlayer.xaml.cs">
       <DependentUpon>SinglePlayer.xaml</DependentUpon>
     </Compile>
@@ -104,7 +112,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Maze.xaml">
+    <Page Include="MazeUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,6 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

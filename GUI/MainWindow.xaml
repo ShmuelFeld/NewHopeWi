@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
+
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="300">
+    <Viewbox>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,10 +22,11 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="11,12,11,0" VerticalAlignment="Center" Width="75" Fill="#FF2AB3C9" Height="78"></Rectangle>
+        <Image Source="C:\Users\USER\Source\Repos\NewHopeWi\resources\MAZE logo.jpg" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="0,20,0,0" Width="75"/>
         <Button Content="SinglePlayer" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="SinglePlayer"/>
         <Button Content="MultyPlayer" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="MultyPlayer"/>
         <Button Content="Settings" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Bottom" Width="74" Padding="3" Click="Settings"/>
 
     </Grid>
+    </Viewbox>
 </Window>
