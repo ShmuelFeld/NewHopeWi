@@ -67,22 +67,22 @@ namespace GUI
                     }
                     writer.WriteLine(command);
                     writer.Flush();
-                    string feedback;
+                    string feedback = "";
                     while (true)
                     {
-                        feedback = reader.ReadLine();
+                        feedback += reader.ReadLine();
                         if (reader.Peek() == '@')
                         {
-                            Console.WriteLine("{0}", feedback);
+                           // Console.WriteLine("{0}", feedback);
                             feedback.TrimEnd('\n');
                             break;
                         }
-                        Console.WriteLine("{0}", feedback);
+                      //  Console.WriteLine("{0}", feedback);
                     }
                     reader.ReadLine();
                     if (command.Contains("generate"))
                     {
-                        Maze maze = Maze.FromJSON(feedback);
+                        Maze maze = Maze.FromJSON("");
                         this.MazeVM = maze;
                     }
                     if (isMulti)
