@@ -23,15 +23,15 @@ namespace GUI
 
         public SingleMazeVM()
         {
-           //...... model model = new 
+            this.model = new SingleMazeModel();
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged( e.PropertyName + "VM"); };
         }
 
         public void StartGame()
         {
-            string command = "generate";
-            command += Properties.Settings.Default.MazeName + Properties.Settings.Default.MazeRows + Properties.Settings.Default.MazeCols;
-            //call connect in model (client)
+            string command = "generate ";
+            command += Properties.Settings.Default.MazeName + " " + Properties.Settings.Default.MazeRows + " " + Properties.Settings.Default.MazeCols;
+            model.connect(command);
         }
     }
 }
