@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="SinglePlayer" Height="187.234" Width="300">
-    <Grid TextBlock.FontSize="14">
+    <Viewbox>
+        <Grid TextBlock.FontSize="14">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -24,7 +25,8 @@ Margin="3" Text="{Binding MazeRows}"></TextBox>
         <TextBlock Grid.Row="2" Padding="3" Margin="3">Maze columns:</TextBlock>
         <TextBox x:Name="txtCols" Grid.Row="2" Grid.Column="2" Padding="3"
 Margin="3" Text="{Binding MazeCols}"></TextBox>
-        <Button Content="OK" Grid.Column="0" Grid.Row="3" Padding="3" Height="30" HorizontalAlignment="Right" Margin="0,13,115,14" Click="btnStart_Click" Background="#FF2BC7C7" BorderBrush="#FF450404" Grid.ColumnSpan="2" Width="105"/>
+        <Button Content="OK" Grid.Column="0" Grid.Row="3" Padding="3" Height="30" HorizontalAlignment="Right" Margin="0,13,115,14" Click="btnStart_Click" Background="#FF2BC7C7" BorderBrush="#FF450404" Grid.ColumnSpan="2" Width="105" RenderTransformOrigin="1.086,0.567"/>
 
     </Grid>
+    </Viewbox>
 </Window>
