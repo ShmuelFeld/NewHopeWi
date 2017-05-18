@@ -24,6 +24,7 @@ namespace GUI
         public string MazeString { get; set; }
         private SingleMazeVM smVM;
 
+
         public SingleMaze()
         {
             InitializeComponent();
@@ -32,9 +33,7 @@ namespace GUI
             //this.Cols = cols;
             this.DataContext = smVM;
             smVM.StartGame();
-           // this.MazeString = mazeChars.ToString();
-          //  drawMaze();
-        }
+         }
 
         public void drawMaze()
         {
