@@ -37,7 +37,7 @@
                    FontSize="18"
                VerticalAlignment="Center"
                    HorizontalAlignment="Left"/>
-        <TextBox Text="{Binding Path=Value_1}" Grid.Column="1" Grid.Row="2"
+        <TextBox Text="{Binding Path=Value_2}" Grid.Column="1" Grid.Row="2"
              Width="100"
                  Height="30" HorizontalAlignment="Right"/>
     </Grid>

@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MazeGeneratorLib">
-      <HintPath>..\..\..\..\Desktop\אוניברסיטה\MazeGeneratorLib.dll</HintPath>
+      <HintPath>..\..\projectEx1\MazeGeneratorLib.dll</HintPath>
     </Reference>
     <Reference Include="MazeLib">
-      <HintPath>..\..\..\..\Desktop\אוניברסיטה\MazeLib.dll</HintPath>
+      <HintPath>..\..\projectEx1\MazeLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

@@ -24,7 +24,7 @@ namespace GUI
         public SingleMazeVM()
         {
            //...... model model = new 
-            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged( e.PropertyName + "VM"); };
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName + "VM"); };
         }
 
         public void StartGame()

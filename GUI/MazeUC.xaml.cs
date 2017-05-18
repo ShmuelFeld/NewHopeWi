@@ -31,7 +31,8 @@ namespace GUI
                 SetValue(RowsProperty, value);
             }
         }
-        public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC),
+        public static readonly DependencyProperty RowsProperty =
+            DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC),
             new PropertyMetadata(default(int)));//the 0 can be replaced with a function that whenever something changes the rows- the function will be called.
         public int MazeCols
         {
@@ -46,7 +47,7 @@ namespace GUI
         }
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("MazeCols", typeof(int), typeof(MazeUC),
-            new PropertyMetadata(0));
+            new PropertyMetadata(default(int)));
         public string MazeName
         {
             get
@@ -77,6 +78,7 @@ namespace GUI
                 typeof(MazeUC), new PropertyMetadata(default(string)));
         public MazeUC()
         {
+            //MazeRoot.DataContext = this;
             InitializeComponent();
             //this.Rows = rows;
             //this.Cols = cols;

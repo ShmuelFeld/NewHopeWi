@@ -32,6 +32,7 @@ namespace GUI
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             spvm.SaveSettings();
+            SingleMaze m = new SingleMaze();
             m.Show();
             this.Close();
         }
