@@ -20,7 +20,7 @@ namespace GUI
     /// </summary>
     public partial class MazeUC : UserControl
     {
-        public int Rows
+        public int MazeRows
         {
             get
             {
@@ -33,7 +33,7 @@ namespace GUI
         }
         public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC),
             new PropertyMetadata(default(int)));//the 0 can be replaced with a function that whenever something changes the rows- the function will be called.
-        public int Cols
+        public int MazeCols
         {
             get
             {
@@ -44,7 +44,8 @@ namespace GUI
                 SetValue(ColsProperty, value);
             }
         }
-        public static readonly DependencyProperty ColsProperty = DependencyProperty.Register("MazeCols", typeof(int), typeof(MazeUC),
+        public static readonly DependencyProperty ColsProperty =
+            DependencyProperty.Register("MazeCols", typeof(int), typeof(MazeUC),
             new PropertyMetadata(0));
         public string MazeName
         {
@@ -57,7 +58,9 @@ namespace GUI
                 SetValue(MazeNameProperty, value);
             }
         }
-        public static readonly DependencyProperty MazeNameProperty = DependencyProperty.Register("MazeName", typeof(string), typeof(MazeUC), new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty MazeNameProperty =
+            DependencyProperty.Register("MazeName", typeof(string),
+                typeof(MazeUC), new PropertyMetadata(default(string)));
         public string MazeString
         {
             get
@@ -69,7 +72,9 @@ namespace GUI
                 SetValue(MazeStringProperty, value);
             }
         }
-        public static readonly DependencyProperty MazeStringProperty = DependencyProperty.Register("MazeString", typeof(string), typeof(MazeUC), new PropertyMetadata(default(string)));
+        public static readonly DependencyProperty MazeStringProperty =
+            DependencyProperty.Register("MazeString", typeof(string),
+                typeof(MazeUC), new PropertyMetadata(default(string)));
         public MazeUC()
         {
             InitializeComponent();
@@ -88,13 +93,13 @@ namespace GUI
             //}
             ////END OF TEMP
 
-            int height = (int)mazeCanvas.Height / Rows;
-            int width = (int)mazeCanvas.Width / Cols;
+            int height = (int)mazeCanvas.Height / MazeRows;
+            int width = (int)mazeCanvas.Width / MazeCols;
              char[] charArr = MazeString.ToCharArray();
             int counter = 0;
-            for (int i = 0; i < Rows; i++)
+            for (int i = 0; i < MazeRows; i++)
             {
-                for (int j = 0; j < Cols; j++)
+                for (int j = 0; j < MazeCols; j++)
                 {
                     Rect rect = new Rect(width * j, height * i, width, height);
                     RectangleGeometry rg = new RectangleGeometry(rect);
