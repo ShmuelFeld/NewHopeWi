@@ -39,9 +39,9 @@ namespace GUI
             DependencyProperty.Register("Label", typeof(string),
               typeof(BasicUC));
 
-        public object Value
+        public string Value
         {
-            get { return (object)GetValue(ValueProperty); }
+            get { return (string)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
         }
 
@@ -49,7 +49,7 @@ namespace GUI
         /// Identified the Label dependency property
         /// </summary>
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(object),
+            DependencyProperty.Register("Value", typeof(string),
               typeof(BasicUC));
 
 
@@ -66,9 +66,9 @@ namespace GUI
             DependencyProperty.Register("Label_1", typeof(string),
               typeof(BasicUC));
 
-        public object Value_1
+        public int Value_1
         {
-            get { return (object)GetValue(Value_1Property); }
+            get { return (int)GetValue(Value_1Property); }
             set { SetValue(Value_1Property, value); }
         }
 
@@ -76,7 +76,7 @@ namespace GUI
         /// Identified the Label dependency property
         /// </summary>
         public static readonly DependencyProperty Value_1Property =
-            DependencyProperty.Register("Value_1", typeof(object),
+            DependencyProperty.Register("Value_1", typeof(int),
               typeof(BasicUC));
         public String Label_2
         {
@@ -91,9 +91,9 @@ namespace GUI
             DependencyProperty.Register("Label_2", typeof(string),
               typeof(BasicUC));
 
-        public object Value_2
+        public int Value_2
         {
-            get { return (object)GetValue(Value_2Property); }
+            get { return (int)GetValue(Value_2Property); }
             set { SetValue(Value_2Property, value); }
         }
 
@@ -101,7 +101,7 @@ namespace GUI
         /// Identified the Label dependency property
         /// </summary>
         public static readonly DependencyProperty Value_2Property =
-            DependencyProperty.Register("Value_2", typeof(object),
+            DependencyProperty.Register("Value_2", typeof(int),
               typeof(BasicUC));
     }
 }

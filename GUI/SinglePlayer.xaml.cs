@@ -26,19 +26,56 @@ namespace GUI
             ISinglePlayerModel model = new ApplicationSinglePlayerModel();
             spvm = new SinglePlayerVM(model);
             this.DataContext = spvm;
+            Root.DataContext = this;
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             spvm.SaveSettings();
-            SingleMaze m = new SingleMaze(spvm.MazeRows, spvm.MazeRows);
+            SingleMaze m = new SingleMaze(UserControl.Value, UserControl.Value_1, UserControl.Value_1);
             m.Show();
             this.Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
         }
+
+
+        public int MazeCols
+        {
+            get { return (int)GetValue(MazeColsProperty); }
+            set { SetValue(MazeColsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MazeCols.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MazeColsProperty =
+            DependencyProperty.Register("MazeCols", typeof(int), typeof(SinglePlayer), new PropertyMetadata(default(int)));
+
+
+        public int MazeRows
+        {
+            get { return (int)GetValue(MazeRowsProperty); }
+            set { SetValue(MazeRowsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MazeRows.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MazeRowsProperty =
+            DependencyProperty.Register("MazeRows", typeof(int), typeof(SinglePlayer), new PropertyMetadata(default(int)));
+
+
+        public string MazeName
+        {
+            get { return (string)GetValue(MazeNameProperty); }
+            set { SetValue(MazeNameProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MazeName.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MazeNameProperty =
+            DependencyProperty.Register("MazeName", typeof(string), typeof(SinglePlayer), new PropertyMetadata(default(string)));
+
     }
 }

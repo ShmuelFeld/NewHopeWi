@@ -23,11 +23,12 @@ namespace GUI
         public int Cols { get; set; }
         public string MazeString { get; set; }
 
-        public SingleMaze(int rows, int cols)
+        public SingleMaze(string mazeName, int rows, int cols)
         {
             InitializeComponent();
             this.Rows = rows;
             this.Cols = cols;
+            this.MazeString = mazeName;
             
            // this.MazeString = mazeChars.ToString();
             drawMaze();

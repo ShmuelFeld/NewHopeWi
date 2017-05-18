@@ -7,7 +7,7 @@
         x:Class="GUI.SinglePlayer"
         mc:Ignorable="d"
         Title="SinglePlayer" Height="187.234" Width="300">
-    <Grid>
+    <Grid x:Name="Root">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -15,8 +15,10 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <local:BasicUC Grid.Row="0" Label="Maze name:" Label_1="Maze rows:" Label_2="Maze columns:"
-                       Value="{Binding MazeName}" Value_1="{Binding MazeRows}" Value_2="{Binding MazeCols}"
+        <local:BasicUC x:Name="UserControl" Grid.Row="0" Label="Maze name:" Label_1="Maze rows:" Label_2="Maze columns:"
+                        Value_1="{Binding ElementName=SinglePlayer, Path =MazeRows}" 
+                       Value_2="{Binding ElementName=SinglePlayer, Path = MazeCols}"
+                       Value="{Binding ElementName=SinglePlayer, Path=MazeName}"
         />
         <DockPanel Grid.Row="1">
             <Button Content="Start Game" HorizontalAlignment="Right" Margin="3" VerticalAlignment="Center"
