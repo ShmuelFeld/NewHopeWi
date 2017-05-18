@@ -30,6 +30,7 @@ namespace GUI
             //root.DataContext = this;
             //this.Rows = rows;
             //this.Cols = cols;
+            smVM = new SingleMazeVM();
             this.DataContext = smVM;
             smVM.StartGame();
            // this.MazeString = mazeChars.ToString();
