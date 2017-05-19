@@ -26,22 +26,13 @@ namespace GUI
             ISinglePlayerModel model = new ApplicationSinglePlayerModel();
             spvm = new SinglePlayerVM(model);
             this.DataContext = spvm;
-            Root.DataContext = this;
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            
             spvm.SaveSettings();
             SingleMaze m = new SingleMaze();
             m.Show();
-            this.Close();
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mw = new MainWindow();
-            mw.Show();
             this.Close();
         }
     }

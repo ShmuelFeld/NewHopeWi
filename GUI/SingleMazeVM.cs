@@ -15,7 +15,8 @@ namespace GUI
         public Maze MazeVM
         {
             get { return model.MazeVM; }
-            set {
+            set
+            {
                 model.MazeVM = value;
                 NotifyPropertyChanged("MazeVM");
             }
@@ -24,7 +25,8 @@ namespace GUI
         public SingleMazeVM()
         {
             this.model = new SingleMazeModel();
-            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged( e.PropertyName + "VM"); };
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName + "VM"); };
+            StartGame();
         }
 
         public void StartGame()

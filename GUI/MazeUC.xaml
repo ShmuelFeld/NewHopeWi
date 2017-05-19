@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:GUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Viewbox x:Name="MazeRoot">
+    <Viewbox>
         <Canvas x:Name="mazeCanvas" />
     </Viewbox>
 </UserControl>

@@ -11,9 +11,19 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    class SingleMazeModel : INotifyPropertyChanged
+    class SingleMazeModel : ViewModel
     {
-        public Maze MazeVM { get; set; }
+        public Maze MazeVM
+        {
+            get { return maze; }
+            set
+            {
+                maze = value;
+                NotifyPropertyChanged("maze");
+            }
+
+        }
+        private Maze maze;
         /// <summary>
         /// The communication protocol.
         /// </summary>
@@ -40,9 +50,9 @@ namespace GUI
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void connect (string command)
+        public void connect(string command)
         {
-           // string command = null;
+            // string command = null;
             bool isExecuted = true;
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
@@ -51,7 +61,7 @@ namespace GUI
                 while (!endOfCommunication)
                 {
                     bool isMulti = false;
-                    
+
                     isExecuted = true;
                     if (!client.Connected)
                     {
@@ -73,17 +83,18 @@ namespace GUI
                         feedback += reader.ReadLine();
                         if (reader.Peek() == '@')
                         {
-                           // Console.WriteLine("{0}", feedback);
+                            // Console.WriteLine("{0}", feedback);
                             feedback.TrimEnd('\n');
                             break;
                         }
-                      //  Console.WriteLine("{0}", feedback);
+                        //  Console.WriteLine("{0}", feedback);
                     }
                     reader.ReadLine();
+                    feedback += "\n";
                     if (command.Contains("generate"))
                     {
-                        Maze maze = Maze.FromJSON("");
-                        this.MazeVM = maze;
+                        this.MazeVM = Maze.FromJSON(feedback);
+                        return;
                     }
                     if (isMulti)
                     {

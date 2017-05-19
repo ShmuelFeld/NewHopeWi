@@ -31,10 +31,8 @@ namespace GUI
                 SetValue(RowsProperty, value);
             }
         }
-
         public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC),
             new PropertyMetadata(onRowsPropertyChanged));//the 0 can be replaced with a function that whenever something changes the rows- the function will be called.
-
         public int MazeCols
         {
             get
@@ -49,7 +47,6 @@ namespace GUI
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("MazeCols", typeof(int), typeof(MazeUC),
             new PropertyMetadata(onColsPropertyChanged));
-
         public string MazeName
         {
             get
@@ -93,11 +90,10 @@ namespace GUI
         }
         public MazeUC()
         {
-            //MazeRoot.DataContext = this;
             InitializeComponent();
             //this.Rows = rows;
             //this.Cols = cols;
-            
+
         }
 
         public void drawMaze()
@@ -109,13 +105,15 @@ namespace GUI
             //    mazeChars[i] = '0';
             //}
             ////END OF TEMP
-            if(MazeRows == 0 || MazeCols == 0 || MazeString == null)
+            if (MazeRows == 0 || MazeCols == 0 || MazeString == null)
             {
                 return;
             }
-            int height = (int)mazeCanvas.Height / MazeRows;
-            int width = (int)mazeCanvas.Width / MazeCols;
-             char[] charArr = MazeString.ToCharArray();
+            //TODO
+            int height = 300 / MazeRows;
+            int width = 300 / MazeCols;
+            char[] charArr = MazeString.ToCharArray();
+
             int counter = 0;
             for (int i = 0; i < MazeRows; i++)
             {
@@ -130,15 +128,28 @@ namespace GUI
                     {
                         u.Fill = Brushes.Black;
                     }
-                    else
+                    else if (charArr[counter] == '1')
+                    {
+                        u.Fill = Brushes.Red;
+                    }
+                    else if (charArr[counter] == '*')
                     {
                         u.Fill = Brushes.Aquamarine;
+                    }
+                    else if (charArr[counter] == '#')
+                    {
+                        u.Fill = Brushes.DarkBlue;
+                    }
+                    else
+                    {
+                        counter++;
+                        continue;
                     }
                     u.Visibility = Visibility.Visible;
                     mazeCanvas.Children.Add(u);
                     counter++;
-
                 }
+                counter += 2;
             }
         }
     }
