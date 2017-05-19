@@ -1,15 +1,15 @@
-﻿<Window x:Class="GUI.SingleMaze"
+<Window x:Class="GUI.SingleMaze"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-       xmlns:Controls="clr-namespace:GUI"
+        xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         Title="SingleMaze" Height="300" Width="300">
     <Viewbox>
+
         <Grid>
             <Controls:MazeUC MazeRows="{Binding MazeVM.Rows}" MazeCols="{Binding MazeVM.Cols}" MazeString="{Binding MazeVM}"></Controls:MazeUC>
         </Grid>
     </Viewbox>
-
 </Window>

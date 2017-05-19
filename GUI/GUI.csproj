@@ -35,16 +35,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MazeGeneratorLib">
-      <HintPath>..\..\..\..\Desktop\אוניברסיטה\MazeGeneratorLib.dll</HintPath>
+      <HintPath>..\..\projectEx1\MazeGeneratorLib.dll</HintPath>
     </Reference>
     <Reference Include="MazeLib">
-      <HintPath>..\..\..\..\Desktop\אוניברסיטה\MazeLib.dll</HintPath>
+      <HintPath>..\..\projectEx1\MazeLib.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -65,10 +67,19 @@
     </ApplicationDefinition>
     <Compile Include="ApplicationSettingsModel.cs" />
     <Compile Include="ApplicationSinglePlayerModel.cs" />
+    <Compile Include="BasicMPUC.xaml.cs">
+      <DependentUpon>BasicMPUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicUC.xaml.cs">
+      <DependentUpon>BasicUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
     <Compile Include="MazeUC.xaml.cs">
       <DependentUpon>MazeUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MultiPlayer.xaml.cs">
+      <DependentUpon>MultiPlayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingsViewModel.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
@@ -82,11 +93,16 @@
     <Compile Include="SinglePlayer.xaml.cs">
       <DependentUpon>SinglePlayer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SinglePlayerUC.xaml.cs">
-      <DependentUpon>SinglePlayerUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SinglePlayerVM.cs" />
     <Compile Include="ViewModel.cs" />
+    <Page Include="BasicMPUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MultiPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,10 +132,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SinglePlayer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SinglePlayerUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
