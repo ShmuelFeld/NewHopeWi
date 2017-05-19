@@ -11,9 +11,18 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    class SingleMazeModel : INotifyPropertyChanged
+    class SingleMazeModel : ViewModel
     {
-        public Maze MazeVM { get; set; }
+        public Maze MazeVM {
+            get { return maze; }
+            set
+            {
+                maze = value;
+                NotifyPropertyChanged("maze");
+            }
+
+        }
+        private Maze maze;
         /// <summary>
         /// The communication protocol.
         /// </summary>
@@ -83,8 +92,8 @@ namespace GUI
                     feedback += "\n";
                     if (command.Contains("generate"))
                     {
-                        Maze maze = Maze.FromJSON("");
-                        this.MazeVM = maze;
+                        
+                        this.MazeVM = Maze.FromJSON(feedback);
                         return;
                     }
                     if (isMulti)

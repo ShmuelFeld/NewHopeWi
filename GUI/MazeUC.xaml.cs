@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,9 +31,10 @@ namespace GUI
                 SetValue(RowsProperty, value);
             }
         }
-        public static readonly DependencyProperty RowsProperty =
-            DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC),
-            new PropertyMetadata(default(int)));//the 0 can be replaced with a function that whenever something changes the rows- the function will be called.
+
+        public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC),
+            new PropertyMetadata(onRowsPropertyChanged));//the 0 can be replaced with a function that whenever something changes the rows- the function will be called.
+
         public int MazeCols
         {
             get
@@ -47,7 +48,8 @@ namespace GUI
         }
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("MazeCols", typeof(int), typeof(MazeUC),
-            new PropertyMetadata(default(int)));
+            new PropertyMetadata(onColsPropertyChanged));
+
         public string MazeName
         {
             get
@@ -75,14 +77,27 @@ namespace GUI
         }
         public static readonly DependencyProperty MazeStringProperty =
             DependencyProperty.Register("MazeString", typeof(string),
-                typeof(MazeUC), new PropertyMetadata(default(string)));
+                typeof(MazeUC), new PropertyMetadata(onStringPropertyChanged));
+
+        private static void onColsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((MazeUC)d).drawMaze();
+        }
+        private static void onRowsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((MazeUC)d).drawMaze();
+        }
+        private static void onStringPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((MazeUC)d).drawMaze();
+        }
         public MazeUC()
         {
             //MazeRoot.DataContext = this;
             InitializeComponent();
             //this.Rows = rows;
             //this.Cols = cols;
-            drawMaze();
+            
         }
 
         public void drawMaze()
@@ -94,7 +109,10 @@ namespace GUI
             //    mazeChars[i] = '0';
             //}
             ////END OF TEMP
-
+            if(MazeRows == 0 || MazeCols == 0 || MazeString == null)
+            {
+                return;
+            }
             int height = (int)mazeCanvas.Height / MazeRows;
             int width = (int)mazeCanvas.Width / MazeCols;
              char[] charArr = MazeString.ToCharArray();
