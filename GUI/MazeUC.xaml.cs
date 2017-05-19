@@ -82,7 +82,7 @@ namespace GUI
             InitializeComponent();
             //this.Rows = rows;
             //this.Cols = cols;
-            //drawMaze();
+            drawMaze();
         }
 
         public void drawMaze()

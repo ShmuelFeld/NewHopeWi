@@ -80,10 +80,12 @@ namespace GUI
                       //  Console.WriteLine("{0}", feedback);
                     }
                     reader.ReadLine();
+                    feedback += "\n";
                     if (command.Contains("generate"))
                     {
                         Maze maze = Maze.FromJSON("");
                         this.MazeVM = maze;
+                        return;
                     }
                     if (isMulti)
                     {

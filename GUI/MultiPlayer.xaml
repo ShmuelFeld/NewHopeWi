@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <local:BasicMPUC Grid.Row="0" Label="List of games:"/>
         <local:BasicUC Grid.Row="2" Label="Maze name:" Label_1="Maze rows:" Label_2="Maze columns:"
-                       Value="{Binding MazeName}" Value_1="{Binding MazeRows}" Value_2="{Binding MazeCols}"
+                      MazeNameProperty="{Binding MazeName}" MazeRowsProperty="{Binding MazeRows}" MazeColsProperty="{Binding MazeCols}"
                        />
         <Button Content="Join Game" Click="JoinGame_Click" Width="Auto" FontSize="20" Grid.Row="1"/>
         <DockPanel Grid.Row="3">

@@ -39,18 +39,18 @@ namespace GUI
             DependencyProperty.Register("Label", typeof(string),
               typeof(BasicUC));
 
-        public string Value
+        public string MazeNameProperty
         {
-            get { return (string)GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
+            get { return (string)GetValue(MazeNamePropertyproperty); }
+            set { SetValue(MazeNamePropertyproperty, value); }
         }
 
         /// <summary>
         /// Identified the Label dependency property
         /// </summary>
-        public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(string),
-              typeof(BasicUC));
+        public static readonly DependencyProperty MazeNamePropertyproperty =
+            DependencyProperty.Register("MazeNameProperty", typeof(string),
+              typeof(BasicUC), new UIPropertyMetadata(string.Empty));
 
 
         public String Label_1
@@ -66,17 +66,17 @@ namespace GUI
             DependencyProperty.Register("Label_1", typeof(string),
               typeof(BasicUC));
 
-        public int Value_1
+        public int MazeRowsProperty
         {
-            get { return (int)GetValue(Value_1Property); }
-            set { SetValue(Value_1Property, value); }
+            get { return (int)GetValue(MazeRowsPropertyProperty); }
+            set { SetValue(MazeRowsPropertyProperty, value); }
         }
 
         /// <summary>
         /// Identified the Label dependency property
         /// </summary>
-        public static readonly DependencyProperty Value_1Property =
-            DependencyProperty.Register("Value_1", typeof(int),
+        public static readonly DependencyProperty MazeRowsPropertyProperty =
+            DependencyProperty.Register("MazeRowsProperty", typeof(int),
               typeof(BasicUC));
         public String Label_2
         {
@@ -91,17 +91,17 @@ namespace GUI
             DependencyProperty.Register("Label_2", typeof(string),
               typeof(BasicUC));
 
-        public int Value_2
+        public int MazeColsProperty
         {
-            get { return (int)GetValue(Value_2Property); }
-            set { SetValue(Value_2Property, value); }
+            get { return (int)GetValue(MazeColsPropertyProperty); }
+            set { SetValue(MazeColsPropertyProperty, value); }
         }
 
         /// <summary>
         /// Identified the Label dependency property
         /// </summary>
-        public static readonly DependencyProperty Value_2Property =
-            DependencyProperty.Register("Value_2", typeof(int),
+        public static readonly DependencyProperty MazeColsPropertyProperty =
+            DependencyProperty.Register("MazeColsProperty", typeof(int),
               typeof(BasicUC));
     }
 }
