@@ -113,9 +113,11 @@ namespace GUI
             {
                 return;
             }
-            int height = (int)mazeCanvas.Height / MazeRows;
-            int width = (int)mazeCanvas.Width / MazeCols;
-             char[] charArr = MazeString.ToCharArray();
+            //TODO
+            int height = 300 / MazeRows;
+            int width = 300 / MazeCols;
+            char[] charArr = MazeString.ToCharArray();
+            
             int counter = 0;
             for (int i = 0; i < MazeRows; i++)
             {
@@ -130,15 +132,27 @@ namespace GUI
                     {
                         u.Fill = Brushes.Black;
                     }
-                    else
+                    else if (charArr[counter] == '1')
+                    {
+                        u.Fill = Brushes.White;
+                    }
+                    else if (charArr[counter] == '*')
                     {
                         u.Fill = Brushes.Aquamarine;
+                    }
+                    else if (charArr[counter] == '#')
+                    {
+                        u.Fill = Brushes.DarkBlue;
+                    }
+                    else {
+                        counter++;
+                        continue;
                     }
                     u.Visibility = Visibility.Visible;
                     mazeCanvas.Children.Add(u);
                     counter++;
-
                 }
+                counter += 2;
             }
         }
     }
