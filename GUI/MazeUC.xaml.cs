@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,8 +31,10 @@ namespace GUI
                 SetValue(RowsProperty, value);
             }
         }
+
         public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC),
             new PropertyMetadata(onRowsPropertyChanged));//the 0 can be replaced with a function that whenever something changes the rows- the function will be called.
+
         public int MazeCols
         {
             get
@@ -47,6 +49,7 @@ namespace GUI
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("MazeCols", typeof(int), typeof(MazeUC),
             new PropertyMetadata(onColsPropertyChanged));
+
         public string MazeName
         {
             get
@@ -90,6 +93,7 @@ namespace GUI
         }
         public MazeUC()
         {
+            //MazeRoot.DataContext = this;
             InitializeComponent();
             //this.Rows = rows;
             //this.Cols = cols;
