@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,19 +24,18 @@ namespace GUI
         public string MazeString { get; set; }
         private SingleMazeVM smVM;
 
-
         public SingleMaze()
         {
-
+            InitializeComponent();
             //root.DataContext = this;
             //this.Rows = rows;
             //this.Cols = cols;
-            InitializeComponent();
             smVM = new SingleMazeVM();
-            
             this.DataContext = smVM;
             smVM.StartGame();
-         }
+           // this.MazeString = mazeChars.ToString();
+          //  drawMaze();
+        }
 
         public void drawMaze()
         {
@@ -77,5 +76,6 @@ namespace GUI
            //     }
            // }
         }
+
     }
     }
