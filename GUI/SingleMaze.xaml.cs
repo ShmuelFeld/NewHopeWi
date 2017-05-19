@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,11 +27,13 @@ namespace GUI
 
         public SingleMaze()
         {
-            InitializeComponent();
+
             //root.DataContext = this;
             //this.Rows = rows;
             //this.Cols = cols;
+            InitializeComponent();
             smVM = new SingleMazeVM();
+            
             this.DataContext = smVM;
             smVM.StartGame();
          }
@@ -75,6 +77,5 @@ namespace GUI
            //     }
            // }
         }
-
     }
     }
