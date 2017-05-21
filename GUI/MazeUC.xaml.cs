@@ -181,14 +181,16 @@ namespace GUI
 
         }
 
-        //should be not - static
-        public static void Viewbox_KeyDown(object sender, KeyEventArgs e)
+        private void mazeCanvas_Loaded(object sender, RoutedEventArgs e)
         {
-            //not good, shoud be taken from the proprty here.
-            int rows = Properties.Settings.Default.MazeRows;
-            int cols = Properties.Settings.Default.MazeCols;
+            var window = Window.GetWindow(this);
+            window.KeyDown += Viewbox_KeyDown;
+        }
+
+        public void Viewbox_KeyDown(object sender, KeyEventArgs e)
+        {
             //if(currentPos == InitialPos)
-           
+
             Position temp = currentPos;
             switch (e.Key)
             {
@@ -205,7 +207,7 @@ namespace GUI
                 case (Key.Down):
                     currentPos.Row ++;
                     rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
-                    if ((currentPos.Row >= rows) || (Colors.Black.Equals(rectFillColor)))
+                    if ((currentPos.Row >= MazeRows) || (Colors.Black.Equals(rectFillColor)))
                     {
                         currentPos.Row--;
                         return;
@@ -226,7 +228,7 @@ namespace GUI
                 case (Key.Right):
                     currentPos.Col ++;
                     rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
-                    if ((currentPos.Col >= cols) || (Colors.Black.Equals(rectFillColor))) 
+                    if ((currentPos.Col >= MazeCols) || (Colors.Black.Equals(rectFillColor))) 
                     {
                         currentPos.Col--;
                         return;
@@ -244,6 +246,11 @@ namespace GUI
             rectanglesArr[currentPos.Row, currentPos.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.Bisque);
             Canvas.SetLeft(rectanglesArr[currentPos.Row, currentPos.Col], width * currentPos.Col);
             Canvas.SetTop(rectanglesArr[currentPos.Row, currentPos.Col], height * currentPos.Row);
+            if ((currentPos.Col == GoalPos.Col) && (currentPos.Row == GoalPos.Row))
+            {
+                SuccessWin win = new SuccessWin();
+                win.Show();
+            }
             e.Handled = true;
         }
 
