@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using MazeLib;
+
 namespace GUI.Properties
 {
 
@@ -25,6 +27,7 @@ namespace GUI.Properties
         internal int SearchAlgorithm;
         internal string MazeName;
         internal string MazeString;
+        internal Position InitialPos;
         public static Settings Default
         {
             get

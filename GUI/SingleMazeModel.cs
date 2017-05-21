@@ -21,7 +21,6 @@ namespace GUI
                 maze = value;
                 NotifyPropertyChanged("maze");
             }
-
         }
         private Maze maze;
         /// <summary>

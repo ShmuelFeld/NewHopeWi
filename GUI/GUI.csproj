@@ -75,6 +75,9 @@
     </Compile>
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
+    <Compile Include="WinConfirm.xaml.cs">
+      <DependentUpon>WinConfirm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MazeUC.xaml.cs">
       <DependentUpon>MazeUC.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BasicUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinConfirm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

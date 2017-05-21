@@ -1,3 +1,4 @@
+using MazeLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace GUI
     /// </summary>
     public partial class MazeUC : UserControl
     {
+        public static Rectangle[,] rectanglesArr;
+        public static Position currentPos;
+        public static int height, width;
+        public static Canvas mazeCan;
         public int MazeRows
         {
             get
@@ -32,7 +37,33 @@ namespace GUI
             }
         }
         public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC),
-            new PropertyMetadata(onRowsPropertyChanged));//the 0 can be replaced with a function that whenever something changes the rows- the function will be called.
+            new PropertyMetadata(onRowsPropertyChanged));
+        public Position InitialPos
+        {
+            get
+            {
+                return (Position)GetValue(InitialPosProperty);
+            }
+            set
+            {
+                SetValue(InitialPosProperty, value);
+            }
+        }
+        public static readonly DependencyProperty InitialPosProperty = DependencyProperty.Register("InitialPos", typeof(Position), typeof(MazeUC),
+            new PropertyMetadata(onRowsPropertyChanged));
+        public Position GoalPos
+        {
+            get
+            {
+                return (Position)GetValue(GoalPosProperty);
+            }
+            set
+            {
+                SetValue(GoalPosProperty, value);
+            }
+        }
+        public static readonly DependencyProperty GoalPosProperty = DependencyProperty.Register("GoalPos", typeof(Position), typeof(MazeUC),
+            new PropertyMetadata(onRowsPropertyChanged));
         public int MazeCols
         {
             get
@@ -86,71 +117,136 @@ namespace GUI
         }
         private static void onStringPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((MazeUC)d).drawMaze();
+                ((MazeUC)d).drawMaze();
         }
         public MazeUC()
         {
             InitializeComponent();
-            //this.Rows = rows;
-            //this.Cols = cols;
-
+            mazeCan = mazeCanvas;
         }
-
         public void drawMaze()
         {
-            ////TEMP
-            //char[] mazeChars = new char[Rows * Cols];
-            //for (int i = 0; i < mazeChars.Length; i++)
-            //{
-            //    mazeChars[i] = '0';
-            //}
-            ////END OF TEMP
             if (MazeRows == 0 || MazeCols == 0 || MazeString == null)
             {
                 return;
             }
-            //TODO
-            int height = 300 / MazeRows;
-            int width = 300 / MazeCols;
-            char[] charArr = MazeString.ToCharArray();
-
+            int rows = MazeRows;
+            int cols = MazeCols;
+            height = (int)mazeCanvas.Height / MazeRows;
+            width = (int)mazeCanvas.Width / MazeCols;
+            rectanglesArr = new Rectangle[rows, cols];
+            string charArr = MazeString;
+            currentPos = InitialPos;
             int counter = 0;
             for (int i = 0; i < MazeRows; i++)
             {
                 for (int j = 0; j < MazeCols; j++)
                 {
-                    Rect rect = new Rect(width * j, height * i, width, height);
-                    RectangleGeometry rg = new RectangleGeometry(rect);
-                    Path u = new Path();
-                    u.Data = rg;
-
+                    Rectangle rect = new Rectangle();
+                    rect.Height = height;
+                    rect.Width = width;
+                    rectanglesArr[i, j] = rect;                    
                     if (charArr[counter] == '0')
                     {
-                        u.Fill = Brushes.Black;
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Black);
                     }
                     else if (charArr[counter] == '1')
                     {
-                        u.Fill = Brushes.Red;
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
                     }
                     else if (charArr[counter] == '*')
                     {
-                        u.Fill = Brushes.Aquamarine;
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Aquamarine);
                     }
                     else if (charArr[counter] == '#')
                     {
-                        u.Fill = Brushes.DarkBlue;
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.DarkBlue);
                     }
                     else
                     {
                         counter++;
                         continue;
                     }
-                    u.Visibility = Visibility.Visible;
-                    mazeCanvas.Children.Add(u);
+                    mazeCanvas.Children.Add(rectanglesArr[i, j]);
+                    Canvas.SetLeft(rectanglesArr[i, j], width * j);
+                    Canvas.SetTop(rectanglesArr[i, j], height * i);
                     counter++;
                 }
                 counter += 2;
             }
         }
+
+        private void backToMainWindow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //should be not - static
+        public static void Viewbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            //not good, shoud be taken from the proprty here.
+            int rows = Properties.Settings.Default.MazeRows;
+            int cols = Properties.Settings.Default.MazeCols;
+            //if(currentPos == InitialPos)
+           
+            Position temp = currentPos;
+            switch (e.Key)
+            {
+                case (Key.Up):
+                    currentPos.Row --;
+                    var rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
+                    if ((currentPos.Row < 0) || (Colors.Black.Equals(rectFillColor)))
+                    {
+                        currentPos.Row++;
+                        return;
+                    }   
+                    break;
+
+                case (Key.Down):
+                    currentPos.Row ++;
+                    rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
+                    if ((currentPos.Row >= rows) || (Colors.Black.Equals(rectFillColor)))
+                    {
+                        currentPos.Row--;
+                        return;
+                    }
+                    break;
+
+                case (Key.Left):
+                    currentPos.Col --;
+
+                    rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
+                    if ((currentPos.Col < 0) || (Colors.Black.Equals(rectFillColor)))
+                    {
+                        currentPos.Col++;
+                        return;
+                    }
+                    break;
+
+                case (Key.Right):
+                    currentPos.Col ++;
+                    rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
+                    if ((currentPos.Col >= cols) || (Colors.Black.Equals(rectFillColor))) 
+                    {
+                        currentPos.Col--;
+                        return;
+                    }
+                    break;
+
+                default:
+                    return;
+
+            }
+            rectanglesArr[temp.Row, temp.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
+            Canvas.SetLeft(rectanglesArr[temp.Row, temp.Col], width * temp.Col);
+            Canvas.SetTop(rectanglesArr[temp.Row, temp.Col], height * temp.Row);
+
+            rectanglesArr[currentPos.Row, currentPos.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.Bisque);
+            Canvas.SetLeft(rectanglesArr[currentPos.Row, currentPos.Col], width * currentPos.Col);
+            Canvas.SetTop(rectanglesArr[currentPos.Row, currentPos.Col], height * currentPos.Row);
+            e.Handled = true;
+        }
+
+       
     }
 }
