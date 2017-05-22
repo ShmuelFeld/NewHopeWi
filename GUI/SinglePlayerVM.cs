@@ -43,7 +43,7 @@ namespace GUI
         }
         public void SaveSettings()
         {
-            model.SaveSettings();
+            //model.SaveSettings();
         }
     }
 }

@@ -22,23 +22,14 @@ namespace GUI
         public MultiPlayer()
         {
             InitializeComponent();
+
         }
 
         private void JoinGame_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-
+            
         }
         private void StartGame_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }

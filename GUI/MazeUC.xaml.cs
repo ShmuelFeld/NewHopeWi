@@ -102,6 +102,30 @@ namespace GUI
         public static readonly DependencyProperty MazeStringProperty =
             DependencyProperty.Register("MazeString", typeof(string),
                 typeof(MazeUC));
+        public string SolveString
+        {
+            get
+            {
+                return (string)GetValue(SolveStringProperty);
+            }
+            set
+            {
+                SetValue(SolveStringProperty, value);
+            }
+        }
+        public static readonly DependencyProperty SolveStringProperty =
+            DependencyProperty.Register("SolveString", typeof(string),
+                typeof(MazeUC), new PropertyMetadata(onSolvePropertyChanged));
+
+        private static void onSolvePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((MazeUC)d).SolveMaze();
+        }
+
+        private void SolveMaze()
+        {
+            return;
+        }
 
         public MazeUC()
         {
