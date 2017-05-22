@@ -25,6 +25,7 @@ namespace GUI
         public string MazeString { get; set; }
         public Position InitialPos { get; set; }
         public Position GoalPos { get; set; }
+        public string SolveString { get; set; }
         private SingleMazeVM smVM;
 
         public SingleMaze()
@@ -43,7 +44,7 @@ namespace GUI
 
         private void solve_Click(object sender, RoutedEventArgs e)
         {
-
+            smVM.SolveMaze();
         }
 
         private void startOver_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
 ﻿using MazeLib;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,17 @@ namespace GUI
                 NotifyPropertyChanged("maze");
             }
         }
+        public string SolveVM
+        {
+            get { return solveString; }
+            set
+            {
+                solveString = value;
+                NotifyPropertyChanged("solve");
+            }
+        }
+        private string solveString;
+
         private Maze maze;
         /// <summary>
         /// The communication protocol.
@@ -51,7 +63,8 @@ namespace GUI
 
         public void connect(string command)
         {
-            // string command = null;
+            client = new TcpClient();
+            client.Connect(ep);
             bool isExecuted = true;
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
@@ -93,6 +106,11 @@ namespace GUI
                     if (command.Contains("generate"))
                     {
                         this.MazeVM = Maze.FromJSON(feedback);
+                        return;
+                    }
+                    else if (command.Contains("solve"))
+                    {
+                        FromJSON(feedback);
                         return;
                     }
                     if (isMulti)
@@ -153,6 +171,11 @@ namespace GUI
                 writer.Dispose();
                 reader.Dispose();
             }
+        }
+        private void FromJSON(string str)
+        {
+            JObject solveObj = JObject.Parse(str);
+            this.solveString = (string)solveObj["solution"];
         }
     }
 }

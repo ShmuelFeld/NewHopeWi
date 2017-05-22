@@ -20,7 +20,8 @@
             <Button Content="Main Window" Grid.Row="0" Grid.Column="0" Click="MainWin_Click" FontSize="14"></Button>
             <Button Content="solve!" Grid.Row="0" Grid.Column="1" Click="solve_Click" FontSize="14"></Button>
             <Button Content="Start over" Grid.Row="0" Grid.Column="2" Click="startOver_Click" FontSize="14"></Button>
-            <Controls:MazeUC Grid.Row="1"  GoalPos="{Binding MazeVM.GoalPos}" MazeRows="{Binding MazeVM.Rows}" MazeCols="{Binding MazeVM.Cols}" InitialPos="{Binding MazeVM.InitialPos}" MazeString="{Binding MazeVM}" Grid.ColumnSpan="3" Margin="1,0,1,0" />
+            <Controls:MazeUC Grid.Row="1"  GoalPos="{Binding MazeVM.GoalPos}" MazeRows="{Binding MazeVM.Rows}" MazeCols="{Binding MazeVM.Cols}"
+            InitialPos="{Binding MazeVM.InitialPos}" MazeString="{Binding MazeVM}" SolveString="{Binding SolveVM}"  Grid.ColumnSpan="3" Margin="1,0,1,0" />
         </Grid>
     </Viewbox>
 

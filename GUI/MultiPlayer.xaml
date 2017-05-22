@@ -13,15 +13,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <local:BasicMPUC Grid.Row="0" Label="List of games:"/>
-        <local:BasicUC Grid.Row="2" Label="Maze name:" Label_1="Maze rows:" Label_2="Maze columns:"
-                      MazeNameProperty="{Binding MazeName}" MazeRowsProperty="{Binding MazeRows}" MazeColsProperty="{Binding MazeCols}"
-                       />
-        <Button Content="Join Game" Click="JoinGame_Click" Width="Auto" FontSize="20" Grid.Row="1"/>
+        <DockPanel Grid.Row="0">
+            <Label FontSize="18">List of games:</Label>
+            <ComboBox x:Name="ListOfGames" Margin="5"></ComboBox>
+        </DockPanel>
+        <Button Content="Join Game" Click="JoinGame_Click" Width="100" FontSize="20" Grid.Row="1"/>
+        <local:BasicUserControl Grid.Row="2"/>
         <DockPanel Grid.Row="3">
-            <Button Content="Start Game" Click="StartGame_Click" Width="Auto"/>
-            <Button Content="Cancel" Click="Cancel_Click" Width="Auto" />
-            
+            <Button Content="Start Game" Click="StartGame_Click" Width="75" Margin="3"/>
         </DockPanel>
     </Grid>
 </Window>

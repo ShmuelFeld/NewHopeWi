@@ -35,6 +35,9 @@ namespace GUI
 
         private void MultyPlayer(object sender, RoutedEventArgs e)
         {
+            MultiPlayer mw = new MultiPlayer();
+            mw.Show();
+            this.Close();
         }
 
         private void Settings(object sender, RoutedEventArgs e)

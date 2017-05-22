@@ -21,7 +21,15 @@ namespace GUI
                 NotifyPropertyChanged("MazeVM");
             }
         }
-
+        public string SolveVM
+        {
+            get { return model.SolveVM; }
+            set
+            {
+                model.SolveVM = value;
+                NotifyPropertyChanged("SolveVM");
+            }
+        }
         public SingleMazeVM()
         {
             this.model = new SingleMazeModel();
@@ -33,6 +41,12 @@ namespace GUI
         {
             string command = "generate ";
             command += Properties.Settings.Default.MazeName + " " + Properties.Settings.Default.MazeRows + " " + Properties.Settings.Default.MazeCols;
+            model.connect(command);
+        }
+        public void SolveMaze()
+        {
+            string command = "solve ";
+            command += Properties.Settings.Default.MazeName + " " + Properties.Settings.Default.SearchAlgorithm;
             model.connect(command);
         }
     }
