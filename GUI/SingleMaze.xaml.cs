@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MazeLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,22 +23,32 @@ namespace GUI
         public int MazeRows { get; set; }
         public int MazeCols { get; set; }
         public string MazeString { get; set; }
+        public Position InitialPos { get; set; }
+        public Position GoalPos { get; set; }
         private SingleMazeVM smVM;
 
         public SingleMaze()
         {
-
-            //root.DataContext = this;
-            //this.Rows = rows;
-            //this.Cols = cols;
             InitializeComponent();
             smVM = new SingleMazeVM();
-
             this.DataContext = smVM;
+           // this.KeyDown += MazeUC.Viewbox_KeyDown;
+        }
 
-            //smVM.StartGame();
-            // this.MazeString = mazeChars.ToString();
-            //  drawMaze();
+        private void MainWin_Click(object sender, RoutedEventArgs e)
+        {
+            WinConfirm m = new WinConfirm(this);
+            m.ShowDialog();
+        }
+
+        private void solve_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void startOver_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

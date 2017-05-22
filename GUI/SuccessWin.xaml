@@ -1,0 +1,22 @@
+﻿<Window x:Class="GUI.SuccessWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="SuccessWin" Height="300" Width="300">
+    <Viewbox>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="C:\Users\USER\Source\Repos\NewHopeWi\resources\winner.jpg" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="259"/>
+        <Button Content="back to main window" Margin="86,230,86,1" Width="120" Click="Button_Click" Background="#FFDA3B4F" />
+    </Grid>
+    </Viewbox>
+</Window>

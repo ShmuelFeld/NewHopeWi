@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Viewbox>
-        <Canvas x:Name="mazeCanvas" />
+        
+            <Border BorderBrush="Black" BorderThickness="3" >
+            <Canvas x:Name="mazeCanvas" Width="300" Height="300" Loaded="mazeCanvas_Loaded" />
+            
+        </Border>
     </Viewbox>
 </UserControl>
