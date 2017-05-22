@@ -71,7 +71,7 @@ namespace NewHope
                             endOfCommunication = true;
                             break;
                         }
-                        foreach (string command in commandsToClose)
+                        foreach (string command in commandsToClose)//
                         {
                             if (commandLine.Contains(command))
                             {
