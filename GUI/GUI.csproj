@@ -73,6 +73,9 @@
     <Compile Include="BasicUC.xaml.cs">
       <DependentUpon>BasicUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BasicUserControl.xaml.cs">
+      <DependentUpon>BasicUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
     <Compile Include="SuccessWin.xaml.cs">
@@ -106,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BasicUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
