@@ -30,7 +30,9 @@ namespace GUI
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            spvm.SaveSettings();
+            spvm.MazeCols = int.Parse(SUC.ColsValue.Text);
+            spvm.MazeRows = int.Parse(SUC.RowsValue.Text);
+            spvm.MazeName = SUC.NameValue.Text;
             SingleMaze m = new SingleMaze();
             m.Show();
             this.Close();
