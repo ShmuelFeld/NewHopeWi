@@ -36,10 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MazeGeneratorLib">
-      <HintPath>..\..\..\..\Desktop\אוניברסיטה\MazeGeneratorLib.dll</HintPath>
+      <HintPath>..\..\..\..\Documents\Visual Studio 2017\Projects\projectEx1\MazeGeneratorLib.dll</HintPath>
     </Reference>
     <Reference Include="MazeLib">
-      <HintPath>..\..\..\..\Desktop\אוניברסיטה\MazeLib.dll</HintPath>
+      <HintPath>..\..\..\..\Documents\Visual Studio 2017\Projects\projectEx1\MazeLib.dll</HintPath>
     </Reference>
     <Reference Include="Priority Queue, Version=4.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OptimizedPriorityQueue.4.0.4\lib\net45\Priority Queue.dll</HintPath>

@@ -36,8 +36,7 @@ namespace GUI
                 SetValue(RowsProperty, value);
             }
         }
-        public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC),
-            new PropertyMetadata(onRowsPropertyChanged));
+        public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC));
         public Position InitialPos
         {
             get
@@ -49,8 +48,7 @@ namespace GUI
                 SetValue(InitialPosProperty, value);
             }
         }
-        public static readonly DependencyProperty InitialPosProperty = DependencyProperty.Register("InitialPos", typeof(Position), typeof(MazeUC),
-            new PropertyMetadata(onRowsPropertyChanged));
+        public static readonly DependencyProperty InitialPosProperty = DependencyProperty.Register("InitialPos", typeof(Position), typeof(MazeUC));
         public Position GoalPos
         {
             get
@@ -62,8 +60,7 @@ namespace GUI
                 SetValue(GoalPosProperty, value);
             }
         }
-        public static readonly DependencyProperty GoalPosProperty = DependencyProperty.Register("GoalPos", typeof(Position), typeof(MazeUC),
-            new PropertyMetadata(onRowsPropertyChanged));
+        public static readonly DependencyProperty GoalPosProperty = DependencyProperty.Register("GoalPos", typeof(Position), typeof(MazeUC));
         public int MazeCols
         {
             get
@@ -76,8 +73,7 @@ namespace GUI
             }
         }
         public static readonly DependencyProperty ColsProperty =
-            DependencyProperty.Register("MazeCols", typeof(int), typeof(MazeUC),
-            new PropertyMetadata(onColsPropertyChanged));
+            DependencyProperty.Register("MazeCols", typeof(int), typeof(MazeUC));
         public string MazeName
         {
             get
@@ -91,7 +87,7 @@ namespace GUI
         }
         public static readonly DependencyProperty MazeNameProperty =
             DependencyProperty.Register("MazeName", typeof(string),
-                typeof(MazeUC), new PropertyMetadata(default(string)));
+                typeof(MazeUC));
         public string MazeString
         {
             get
@@ -105,20 +101,8 @@ namespace GUI
         }
         public static readonly DependencyProperty MazeStringProperty =
             DependencyProperty.Register("MazeString", typeof(string),
-                typeof(MazeUC), new PropertyMetadata(onStringPropertyChanged));
+                typeof(MazeUC));
 
-        private static void onColsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            ((MazeUC)d).drawMaze();
-        }
-        private static void onRowsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            ((MazeUC)d).drawMaze();
-        }
-        private static void onStringPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-                ((MazeUC)d).drawMaze();
-        }
         public MazeUC()
         {
             InitializeComponent();
@@ -185,6 +169,12 @@ namespace GUI
         {
             var window = Window.GetWindow(this);
             window.KeyDown += Viewbox_KeyDown;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            drawMaze();
+
         }
 
         public void Viewbox_KeyDown(object sender, KeyEventArgs e)
