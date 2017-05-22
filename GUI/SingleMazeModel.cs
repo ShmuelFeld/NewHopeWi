@@ -14,13 +14,13 @@ namespace GUI
 {
     class SingleMazeModel : ViewModel
     {
+        private EventArgs eve;
         public Maze MazeVM
         {
             get { return maze; }
             set
             {
                 maze = value;
-                NotifyPropertyChanged("maze");
             }
         }
         public string SolveVM
@@ -29,7 +29,7 @@ namespace GUI
             set
             {
                 solveString = value;
-                NotifyPropertyChanged("solve");
+                NotifyPropertyChanged("SolveVM");
             }
         }
         private string solveString;;
@@ -53,12 +53,12 @@ namespace GUI
         public SingleMazeModel()
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
-            client = new TcpClient();
-            client.Connect(ep);
+            //client = new TcpClient();
+            //client.Connect(ep);
             this.endOfCommunication = false;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         public void connect(string command)
         {
@@ -172,7 +172,7 @@ namespace GUI
         private void FromJSON(string str)
         {
             JObject solveObj = JObject.Parse(str);
-            this.solveString = (string)solveObj["solution"];
+            this.SolveVM = (string)solveObj["solution"];
         }
     }
 }

@@ -79,7 +79,6 @@ namespace NewHope
                             }
                         }
                         string result = controller.ExecuteCommand(commandLine, tcp);
-                       // Console.WriteLine(result);
                         result += '\n';
                         result += '@';
                         Console.WriteLine(result);
@@ -87,7 +86,6 @@ namespace NewHope
                         writer.Flush();
                         if (result.Contains("close")) { endOfCommunication = true; }
                     }
-                    //Console.WriteLine("client handler done");
                 }
             });
             task.Start();
