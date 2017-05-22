@@ -76,8 +76,11 @@
     <Compile Include="BasicUserControl.xaml.cs">
       <DependentUpon>BasicUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="class MultiPlayerModel.cs" />
+    <Compile Include="IMultiPlayerModel.cs" />
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
+    <Compile Include="MultiPlayerModel.cs" />
     <Compile Include="MultiPlayerVM.cs" />
     <Compile Include="SuccessWin.xaml.cs">
       <DependentUpon>SuccessWin.xaml</DependentUpon>
