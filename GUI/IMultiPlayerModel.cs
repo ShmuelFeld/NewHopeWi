@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    class MultiPlayerVM : ViewModel
+    interface IMultiPlayerModel
     {
-        private ;
-        public MultiPlayerVM()
-        {
-
-        }
+        List<string> ListOfGames { get; set; }
     }
 }

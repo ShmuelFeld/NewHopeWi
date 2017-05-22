@@ -32,8 +32,7 @@ namespace GUI
                 NotifyPropertyChanged("solve");
             }
         }
-        private string solveString;
-
+        private string solveString;;
         private Maze maze;
         /// <summary>
         /// The communication protocol.
@@ -63,8 +62,6 @@ namespace GUI
 
         public void connect(string command)
         {
-            client = new TcpClient();
-            client.Connect(ep);
             bool isExecuted = true;
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
@@ -75,14 +72,14 @@ namespace GUI
                     bool isMulti = false;
 
                     isExecuted = true;
-                    if (!client.Connected)
-                    {
-                        client = new TcpClient();
-                        client.Connect(ep);
-                        stream = client.GetStream();
-                        reader = new StreamReader(stream);
-                        writer = new StreamWriter(stream);
-                    }
+                    //if (!client.Connected)
+                    //{
+                    //    client = new TcpClient();
+                    //    client.Connect(ep);
+                    //    stream = client.GetStream();
+                    //    reader = new StreamReader(stream);
+                    //    writer = new StreamWriter(stream);
+                    //}
                     if ((command.Contains("start")) || (command.Contains("join")))
                     {
                         isMulti = true;
