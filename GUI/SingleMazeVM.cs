@@ -33,7 +33,7 @@ namespace GUI
         public SingleMazeVM()
         {
             this.model = new SingleMazeModel();
-            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName + "VM"); };
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName); };
             StartGame();
         }
 
@@ -49,5 +49,6 @@ namespace GUI
             command += Properties.Settings.Default.MazeName + " " + Properties.Settings.Default.SearchAlgorithm;
             model.connect(command);
         }
+       
     }
 }

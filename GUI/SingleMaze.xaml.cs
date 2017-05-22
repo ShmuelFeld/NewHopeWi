@@ -45,11 +45,16 @@ namespace GUI
         private void solve_Click(object sender, RoutedEventArgs e)
         {
             smVM.SolveMaze();
+            userControl.SolveString = smVM.SolveVM;
         }
 
         private void startOver_Click(object sender, RoutedEventArgs e)
         {
             
         }
+        // public void EventHandler(object sender, RoutedEventArgs e)
+        //{
+            
+        //}
     }
 }

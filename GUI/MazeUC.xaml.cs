@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GUI
 {
@@ -21,6 +23,7 @@ namespace GUI
     /// </summary>
     public partial class MazeUC : UserControl
     {
+        private Image player, dest;
         public static Rectangle[,] rectanglesArr;
         public static Position currentPos;
         public static int height, width;
@@ -124,7 +127,45 @@ namespace GUI
 
         private void SolveMaze()
         {
-            return;
+            rectanglesArr[currentPos.Row, currentPos.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
+            currentPos = InitialPos;
+            char[] solutionArr = SolveString.ToCharArray();
+            for (int i = 0; i < solutionArr.Length; i++)
+            {
+                Application.Current.Dispatcher.Invoke(
+                  DispatcherPriority.Background,
+                  new Action(() =>
+                  {       
+                        //rectanglesArr[currentPos.Row, currentPos.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.Bisque);
+                        Canvas.SetLeft(player, width * currentPos.Col);
+                        Canvas.SetTop(player, height * currentPos.Row);
+
+                        switch (solutionArr[i])
+                        {
+                            //left
+                            case '0':
+                                currentPos.Col--;
+                                break;
+
+                            //right
+                            case '1':
+                                currentPos.Col++;
+                                break;
+
+                            //up
+                            case '2':
+                                currentPos.Row--;
+                                break;
+
+                            //down
+                            case '3':
+                                currentPos.Row++;
+                                break;
+                        }
+                        Thread.Sleep(300);
+                    }));
+            }
+                
         }
 
         public MazeUC()
@@ -134,10 +175,6 @@ namespace GUI
         }
         public void drawMaze()
         {
-            if (MazeRows == 0 || MazeCols == 0 || MazeString == null)
-            {
-                return;
-            }
             int rows = MazeRows;
             int cols = MazeCols;
             height = (int)mazeCanvas.Height / MazeRows;
@@ -146,6 +183,7 @@ namespace GUI
             string charArr = MazeString;
             currentPos = InitialPos;
             int counter = 0;
+            bool isImage = false;
             for (int i = 0; i < MazeRows; i++)
             {
                 for (int j = 0; j < MazeCols; j++)
@@ -153,40 +191,61 @@ namespace GUI
                     Rectangle rect = new Rectangle();
                     rect.Height = height;
                     rect.Width = width;
-                    rectanglesArr[i, j] = rect;                    
-                    if (charArr[counter] == '0')
+                    rectanglesArr[i, j] = rect;
+                    if (charArr[counter] == '1')
                     {
                         rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Black);
                     }
-                    else if (charArr[counter] == '1')
+                    else if (charArr[counter] == '0')
                     {
-                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
                     }
                     else if (charArr[counter] == '*')
                     {
-                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Aquamarine);
-                    }
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
+                        player = new Image()
+                        {
+                            Source = new BitmapImage(new Uri(@"C:\Users\USER\Source\Repos\NewHopeWi\resources\prince.png")),
+                            Height = height,
+                            Width = width,
+                         };
+                        mazeCanvas.Children.Add(player);
+                        Canvas.SetLeft(player, width * j);
+                        Canvas.SetTop(player, height * i);
+                        isImage = true;
+                    }                       
+                       
+                    
                     else if (charArr[counter] == '#')
                     {
-                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.DarkBlue);
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
+                        dest = new Image()
+                        {
+                            Source = new BitmapImage(new Uri(@"C:\Users\USER\Source\Repos\NewHopeWi\resources\cinderella.jpg")),
+                            Height = height,
+                            Width = width,
+                        };
+                        mazeCanvas.Children.Add(dest);
+                        Canvas.SetLeft(dest, width * j);
+                        Canvas.SetTop(dest, height * i);
+                        isImage = true;
                     }
                     else
                     {
                         counter++;
                         continue;
                     }
-                    mazeCanvas.Children.Add(rectanglesArr[i, j]);
-                    Canvas.SetLeft(rectanglesArr[i, j], width * j);
-                    Canvas.SetTop(rectanglesArr[i, j], height * i);
+                    if (isImage == false)
+                    {
+                        mazeCanvas.Children.Add(rectanglesArr[i, j]);
+                        Canvas.SetLeft(rectanglesArr[i, j], width * j);
+                        Canvas.SetTop(rectanglesArr[i, j], height * i);
+                    }
+                    isImage = false;
                     counter++;
                 }
                 counter += 2;
             }
-        }
-
-        private void backToMainWindow_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void mazeCanvas_Loaded(object sender, RoutedEventArgs e)
@@ -203,25 +262,32 @@ namespace GUI
 
         public void Viewbox_KeyDown(object sender, KeyEventArgs e)
         {
-            //if(currentPos == InitialPos)
-
             Position temp = currentPos;
             switch (e.Key)
             {
                 case (Key.Up):
                     currentPos.Row --;
-                    var rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
-                    if ((currentPos.Row < 0) || (Colors.Black.Equals(rectFillColor)))
+                    if (currentPos.Row < 0)
                     {
                         currentPos.Row++;
                         return;
-                    }   
+                    }
+                    var rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
+                    if (Colors.Black.Equals(rectFillColor)){
+                        currentPos.Row++;
+                        return;
+                    }
                     break;
 
                 case (Key.Down):
                     currentPos.Row ++;
+                    if (currentPos.Row >= MazeRows)
+                    {
+                        currentPos.Row--;
+                        return;
+                    }
                     rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
-                    if ((currentPos.Row >= MazeRows) || (Colors.Black.Equals(rectFillColor)))
+                    if (Colors.Black.Equals(rectFillColor))
                     {
                         currentPos.Row--;
                         return;
@@ -230,9 +296,13 @@ namespace GUI
 
                 case (Key.Left):
                     currentPos.Col --;
-
+                    if (currentPos.Col < 0)
+                    {
+                        currentPos.Col++;
+                        return;
+                    }
                     rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
-                    if ((currentPos.Col < 0) || (Colors.Black.Equals(rectFillColor)))
+                    if (Colors.Black.Equals(rectFillColor))
                     {
                         currentPos.Col++;
                         return;
@@ -241,8 +311,13 @@ namespace GUI
 
                 case (Key.Right):
                     currentPos.Col ++;
+                    if (currentPos.Col >= MazeCols)
+                    {
+                        currentPos.Col--;
+                        return;
+                    }
                     rectFillColor = rectanglesArr[currentPos.Row, currentPos.Col].Fill.GetValue(SolidColorBrush.ColorProperty);
-                    if ((currentPos.Col >= MazeCols) || (Colors.Black.Equals(rectFillColor))) 
+                    if (Colors.Black.Equals(rectFillColor))
                     {
                         currentPos.Col--;
                         return;
@@ -253,13 +328,14 @@ namespace GUI
                     return;
 
             }
-            rectanglesArr[temp.Row, temp.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
-            Canvas.SetLeft(rectanglesArr[temp.Row, temp.Col], width * temp.Col);
-            Canvas.SetTop(rectanglesArr[temp.Row, temp.Col], height * temp.Row);
+            //rectanglesArr[temp.Row, temp.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
+            //Canvas.SetLeft(rectanglesArr[temp.Row, temp.Col], width * temp.Col);
+            //Canvas.SetTop(rectanglesArr[temp.Row, temp.Col], height * temp.Row);
 
-            rectanglesArr[currentPos.Row, currentPos.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.Bisque);
-            Canvas.SetLeft(rectanglesArr[currentPos.Row, currentPos.Col], width * currentPos.Col);
-            Canvas.SetTop(rectanglesArr[currentPos.Row, currentPos.Col], height * currentPos.Row);
+            //rectanglesArr[currentPos.Row, currentPos.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.Bisque);
+            Canvas.SetLeft(player, width * currentPos.Col);
+            Canvas.SetTop(player, height * currentPos.Row);
+            //MessageBox.Show(height * currentPos.Row + "," + width * currentPos.Col, "gjgjgj", MessageBoxButton.OK);
             if ((currentPos.Col == GoalPos.Col) && (currentPos.Row == GoalPos.Row))
             {
                 SuccessWin win = new SuccessWin();
@@ -267,7 +343,6 @@ namespace GUI
             }
             e.Handled = true;
         }
-
        
     }
 }

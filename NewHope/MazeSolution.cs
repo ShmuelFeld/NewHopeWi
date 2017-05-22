@@ -47,22 +47,22 @@ namespace NewHope
                 int cRow = cur.Instance.Row;
                 int cCol = cur.Instance.Col;
                 //left
-                if (pRow < cRow)
+                if (pCol > cCol)
                 {
                     solution += "0";
                 }
                 //right
-                if (pRow > cRow)
+                if (pCol < cCol)
                 {
                     solution += "1";
                 }
                 //up
-                if (pCol < cCol)
+                if (pRow > cRow)
                 {
                     solution += "2";
                 }
                 //down
-                if (pCol > cCol)
+                if (pRow < cRow)
                 {
                     solution += "3";
                 }
