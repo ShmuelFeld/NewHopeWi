@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         Title="MultiPlayerMaze" Height="300" Width="300">
+    <Viewbox>
     <StackPanel>
-        <Button FontSize="10" Width="100" Margin="5">
+        <Button FontSize="10" Width="100" Click="BackToMainWin_Click" Margin="5">
             Back to main menu
         </Button>
         <Grid>
@@ -19,10 +20,10 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label>
+                <Label FontFamily="Pristina" FontSize="20">
                 My board
             </Label>
-            <Label Grid.Column="1">
+                <Label Grid.Column="1"  FontFamily="Pristina" FontSize="20">
                Other player's board 
             </Label>
             <local:MazeUC x:Name="MyBoard" Grid.Column="0" Grid.Row="1" GoalPos="{Binding MazeVM.GoalPos}" MazeRows="{Binding MazeVM.Rows}" MazeCols="{Binding MazeVM.Cols}"
@@ -31,4 +32,5 @@
             InitialPos="{Binding MazeVM.InitialPos}" MazeString="{Binding MazeVM}"/>
         </Grid>
     </StackPanel>
+    </Viewbox>
 </Window>

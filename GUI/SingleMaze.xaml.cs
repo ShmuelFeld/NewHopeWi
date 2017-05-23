@@ -33,6 +33,7 @@ namespace GUI
             InitializeComponent();
             smVM = new SingleMazeVM();
             this.DataContext = smVM;
+            userControl.KeyHandler += new EventHandler(send);
         }
 
         private void MainWin_Click(object sender, RoutedEventArgs e)
@@ -51,5 +52,10 @@ namespace GUI
         {
             userControl.startOver();            
         }
+        public void send(Object sender, EventArgs e)
+        {
+            return;
+        }
+
     }
 }

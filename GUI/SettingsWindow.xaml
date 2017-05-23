@@ -35,8 +35,8 @@ SelectedIndex="{Binding SearchAlgorithm}"  IsEditable="False">
             <ComboBoxItem>BFS</ComboBoxItem>
             <ComboBoxItem>DFS</ComboBoxItem>
         </ComboBox>
-        <Button Content="OK" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Margin="0,67,10,54" VerticalAlignment="Center" Width="92" Padding="3" Height="39" Click="btnOK_Click" RenderTransformOrigin="0.23,0.444" Background="#FFEA8888" FontFamily="Pristina" BorderBrush="#FF8D1A1A"/>
-        <Button Content="cancel" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="10,67,0,54" VerticalAlignment="Center" Width="92" Padding="3" Height="39" Click="btnCancel_Click" RenderTransformOrigin="0.23,0.444" Background="#FFEA8888" FontFamily="Pristina" BorderBrush="#FF8D1A1A"/>
+        <Button Content="OK" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Margin="0,67,10,54" VerticalAlignment="Center" Width="92" Padding="3" Height="39" Click="btnOK_Click" RenderTransformOrigin="0.23,0.444" Background="#FFEA8888" FontFamily="Pristina" BorderBrush="#FF8D1A1A" FontSize="20"/>
+            <Button Content="cancel" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="10,67,0,54" VerticalAlignment="Center" Width="92" Padding="3" Height="39" Click="btnCancel_Click" RenderTransformOrigin="0.23,0.444" Background="#FFEA8888" FontFamily="Pristina" BorderBrush="#FF8D1A1A" FontSize="20"/>
     </Grid>
     </Viewbox>
 </Window>

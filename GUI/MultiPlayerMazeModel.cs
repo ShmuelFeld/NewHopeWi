@@ -56,10 +56,6 @@ namespace GUI
                 while (!endOfCommunication)
                 {
                     bool isMulti = false;
-                    //if (isExecuted)
-                    //{
-                    //    command = Console.ReadLine();
-                    //}
                     isExecuted = true;
                     if (!client.Connected)
                     {
@@ -68,10 +64,6 @@ namespace GUI
                         stream = client.GetStream();
                         reader = new StreamReader(stream);
                         writer = new StreamWriter(stream);
-                    }
-                    if ((command.Contains("start")) || (command.Contains("join")))
-                    {
-                        isMulti = true;
                     }
                     writer.WriteLine(command);
                     writer.Flush();
@@ -90,67 +82,74 @@ namespace GUI
                     if (command.Contains("start") || command.Contains("join"))
                     {
                         MazeVM = Maze.FromJSON(feedback);
+                        //moveComunication(stream, reader, writer);
                         return;
                     }
-                    if (isMulti)
-                    {
-                        bool close = false;
-                        Task sendTask = new Task(() =>
-                        {
-                            while (!close)
-                            {
-                                command = Console.ReadLine();
-                                if (command.Contains("close")) { close = true; }
-                                writer.WriteLine(command);
-                                writer.Flush();
-                            }
-                        });
-                        Task listenTask = new Task(() =>
-                        {
-                            while (!close)
-                            {
-                                //string feedback;
-                                while (true)
-                                {
-                                    feedback = reader.ReadLine();
-                                    if (reader.Peek() == '@')
-                                    {
-                                        {
-                                            if ((feedback != "close") && (feedback != "close your server"))
-                                            {
-                                                Console.WriteLine("{0}", feedback);
-                                            }
-                                        }
-                                        feedback.TrimEnd('\n');
-                                        break;
-                                    }
-                                    Console.WriteLine("{0}", feedback);
-                                }
-                                reader.ReadLine();
-                                if (feedback == "close")
-                                {
-                                    close = true;
-                                }
-                                else if (feedback == "close your server")
-                                {
-                                    writer.WriteLine(feedback);
-                                    writer.Flush();
-                                    close = true;
-                                    isExecuted = false;
-                                }
-                            }
-                        });
-                        sendTask.Start();
-                        listenTask.Start();
-                        sendTask.Wait();
-                        listenTask.Wait();
-                    }
-                    client.Close();
+                    
                 }
-                stream.Dispose();
-                writer.Dispose();
-                reader.Dispose();
             }
         }
+
+        private void moveComunication(NetworkStream stream, StreamReader reader, StreamWriter writer)
+        {
+            bool close = false;
+            Task sendTask = new Task(() =>
+            {
+                string command;
+                while (!close)
+                {
+                    command = Console.ReadLine();
+                    if (command.Contains("close")) { close = true; }
+                    writer.WriteLine(command);
+                    writer.Flush();
+                }
+            });
+            Task listenTask = new Task(() =>
+            {
+                while (!close)
+                {
+                    string feedback;
+                    while (true)
+                    {
+                        feedback = reader.ReadLine();
+                        if (reader.Peek() == '@')
+                        {
+                            {
+                                if ((feedback != "close") && (feedback != "close your server"))
+                                {
+                                    Console.WriteLine("{0}", feedback);
+                                }
+                            }
+                            feedback.TrimEnd('\n');
+                            break;
+                        }
+                        Console.WriteLine("{0}", feedback);
+                    }
+                    reader.ReadLine();
+                    if (feedback == "close")
+                    {
+                        close = true;
+                    }
+                    else if (feedback == "close your server")
+                    {
+                        writer.WriteLine(feedback);
+                        writer.Flush();
+                        close = true;
+                        //isExecuted = false;
+                    }
+                }
+            });
+            sendTask.Start();
+            listenTask.Start();
+            sendTask.Wait();
+            listenTask.Wait();
+
+            client.Close();
+
+            stream.Dispose();
+            writer.Dispose();
+            reader.Dispose();
+
+}
     }
 }

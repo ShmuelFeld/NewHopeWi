@@ -8,6 +8,14 @@
          Title="warning" Height="150" Width="200">
     <Viewbox>
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <TextBlock Margin="7,19,7,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="21">are you sure?</TextBlock>
             <Button Content="YES" Click="yes_Click" HorizontalAlignment="Left"  Margin="-27,71,0,10" Width="55" RenderTransformOrigin="-0.454,0.357"></Button>
             <Button Content="NO" Click="no_Click" HorizontalAlignment="Right"  Margin="0,71,-33,10" Width="55"></Button>

@@ -43,8 +43,10 @@ namespace GUI
             mpvm.MazeCols = int.Parse(SUC.ColsValue.Text);
             mpvm.MazeRows = int.Parse(SUC.RowsValue.Text);
             mpvm.MazeName = SUC.NameValue.Text;
-
+            WaitingWin w = new WaitingWin();
+            w.Show();
             MultiPlayerMaze mpm = new MultiPlayerMaze("start");
+            w.Close();
             mpm.Show();
             this.Close();
         }
