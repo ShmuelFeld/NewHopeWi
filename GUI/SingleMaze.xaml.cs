@@ -33,7 +33,6 @@ namespace GUI
             InitializeComponent();
             smVM = new SingleMazeVM();
             this.DataContext = smVM;
-           // this.KeyDown += MazeUC.Viewbox_KeyDown;
         }
 
         private void MainWin_Click(object sender, RoutedEventArgs e)
@@ -50,11 +49,7 @@ namespace GUI
 
         private void startOver_Click(object sender, RoutedEventArgs e)
         {
-            
+            userControl.startOver();            
         }
-        // public void EventHandler(object sender, RoutedEventArgs e)
-        //{
-            
-        //}
     }
 }
