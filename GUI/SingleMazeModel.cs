@@ -1,4 +1,4 @@
-﻿using MazeLib;
+using MazeLib;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    class SingleMazeModel : ViewModel
+    class SingleMazeModel : Model
     {
         private EventArgs eve;
         public Maze MazeVM
@@ -56,17 +56,22 @@ namespace GUI
             this.endOfCommunication = false;
         }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public void connect(string command)
+        public override void connect(string command)
         {
+
             client = new TcpClient();
             client.Connect(ep);
+
             bool isExecuted = true;
+
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
             {
+
+
                 while (!endOfCommunication)
                 {
                     bool isMulti = false;
@@ -84,6 +89,7 @@ namespace GUI
                     {
                         isMulti = true;
                     }
+
                     writer.WriteLine(command);
                     writer.Flush();
                     string feedback = "";
@@ -92,81 +98,20 @@ namespace GUI
                         feedback += reader.ReadLine();
                         if (reader.Peek() == '@')
                         {
-                            // Console.WriteLine("{0}", feedback);
                             feedback.TrimEnd('\n');
                             break;
                         }
-                        //  Console.WriteLine("{0}", feedback);
                     }
                     reader.ReadLine();
                     feedback += "\n";
                     if (command.Contains("generate"))
                     {
                         this.MazeVM = Maze.FromJSON(feedback);
-                        return;
                     }
                     else if (command.Contains("solve"))
                     {
                         FromJSON(feedback);
-                        return;
                     }
-                    if (isMulti)
-                    {
-                        bool close = false;
-                        Task sendTask = new Task(() =>
-                        {
-                            while (!close)
-                            {
-                                command = Console.ReadLine();
-                                if (command.Contains("close")) { close = true; }
-                                writer.WriteLine(command);
-                                writer.Flush();
-                            }
-                        });
-                        Task listenTask = new Task(() =>
-                        {
-                            while (!close)
-                            {
-                                while (true)
-                                {
-                                    feedback = reader.ReadLine();
-                                    if (reader.Peek() == '@')
-                                    {
-                                        {
-                                            if ((feedback != "close") && (feedback != "close your server"))
-                                            {
-                                                Console.WriteLine("{0}", feedback);
-                                            }
-                                        }
-                                        feedback.TrimEnd('\n');
-                                        break;
-                                    }
-                                    Console.WriteLine("{0}", feedback);
-                                }
-                                reader.ReadLine();
-                                if (feedback == "close")
-                                {
-                                    close = true;
-                                }
-                                else if (feedback == "close your server")
-                                {
-                                    writer.WriteLine(feedback);
-                                    writer.Flush();
-                                    close = true;
-                                    isExecuted = false;
-                                }
-                            }
-                        });
-                        sendTask.Start();
-                        listenTask.Start();
-                        sendTask.Wait();
-                        listenTask.Wait();
-                    }
-                    client.Close();
-                }
-                stream.Dispose();
-                writer.Dispose();
-                reader.Dispose();
             }
         }
         private void FromJSON(string str)

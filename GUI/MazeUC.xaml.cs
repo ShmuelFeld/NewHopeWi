@@ -328,20 +328,23 @@ namespace GUI
                     return;
 
             }
-            //rectanglesArr[temp.Row, temp.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
-            //Canvas.SetLeft(rectanglesArr[temp.Row, temp.Col], width * temp.Col);
-            //Canvas.SetTop(rectanglesArr[temp.Row, temp.Col], height * temp.Row);
-
-            //rectanglesArr[currentPos.Row, currentPos.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.Bisque);
+           
             Canvas.SetLeft(player, width * currentPos.Col);
             Canvas.SetTop(player, height * currentPos.Row);
-            //MessageBox.Show(height * currentPos.Row + "," + width * currentPos.Col, "gjgjgj", MessageBoxButton.OK);
+
             if ((currentPos.Col == GoalPos.Col) && (currentPos.Row == GoalPos.Row))
             {
                 SuccessWin win = new SuccessWin();
                 win.Show();
             }
             e.Handled = true;
+        }
+
+        public void startOver()
+        {
+            currentPos = InitialPos;
+            Canvas.SetLeft(player, width * currentPos.Col);
+            Canvas.SetTop(player, height * currentPos.Row);
         }
        
     }
