@@ -12,6 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <Label FontSize="18">List of games:</Label>
@@ -22,5 +23,8 @@
         <DockPanel Grid.Row="3">
             <Button Content="Start Game" FontSize="20" Click="StartGame_Click" Width="120" Margin="5"/>
         </DockPanel>
+        <Label x:Name="waitLabel" Grid.Row="4" FontSize="20" HorizontalAlignment="Center" Background="#FFEEBEE1" Visibility="Hidden">
+            Waiting for another player...
+        </Label>
     </Grid>
 </Window>

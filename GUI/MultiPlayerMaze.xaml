@@ -27,7 +27,8 @@
             </Label>
             <local:MazeUC x:Name="MyBoard" Grid.Column="0" Grid.Row="1" GoalPos="{Binding MazeVM.GoalPos}" MazeRows="{Binding MazeVM.Rows}" MazeCols="{Binding MazeVM.Cols}"
             InitialPos="{Binding MazeVM.InitialPos}" MazeString="{Binding MazeVM}"/>
-            <local:MazeUC x:Name="OtherBoard" Grid.Column="1" Grid.Row="1"/>
+            <local:MazeUC x:Name="OtherBoard" Grid.Column="1" Grid.Row="1" GoalPos="{Binding MazeVM.GoalPos}" MazeRows="{Binding MazeVM.Rows}" MazeCols="{Binding MazeVM.Cols}"
+            InitialPos="{Binding MazeVM.InitialPos}" MazeString="{Binding MazeVM}"/>
         </Grid>
     </StackPanel>
 </Window>
