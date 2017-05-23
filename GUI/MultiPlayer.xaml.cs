@@ -33,7 +33,7 @@ namespace GUI
 
         private void JoinGame_Click(object sender, RoutedEventArgs e)
         {
-            mpvm.MazeName = ListOfGames.Items.ToString();
+            mpvm.MazeName = ListOfGames.Text;
             MultiPlayerMaze mpm = new MultiPlayerMaze("join");
             mpm.Show();
             this.Close();

@@ -87,7 +87,7 @@ namespace GUI
                     }
                     reader.ReadLine();
                     feedback += "\n";
-                    if (command.Contains("start"))
+                    if (command.Contains("start") || command.Contains("join"))
                     {
                         MazeVM = Maze.FromJSON(feedback);
                         return;
