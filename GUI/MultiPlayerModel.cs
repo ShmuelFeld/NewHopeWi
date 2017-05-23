@@ -22,6 +22,10 @@ namespace GUI
 
             this.endOfCommunication = false;
         }
+        public void SaveSettings()
+        {
+            Properties.Settings.Default.Save();
+        }
         public override void connect(string command)
         {
             client = new TcpClient();
