@@ -19,6 +19,7 @@ namespace GUI
     /// </summary>
     public partial class MultiPlayer : Window
     {
+
         public MultiPlayer()
         {
             InitializeComponent();
