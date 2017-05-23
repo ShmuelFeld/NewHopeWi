@@ -32,7 +32,30 @@ namespace GUI
             InitializeComponent();
             mpVM = new MultiPlayerMazeVM(kind);
             this.DataContext = mpVM;
-            
+            MyBoard.MovingUp += new EventHandler(GoUp);
+            MyBoard.MovingDown += new EventHandler(GoDown);
+            MyBoard.MovingLeft += new EventHandler(GoLeft);
+            MyBoard.MovingRight += new EventHandler(GoRight);
+        }
+
+        private void GoRight(object sender, EventArgs e)
+        {
+            mpVM.MovementNotify("right");
+        }
+
+        private void GoLeft(object sender, EventArgs e)
+        {
+            mpVM.MovementNotify("left");
+        }
+
+        private void GoDown(object sender, EventArgs e)
+        {
+            mpVM.MovementNotify("down");
+        }
+
+        private void GoUp(object sender, EventArgs e)
+        {
+            mpVM.MovementNotify("up");
         }
 
         private void BackToMainWin_Click(object sender, RoutedEventArgs e)
