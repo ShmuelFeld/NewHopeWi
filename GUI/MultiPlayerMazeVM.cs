@@ -48,5 +48,11 @@ namespace GUI
             command += Properties.Settings.Default.MazeName;
             model.connect(command);
         }
+        public void MovementNotify(string direction)
+        {
+            string command = "play ";
+            command += direction;
+            model.connect(command);
+        }
     }
 }

@@ -28,6 +28,10 @@ namespace GUI
         public static Position currentPos;
         public static int height, width;
         public static Canvas mazeCan;
+        public EventHandler MovingUp;
+        public EventHandler MovingLeft;
+        public EventHandler MovingRight;
+        public EventHandler MovingDown;
         public int MazeRows
         {
             get
@@ -259,8 +263,6 @@ namespace GUI
             drawMaze();
 
         }
-        public EventHandler KeyHandler;
-
         public void Viewbox_KeyDown(object sender, KeyEventArgs e)
         {
             Position temp = currentPos;
@@ -278,9 +280,9 @@ namespace GUI
                         currentPos.Row++;
                         return;
                     }
-                    if (KeyHandler != null)
+                    if (MovingUp != null)
                     {
-                        this.KeyHandler(this, new EventArgs());
+                        this.MovingUp(this, new EventArgs());
                     }
                     break;
 
@@ -297,6 +299,10 @@ namespace GUI
                         currentPos.Row--;
                         return;
                     }
+                    if (MovingDown != null)
+                    {
+                        this.MovingDown(this, new EventArgs());
+                    }
                     break;
 
                 case (Key.Left):
@@ -311,6 +317,10 @@ namespace GUI
                     {
                         currentPos.Col++;
                         return;
+                    }
+                    if (MovingLeft != null)
+                    {
+                        this.MovingLeft(this, new EventArgs());
                     }
                     break;
 
@@ -327,8 +337,11 @@ namespace GUI
                         currentPos.Col--;
                         return;
                     }
+                    if (MovingRight != null)
+                    {
+                        this.MovingRight(this, new EventArgs());
+                    }
                     break;
-
                 default:
                     return;
 
