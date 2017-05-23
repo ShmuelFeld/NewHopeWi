@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <Label FontSize="18">List of games:</Label>
-            <ComboBox x:Name="ListOfGames" Margin="5"></ComboBox>
+            <ComboBox x:Name="ListOfGames" Margin="5" SelectedItem="1"></ComboBox>
         </DockPanel>
         <Button Content="Join Game" Click="JoinGame_Click" Width="100" FontSize="20" Grid.Row="1" Margin="5"/>
         <local:BasicUserControl Grid.Row="2"/>

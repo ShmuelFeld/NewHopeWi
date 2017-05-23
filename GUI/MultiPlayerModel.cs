@@ -48,7 +48,6 @@ namespace GUI
                         }
                     }
                     reader.ReadLine();
-                   // feedback += "\n";
                     client.Close();
                 }
                 stream.Dispose();
