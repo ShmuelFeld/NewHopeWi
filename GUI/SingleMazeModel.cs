@@ -32,7 +32,7 @@ namespace GUI
                 NotifyPropertyChanged("SolveVM");
             }
         }
-        private string solveString;;
+        private string solveString;
         private Maze maze;
         /// <summary>
         /// The communication protocol.

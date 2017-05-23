@@ -9,5 +9,6 @@ namespace GUI
     interface IMultiPlayerModel
     {
         List<string> ListOfGames { get; set; }
+        string connect(string command);
     }
 }

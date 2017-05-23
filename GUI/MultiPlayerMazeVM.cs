@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    class class_MultiPlayerModel
+    class MultiPlayerMazeVM
     {
+        public MultiPlayerMazeVM()
+        {
+
+        }
     }
 }

@@ -76,12 +76,20 @@
     <Compile Include="BasicUserControl.xaml.cs">
       <DependentUpon>BasicUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="class MultiPlayerModel.cs" />
     <Compile Include="IMultiPlayerModel.cs" />
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
 
     <Compile Include="Model.cs" />
+    <Compile Include="MultiPlayerMaze.xaml.cs">
+      <DependentUpon>MultiPlayerMaze.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MultiPlayerMazeModel.cs" />
+    <Compile Include="MultiPlayerMazeVM.cs" />
+
+
+    <Compile Include="Model.cs" />
+
 
     <Compile Include="MultiPlayerModel.cs" />
 
@@ -121,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BasicUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MultiPlayerMaze.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
