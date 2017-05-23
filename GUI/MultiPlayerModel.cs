@@ -12,9 +12,6 @@ namespace GUI
 {
     class MultiPlayerModel : Model
     {
-        public int MazeRows { get; set; }
-        public int MazeCols { get; set; }
-        public string MazeName { get; set; }
         private TcpClient client;
         private bool endOfCommunication;
         private List<string> games;
@@ -91,6 +88,25 @@ namespace GUI
                 games = value;
                 NotifyPropertyChanged("ListOfGames");
             }
+        }
+        public int MazeCols
+        {
+            get { return Properties.Settings.Default.MazeCols; }
+            set { Properties.Settings.Default.MazeCols = value; }
+        }
+        public int MazeRows
+        {
+            get { return Properties.Settings.Default.MazeRows; }
+            set { Properties.Settings.Default.MazeRows = value; }
+        }
+        public string MazeName
+        {
+            get { return Properties.Settings.Default.MazeName; }
+            set { Properties.Settings.Default.MazeName = value; }
+        }
+        public void SaveSettings()
+        {
+            Properties.Settings.Default.Save();
         }
     }
    

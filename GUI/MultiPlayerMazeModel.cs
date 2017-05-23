@@ -1,6 +1,7 @@
 ﻿using MazeLib;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -42,6 +43,7 @@ namespace GUI
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
             this.endOfCommunication = false;
         }
+        public event PropertyChangedEventHandler PropertyChanged;
         public override void connect(string command)
         {
             client = new TcpClient();
