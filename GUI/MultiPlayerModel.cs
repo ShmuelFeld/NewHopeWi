@@ -30,35 +30,37 @@ namespace GUI
         {
             client = new TcpClient();
             client.Connect(ep);
-            bool isExecuted = true;
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
             {
-                string feedback = "";
                 while (!endOfCommunication)
                 {
-                    feedback = "";
+                    if (!client.Connected)
+                    {
+                        client = new TcpClient();
+                        client.Connect(ep);
+                        stream = client.GetStream();
+                        reader = new StreamReader(stream);
+                        writer = new StreamWriter(stream);
+                    }
                     writer.WriteLine(command);
                     writer.Flush();
+                    string feedback = "";
                     while (true)
                     {
                         feedback += reader.ReadLine();
                         if (reader.Peek() == '@')
                         {
                             feedback.TrimEnd('\n');
-                            this.endOfCommunication = true;
                             break;
                         }
                     }
                     reader.ReadLine();
-                    client.Close();
+                    feedback += "\n";
+                    FromJSON(feedback);
+                    return;
                 }
-                stream.Dispose();
-                writer.Dispose();
-                reader.Dispose();
-                FromJSON(feedback);
-
             }
         }
 
@@ -104,10 +106,10 @@ namespace GUI
             get { return Properties.Settings.Default.MazeName; }
             set { Properties.Settings.Default.MazeName = value; }
         }
-        public void SaveSettings()
-        {
-            Properties.Settings.Default.Save();
-        }
+        //public void SaveSettings()
+        //{
+        //    Properties.Settings.Default.Save();
+        //}
     }
    
 }
