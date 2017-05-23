@@ -12,6 +12,7 @@ namespace GUI
     {
 
         private SingleMazeModel model;
+
         public Maze MazeVM
         {
             get { return model.MazeVM; }

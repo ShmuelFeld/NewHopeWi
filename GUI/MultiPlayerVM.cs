@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace GUI
         public MultiPlayerVM(MultiPlayerModel model)
         {
             this.model = model;
+            list = new List<string>();
             model.connect("list");
         }
 
@@ -20,13 +22,19 @@ namespace GUI
         {
             get
             {
-                return list;
+                return model.ListOfGames;
             }
             set
             {
                 list = value;
                 NotifyPropertyChanged("ListOfGames");
             }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public new void NotifyPropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
         public int MazeRows
         {

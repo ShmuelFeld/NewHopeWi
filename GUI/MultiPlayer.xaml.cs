@@ -28,6 +28,7 @@ namespace GUI
             SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();
             mpvm = new MultiPlayerVM(model);
             this.DataContext = mpvm;
+            InsertToComboBox(mpvm.ListOfGames);
         }
 
         private void JoinGame_Click(object sender, RoutedEventArgs e)
@@ -43,5 +44,13 @@ namespace GUI
             mpm.Show();
             this.Close();
         }
+        private void InsertToComboBox(List<string> list)
+        {
+            foreach (string item in list)
+            {
+                ListOfGames.Items.Add(item);
+            }
+        }
+
     }
 }
