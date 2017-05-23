@@ -19,11 +19,13 @@ namespace GUI
     /// </summary>
     public partial class MultiPlayer : Window
     {
-
+        private MultiPlayerVM mpvm;
         public MultiPlayer()
         {
             InitializeComponent();
-
+            MultiPlayerModel model = new MultiPlayerModel();
+            mpvm = new MultiPlayerVM(model);
+            this.DataContext = mpvm;
         }
 
         private void JoinGame_Click(object sender, RoutedEventArgs e)
@@ -32,7 +34,8 @@ namespace GUI
         }
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
-
+            MultiPlayerMaze mpm = new MultiPlayerMaze();
+            
         }
     }
 }

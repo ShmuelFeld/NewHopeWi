@@ -1,0 +1,32 @@
+﻿<Window x:Class="GUI.MultiPlayerMaze"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="MultiPlayerMaze" Height="300" Width="300">
+    <StackPanel>
+        <Button FontSize="10" Width="100" Margin="5">
+            Back to main menu
+        </Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label>
+                My board
+            </Label>
+            <Label Grid.Column="1">
+               Other player's board 
+            </Label>
+            <local:MazeUC x:Name="MyBoard" Grid.Column="0" Grid.Row="1"/>
+            <local:MazeUC x:Name="OtherBoard" Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+    </StackPanel>
+</Window>

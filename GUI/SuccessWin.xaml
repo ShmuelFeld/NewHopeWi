@@ -15,7 +15,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Source="C:\Users\USER\Source\Repos\NewHopeWi\resources\winner.jpg" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="259"/>
+            <Image Source="C:\Users\Sharon\Desktop\imageForMaze\winner.jpg" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="259"/>
         <Button Content="back to main window" Margin="86,230,86,1" Width="120" Click="Button_Click" Background="#FFDA3B4F" />
     </Grid>
     </Viewbox>

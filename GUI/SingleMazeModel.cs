@@ -32,7 +32,7 @@ namespace GUI
                 NotifyPropertyChanged("SolveVM");
             }
         }
-        private string solveString;;
+        private string solveString;
         private Maze maze;
         /// <summary>
         /// The communication protocol.
@@ -53,8 +53,6 @@ namespace GUI
         public SingleMazeModel()
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
-            //client = new TcpClient();
-            //client.Connect(ep);
             this.endOfCommunication = false;
         }
 
@@ -62,6 +60,8 @@ namespace GUI
 
         public void connect(string command)
         {
+            client = new TcpClient();
+            client.Connect(ep);
             bool isExecuted = true;
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
