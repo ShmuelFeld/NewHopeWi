@@ -40,9 +40,9 @@ namespace GUI
             mpvm.MazeCols = int.Parse(SUC.ColsValue.Text);
             mpvm.MazeRows = int.Parse(SUC.RowsValue.Text);
             mpvm.MazeName = SUC.NameValue.Text;
-            MessageBoxResult result = MessageBox.Show("Wating for another player...");
-
+            waitLabel.Visibility = Visibility.Visible;
             MultiPlayerMaze mpm = new MultiPlayerMaze();
+            waitLabel.Visibility = Visibility.Hidden;
             mpm.Show();
             this.Close();
         }
