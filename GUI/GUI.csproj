@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="MultiPlayerVM.cs" />
     <Compile Include="SuccessWin.xaml.cs">
       <DependentUpon>SuccessWin.xaml</DependentUpon>

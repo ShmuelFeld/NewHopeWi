@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GUI"
 
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300">
+        Title="Disney Maze" Height="300" Width="300">
     <Viewbox>
         <Grid>
             <Grid.RowDefinitions>

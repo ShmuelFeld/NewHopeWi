@@ -25,6 +25,8 @@ namespace GUI
             InitializeComponent();
             ISinglePlayerModel model = new ApplicationSinglePlayerModel();
             spvm = new SinglePlayerVM(model);
+            SUC.ColsValue.Text = Properties.Settings.Default.MazeCols.ToString();
+            SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();
             this.DataContext = spvm;
         }
 

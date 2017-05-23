@@ -23,12 +23,12 @@
                    HorizontalAlignment="Left"/>
         <TextBox x:Name="name" Text="{Binding MazeNameProperty, ElementName=control}" Grid.Column="1" Grid.Row="0"
              Width="100"
-                 Height="30" HorizontalAlignment="Right" />
+                 Height="30" HorizontalAlignment="Right" FontFamily="Pristina" FontSize="15" />
         <TextBlock Text="{Binding Path=Label_1}" Grid.Column="0" Grid.Row="1"
                Width="Auto"
                    FontSize="18"
                VerticalAlignment="Center"
-                   HorizontalAlignment="Left"/>
+                   HorizontalAlignment="Left" FontFamily="Pristina"/>
         <TextBox x:Name="rows" Text="{Binding MazeRowsProperty, ElementName=control}" Grid.Column="1" Grid.Row="1"
              Width="100"
                  Height="30" HorizontalAlignment="Right"/>

@@ -18,7 +18,7 @@
             </Grid.ColumnDefinitions>
             <controls:BasicUserControl x:Name="SUC" Grid.Row="0" Grid.Column="0">
             </controls:BasicUserControl>
-            <Button Grid.Row="1" Height="30" Width="90" Margin="10,10,10,10" Click="btnStart_Click">
+            <Button Grid.Row="1" Height="30" Width="90" Margin="10,10,10,10" Click="btnStart_Click" Background="#FFD15353">
                 Start Game</Button>
 
         </Grid>
