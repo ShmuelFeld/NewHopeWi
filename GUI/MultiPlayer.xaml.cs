@@ -23,7 +23,9 @@ namespace GUI
         public MultiPlayer()
         {
             InitializeComponent();
-            MultiPlayerModel model = new MultiPlayerModel();
+            MultiPlayerModel model = new MultiPlayerModel();            
+            SUC.ColsValue.Text = Properties.Settings.Default.MazeCols.ToString();
+            SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();
             mpvm = new MultiPlayerVM(model);
             this.DataContext = mpvm;
         }
@@ -34,8 +36,12 @@ namespace GUI
         }
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
+            mpvm.MazeCols = int.Parse(SUC.ColsValue.Text);
+            mpvm.MazeRows = int.Parse(SUC.RowsValue.Text);
+            mpvm.MazeName = SUC.NameValue.Text;
             MultiPlayerMaze mpm = new MultiPlayerMaze();
-            
+            mpm.Show();
+            this.Close();
         }
     }
 }

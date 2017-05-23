@@ -12,6 +12,9 @@ namespace GUI
 {
     class MultiPlayerModel : Model
     {
+        public int MazeRows { get; set; }
+        public int MazeCols { get; set; }
+        public string MazeName { get; set; }
         private TcpClient client;
         private bool endOfCommunication;
         private List<string> games;

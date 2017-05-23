@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MazeLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace GUI
     /// </summary>
     public partial class MultiPlayerMaze : Window
     {
+        public int MazeRows { get; set; }
+        public int MazeCols { get; set; }
+        public string MazeString { get; set; }
+        public Position InitialPos { get; set; }
+        public Position GoalPos { get; set; }
+        private MultiPlayerMazeVM mpVM;
+
         public MultiPlayerMaze()
         {
             InitializeComponent();
+            mpVM = new MultiPlayerMazeVM();
+            this.DataContext = mpVM;
         }
     }
 }

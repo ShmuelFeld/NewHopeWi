@@ -14,7 +14,6 @@ namespace GUI
 {
     class SingleMazeModel : Model
     {
-        private EventArgs eve;
         public Maze MazeVM
         {
             get { return maze; }
@@ -77,14 +76,6 @@ namespace GUI
                     bool isMulti = false;
 
                     isExecuted = true;
-                    //if (!client.Connected)
-                    //{
-                    //    client = new TcpClient();
-                    //    client.Connect(ep);
-                    //    stream = client.GetStream();
-                    //    reader = new StreamReader(stream);
-                    //    writer = new StreamWriter(stream);
-                    //}
                     if ((command.Contains("start")) || (command.Contains("join")))
                     {
                         isMulti = true;
@@ -112,6 +103,7 @@ namespace GUI
                     {
                         FromJSON(feedback);
                     }
+                }
             }
         }
         private void FromJSON(string str)

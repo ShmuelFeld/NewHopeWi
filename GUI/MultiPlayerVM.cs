@@ -27,7 +27,33 @@ namespace GUI
                 list = value;
                 NotifyPropertyChanged("ListOfGames");
             }
-
+        }
+        public int MazeRows
+        {
+            get { return model.MazeRows; }
+            set
+            {
+                model.MazeRows = value;
+                NotifyPropertyChanged("MazeRows");
+            }
+        }
+        public int MazeCols
+        {
+            get { return model.MazeCols; }
+            set
+            {
+                model.MazeCols = value;
+                NotifyPropertyChanged("MazeCols");
+            }
+        }
+        public string MazeName
+        {
+            get { return model.MazeName; }
+            set
+            {
+                model.MazeName = value;
+                NotifyPropertyChanged("MazeName");
+            }
         }
     }
 }
