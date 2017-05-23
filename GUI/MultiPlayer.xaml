@@ -15,15 +15,15 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
-            <Label FontSize="18">List of games:</Label>
-            <ComboBox x:Name="ListOfGames" Margin="5" SelectedItem="1"></ComboBox>
+            <Label FontSize="20" FontFamily="Pristina" >List of games:</Label>
+            <ComboBox x:Name="ListOfGames" FontSize="20" FontFamily="Pristina" Background="#FFEE8787" Margin="5" SelectedItem="1"></ComboBox>
         </DockPanel>
-        <Button Content="Join Game" Click="JoinGame_Click" Width="100" FontSize="20" Grid.Row="1" Margin="5"/>
-        <local:BasicUserControl x:Name="SUC" Grid.Row="2"/>
+        <Button Content="Join Game" Click="JoinGame_Click" Width="100" FontSize="24" FontFamily="Pristina" Background="#FFEE8787" Grid.Row="1" Margin="5"/>
+        <local:BasicUserControl FontSize="20" FontFamily="Pristina" x:Name="SUC" Grid.Row="2"/>
         <DockPanel Grid.Row="3">
-            <Button Content="Start Game" FontSize="20" Click="StartGame_Click" Width="120" Margin="5"/>
+            <Button Content="Start Game" FontSize="24" FontFamily="Pristina" Background="#FFEE8787" Click="StartGame_Click" Width="120" Margin="5"/>
         </DockPanel>
-        <Label x:Name="waitLabel" Grid.Row="4" FontSize="20" HorizontalAlignment="Center" Background="#FFEEBEE1" Visibility="Hidden">
+        <Label x:Name="waitLabel" FontSize="20" FontFamily="Pristina" Background="#FFEE8787" Grid.Row="4" HorizontalAlignment="Center" Visibility="Hidden">
             Waiting for another player...
         </Label>
     </Grid>

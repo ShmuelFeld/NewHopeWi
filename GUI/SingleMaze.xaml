@@ -17,9 +17,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Background="Bisque" Content="Main Window" Grid.Row="0" Grid.Column="0" Click="MainWin_Click" FontSize="14"></Button>
-            <Button Background="Bisque" Content="solve!" Grid.Row="0" Grid.Column="1" Click="solve_Click" FontSize="14"></Button>
-            <Button Background="Bisque" Content="Start over" Grid.Row="0" Grid.Column="2" Click="startOver_Click" FontSize="14"></Button>
+            <Button FontSize="20" FontFamily="Pristina" Background="#FFEE8787"   Content="Main Window" Grid.Row="0" Grid.Column="0" Click="MainWin_Click" BorderBrush="#FFE01C1C" ></Button>
+            <Button FontSize="20" FontFamily="Pristina" Background="#FFEE8787" Content="solve!" Grid.Row="0" Grid.Column="1" Click="solve_Click" BorderBrush="#FFE01C1C" ></Button>
+            <Button FontSize="20" FontFamily="Pristina" Background="#FFEE8787" Content="Start over" Grid.Row="0" Grid.Column="2" Click="startOver_Click" BorderBrush="#FFE01C1C" ></Button>
             <Controls:MazeUC x:Name="userControl" Grid.Row="1"  GoalPos="{Binding MazeVM.GoalPos}" MazeRows="{Binding MazeVM.Rows}" MazeCols="{Binding MazeVM.Cols}"
             InitialPos="{Binding MazeVM.InitialPos}" MazeString="{Binding MazeVM}" SolveString="{Binding SolveVM}"  Grid.ColumnSpan="3" Margin="1,0,1,0" />
         </Grid>

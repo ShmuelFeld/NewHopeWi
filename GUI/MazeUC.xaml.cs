@@ -259,6 +259,7 @@ namespace GUI
             drawMaze();
 
         }
+        public EventHandler KeyHandler;
 
         public void Viewbox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -276,6 +277,10 @@ namespace GUI
                     if (Colors.Black.Equals(rectFillColor)){
                         currentPos.Row++;
                         return;
+                    }
+                    if (KeyHandler != null)
+                    {
+                        this.KeyHandler(this, new EventArgs());
                     }
                     break;
 
@@ -338,6 +343,7 @@ namespace GUI
                 win.Show();
             }
             e.Handled = true;
+
         }
 
         public void startOver()

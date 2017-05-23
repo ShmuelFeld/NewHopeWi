@@ -16,9 +16,9 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <controls:BasicUserControl x:Name="SUC" Grid.Row="0" Grid.Column="0">
+            <controls:BasicUserControl x:Name="SUC" FontSize="20" FontFamily="Pristina" Grid.Row="0" Grid.Column="0">
             </controls:BasicUserControl>
-            <Button Grid.Row="1" Height="30" Width="90" Margin="10,10,10,10" Click="btnStart_Click" Background="#FFD15353">
+            <Button Grid.Row="1" Height="30" Width="90" FontSize="20" FontFamily="Pristina" Background="#FFEE8787" Margin="10,10,10,10" Click="btnStart_Click">
                 Start Game</Button>
 
         </Grid>

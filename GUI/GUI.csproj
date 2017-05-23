@@ -90,6 +90,9 @@
     <Compile Include="SuccessWin.xaml.cs">
       <DependentUpon>SuccessWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WaitingWin.xaml.cs">
+      <DependentUpon>WaitingWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WinConfirm.xaml.cs">
       <DependentUpon>WinConfirm.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SuccessWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WaitingWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

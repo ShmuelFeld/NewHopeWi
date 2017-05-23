@@ -34,5 +34,12 @@ namespace GUI
             this.DataContext = mpVM;
             
         }
+
+        private void BackToMainWin_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }
     }
 }
