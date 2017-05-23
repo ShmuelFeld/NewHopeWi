@@ -18,7 +18,7 @@
             <ComboBox x:Name="ListOfGames" Margin="5" SelectedItem="1"></ComboBox>
         </DockPanel>
         <Button Content="Join Game" Click="JoinGame_Click" Width="100" FontSize="20" Grid.Row="1" Margin="5"/>
-        <local:BasicUserControl Grid.Row="2"/>
+        <local:BasicUserControl x:Name="SUC" Grid.Row="2"/>
         <DockPanel Grid.Row="3">
             <Button Content="Start Game" FontSize="20" Click="StartGame_Click" Width="120" Margin="5"/>
         </DockPanel>

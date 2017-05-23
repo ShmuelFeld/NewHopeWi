@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
-    public abstract class Model : INotifyPropertyChanged
+    abstract class Model : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
