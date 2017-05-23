@@ -27,11 +27,12 @@ namespace GUI
         public Position GoalPos { get; set; }
         private MultiPlayerMazeVM mpVM;
 
-        public MultiPlayerMaze()
+        public MultiPlayerMaze(string kind)
         {
             InitializeComponent();
-            mpVM = new MultiPlayerMazeVM();
+            mpVM = new MultiPlayerMazeVM(kind);
             this.DataContext = mpVM;
+            
         }
     }
 }

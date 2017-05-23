@@ -23,23 +23,26 @@ namespace GUI
         public MultiPlayer()
         {
             InitializeComponent();
-            MultiPlayerModel model = new MultiPlayerModel();            
-            SUC.ColsValue.Text = Properties.Settings.Default.MazeCols.ToString();
-            SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();
+            MultiPlayerModel model = new MultiPlayerModel();
             mpvm = new MultiPlayerVM(model);
+            SUC.ColsValue.Text = Properties.Settings.Default.MazeCols.ToString();
+            SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();           
             this.DataContext = mpvm;
         }
 
         private void JoinGame_Click(object sender, RoutedEventArgs e)
         {
-            
+            mpvm.MazeName = ListOfGames.Items.ToString();
+            MultiPlayerMaze mpm = new MultiPlayerMaze("join");
+            mpm.Show();
+            this.Close();
         }
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
             mpvm.MazeCols = int.Parse(SUC.ColsValue.Text);
             mpvm.MazeRows = int.Parse(SUC.RowsValue.Text);
             mpvm.MazeName = SUC.NameValue.Text;
-            MultiPlayerMaze mpm = new MultiPlayerMaze();
+            MultiPlayerMaze mpm = new MultiPlayerMaze("start");
             mpm.Show();
             this.Close();
         }
