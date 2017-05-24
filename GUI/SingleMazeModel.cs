@@ -54,7 +54,6 @@ namespace GUI
 
         public override void connect(string command)
         {
-            
             client = new TcpClient();
             client.Connect(ep);
 
@@ -85,7 +84,6 @@ namespace GUI
                     FromJSON(feedback);
                 }
             }
-            client.Close();
         }
         private void FromJSON(string str)
         {
