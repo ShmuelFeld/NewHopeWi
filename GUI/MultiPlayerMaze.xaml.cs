@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GUI
 {
@@ -36,6 +37,53 @@ namespace GUI
             MyBoard.MovingDown += new EventHandler(GoDown);
             MyBoard.MovingLeft += new EventHandler(GoLeft);
             MyBoard.MovingRight += new EventHandler(GoRight);
+            mpVM.ChangeOtherLoc += new EventHandler(moveOpponent);
+        }
+
+        private void moveOpponent(object sender, EventArgs e)
+        {
+            Position temp;
+            switch (mpVM.Direction)
+            {
+                case "up":
+                    Application.Current.Dispatcher.Invoke(
+                    DispatcherPriority.Background,
+                    new Action(() =>
+                    this.OtherBoard.Viewbox_KeyDown(this,
+                    new KeyEventArgs(
+                    Keyboard.PrimaryDevice,
+                    PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Up))));
+                    break;
+                case "down":
+                    Application.Current.Dispatcher.Invoke(
+                    DispatcherPriority.Background,
+                    new Action(() =>
+                    this.OtherBoard.Viewbox_KeyDown(this,
+                    new KeyEventArgs(
+                    Keyboard.PrimaryDevice,
+                    PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Down))));
+                    break;
+                case "left":
+                    Application.Current.Dispatcher.Invoke(
+                    DispatcherPriority.Background,
+                    new Action(() =>
+                    this.OtherBoard.Viewbox_KeyDown(this,
+                    new KeyEventArgs(
+                    Keyboard.PrimaryDevice,
+                    PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Left))));
+                    break;
+                case "right":
+                    Application.Current.Dispatcher.Invoke(
+                    DispatcherPriority.Background,
+                    new Action(() =>
+                    this.OtherBoard.Viewbox_KeyDown(this,
+                    new KeyEventArgs(
+                    Keyboard.PrimaryDevice,
+                    PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Right))));
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void GoRight(object sender, EventArgs e)

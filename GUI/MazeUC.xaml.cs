@@ -25,13 +25,24 @@ namespace GUI
     {
         private Image player, dest;
         public static Rectangle[,] rectanglesArr;
-        public static Position currentPos;
+        private Position currentPos;
         public static int height, width;
         public static Canvas mazeCan;
         public EventHandler MovingUp;
         public EventHandler MovingLeft;
         public EventHandler MovingRight;
         public EventHandler MovingDown;
+        public Position Current
+        {
+            get
+            {
+                return this.currentPos;
+            }
+            set
+            {
+                this.currentPos = value;
+            }
+        }
         public int MazeRows
         {
             get
@@ -209,7 +220,7 @@ namespace GUI
                         rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
                         player = new Image()
                         {
-                            Source = new BitmapImage(new Uri(@"C:\Users\USER\Source\Repos\NewHopeWi\resources\prince.png")),
+                            Source = new BitmapImage(new Uri(@"C:\Users\Sharon\Desktop\imageForMaze\prince.png")),
                             Height = height,
                             Width = width,
                          };
@@ -225,7 +236,7 @@ namespace GUI
                         rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
                         dest = new Image()
                         {
-                            Source = new BitmapImage(new Uri(@"C:\Users\USER\Source\Repos\NewHopeWi\resources\cinderella.jpg")),
+                            Source = new BitmapImage(new Uri(@"C:\Users\Sharon\Desktop\imageForMaze\cinderella.jpg")),
                             Height = height,
                             Width = width,
                         };
@@ -346,7 +357,6 @@ namespace GUI
                     return;
 
             }
-           
             Canvas.SetLeft(player, width * currentPos.Col);
             Canvas.SetTop(player, height * currentPos.Row);
 

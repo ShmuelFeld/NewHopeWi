@@ -63,7 +63,6 @@ namespace GUI
                 }
             }
         }
-
         private void FromJSON(string str)
         {
             JArray array = JArray.Parse(str);
