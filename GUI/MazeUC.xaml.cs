@@ -357,9 +357,7 @@ namespace GUI
                     return;
 
             }
-            Canvas.SetLeft(player, width * currentPos.Col);
-            Canvas.SetTop(player, height * currentPos.Row);
-
+            UpdateLoc();
             if ((currentPos.Col == GoalPos.Col) && (currentPos.Row == GoalPos.Row))
             {
                 SuccessWin win = new SuccessWin();
@@ -374,6 +372,18 @@ namespace GUI
             currentPos = InitialPos;
             Canvas.SetLeft(player, width * currentPos.Col);
             Canvas.SetTop(player, height * currentPos.Row);
+        }
+        public void UpdateLoc()
+        {
+            Application.Current.Dispatcher.Invoke(
+            DispatcherPriority.Background,
+            new Action(() =>
+            {
+                Canvas.SetTop(player, height * currentPos.Row);
+                Canvas.SetLeft(player, width * currentPos.Col);
+            }));
+
+
         }
        
     }
