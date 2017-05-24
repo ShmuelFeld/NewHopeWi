@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GUI
 {
@@ -52,10 +53,41 @@ namespace GUI
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private void ConnectionErrorMessage()
+        {
+            string message = "Error connecting to server, please return to main window";
+            string caption = "Error Detected in Input";
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result;
+
+            result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
+        }
+
         public override void connect(string command)
         {
             client = new TcpClient();
-            client.Connect(ep);
+            try
+            {
+                client.Connect(ep);
+            }
+            catch (ArgumentNullException e)
+            {
+                ConnectionErrorMessage();
+                ConnectionError.isError = true;
+                return;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                ConnectionErrorMessage();
+                ConnectionError.isError = true;
+                return;
+            }
+            catch (SocketException e)
+            {
+                ConnectionErrorMessage();
+                ConnectionError.isError = true;
+                return;
+            }
 
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
@@ -82,6 +114,7 @@ namespace GUI
             {
                 FromJSON(feedback);
             }
+            return;
         }
         private void FromJSON(string str)
         {

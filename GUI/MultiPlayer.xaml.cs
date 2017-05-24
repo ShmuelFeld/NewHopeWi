@@ -25,6 +25,10 @@ namespace GUI
             InitializeComponent();
             MultiPlayerModel model = new MultiPlayerModel();
             mpvm = new MultiPlayerVM(model);
+            if (ConnectionError.isError)
+            {
+                return;
+            }
             SUC.ColsValue.Text = Properties.Settings.Default.MazeCols.ToString();
             SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();           
             this.DataContext = mpvm;
@@ -35,6 +39,13 @@ namespace GUI
         {
             mpvm.MazeName = ListOfGames.Text;
             MultiPlayerMaze mpm = new MultiPlayerMaze("join");
+            if (ConnectionError.isError)
+            {
+                MainWindow w = new MainWindow();
+                w.Show();
+                this.Close();
+                return;
+            }
             mpm.Show();
             this.Close();
         }
@@ -47,6 +58,13 @@ namespace GUI
             w.Show();
             MultiPlayerMaze mpm = new MultiPlayerMaze("start");
             w.Close();
+            if (ConnectionError.isError)
+            {
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
+                return;
+            }
             mpm.Show();
             this.Close();
         }

@@ -2,13 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -27,17 +30,53 @@ namespace GUI
         public Position InitialPos { get; set; }
         public Position GoalPos { get; set; }
         private MultiPlayerMazeVM mpVM;
+        // cancel the control box of the window
+        private const int GWL_STYLE = -16;
+        private const int WS_SYSMENU = 0x80000;
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll")]
+        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        private void singlePlayerMazeWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var hwnd = new WindowInteropHelper(this).Handle;
+            SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
+        }
+        // public EventHandler CloseEve;
 
         public MultiPlayerMaze(string kind)
         {
             InitializeComponent();
             mpVM = new MultiPlayerMazeVM(kind);
+            if (ConnectionError.isError)
+            {
+                return;
+            }
             this.DataContext = mpVM;
+            this.KeyDown += MyBoard.Viewbox_KeyDown;
             MyBoard.MovingUp += new EventHandler(GoUp);
             MyBoard.MovingDown += new EventHandler(GoDown);
             MyBoard.MovingLeft += new EventHandler(GoLeft);
             MyBoard.MovingRight += new EventHandler(GoRight);
             mpVM.ChangeOtherLoc += new EventHandler(moveOpponent);
+            mpVM.CloseEv += new EventHandler(CloseWin);
+            //MyBoard.Close += new EventHandler(CloseOther);
+        }
+
+        private void CloseWin(object sender, EventArgs e)
+        {
+            System.Windows.Application.Current.Dispatcher.Invoke(
+           DispatcherPriority.Background,
+           new Action(() =>
+           {
+               this.Close();
+               MainWindow mw = new MainWindow();
+               mw.Show();
+           }));
+           
         }
 
         private void moveOpponent(object sender, EventArgs e)
@@ -47,50 +86,21 @@ namespace GUI
             {
                
                 case "up":
-                    //Application.Current.Dispatcher.Invoke(
-                    //DispatcherPriority.Background,
-                    //new Action(() =>
-                    //this.OtherBoard.Viewbox_KeyDown(this,
-                    //new KeyEventArgs(
-                    //Keyboard.PrimaryDevice,
-                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Up))));
                     temp = this.OtherBoard.Current;
                     OtherBoard.Current = new Position(--temp.Row, temp.Col);
                     OtherBoard.UpdateLoc();
                     break;
                 case "down":
-                    //Application.Current.Dispatcher.Invoke(
-                    //DispatcherPriority.Background,
-                    //new Action(() =>
-                    //this.OtherBoard.Viewbox_KeyDown(this,
-                    //new KeyEventArgs(
-                    //Keyboard.PrimaryDevice,
-                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Down))));
-
                     temp = this.OtherBoard.Current;
                     OtherBoard.Current = new Position(++temp.Row, temp.Col);
                     OtherBoard.UpdateLoc();
                     break;
                 case "left":
-                    //Application.Current.Dispatcher.Invoke(
-                    //DispatcherPriority.Background,
-                    //new Action(() =>
-                    //this.OtherBoard.Viewbox_KeyDown(this,
-                    //new KeyEventArgs(
-                    //Keyboard.PrimaryDevice,
-                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Left))));
                     temp = this.OtherBoard.Current;
                     OtherBoard.Current = new Position(temp.Row, --temp.Col);
                     OtherBoard.UpdateLoc();
                     break;
                 case "right":
-                    //Application.Current.Dispatcher.Invoke(
-                    //DispatcherPriority.Background,
-                    //new Action(() =>
-                    //this.OtherBoard.Viewbox_KeyDown(this,
-                    //new KeyEventArgs(
-                    //Keyboard.PrimaryDevice,
-                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Right))));
                     temp = this.OtherBoard.Current;
                     OtherBoard.Current = new Position(temp.Row, ++temp.Col);
                     OtherBoard.UpdateLoc();
@@ -122,9 +132,21 @@ namespace GUI
 
         private void BackToMainWin_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            this.Close();
+            string message = "are you sure?";
+            string caption = "Error Detected in Input";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
+                mpVM.CloseSelf();
+            }          
+            
         }
     }
 }

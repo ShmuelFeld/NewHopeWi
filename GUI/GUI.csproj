@@ -76,6 +76,7 @@
     <Compile Include="BasicUserControl.xaml.cs">
       <DependentUpon>BasicUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionError.cs" />
     <Compile Include="IMultiPlayerModel.cs" />
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />

@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GUI
 {
@@ -24,6 +25,7 @@ namespace GUI
         }
         private string movement;
         public EventHandler Move;
+        public EventHandler CloseEve;
         public string Movement {
             get
             { return movement; }
@@ -57,8 +59,31 @@ namespace GUI
             this.endOfCommunication = false;
             this.close = false;
             client = new TcpClient();
-            client.Connect(ep);
-            // connect("0");
+            try
+            {
+                client.Connect(ep);
+            }
+            catch (ArgumentNullException e)
+            {
+                ConnectionErrorMessage();
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                ConnectionErrorMessage();
+            }
+            catch(SocketException e)
+            {
+                ConnectionErrorMessage();
+            }
+        }
+        private void ConnectionErrorMessage()
+        {
+            string message = "Error connecting to server, please return to main window";
+            string caption = "Error Detected in Input";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public override void connect(string command)
@@ -66,14 +91,13 @@ namespace GUI
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
-            //client = new TcpClient();
-            //client.Connect(ep);
+
             while (!endOfCommunication)
             {
                 writer.WriteLine(command);
                 writer.Flush();
                 string feedback = "";
-                if (!command.Contains("play"))
+                if (!command.Contains("play") && !command.Contains("close"))
                 {
                     while (true)
                     {
@@ -93,8 +117,13 @@ namespace GUI
                         return;
                     }
                 }
+                if (command.Contains("close"))
+                {
+                    endOfCommunication = true;
+                }
                 return;
             }
+            return;
 
         }
         private void ListenTask(StreamReader reader)
@@ -102,8 +131,9 @@ namespace GUI
 
             Task listenTask = new Task(() =>
             {
+                bool close = false;
                 string feedback ="";
-                while (true)
+                while (!close)
                 {
                     feedback += reader.ReadLine();
                     if (reader.Peek() == '@' && (feedback.Contains("up") || feedback.Contains("down")
@@ -123,15 +153,21 @@ namespace GUI
                     {
                         feedback = "";
                     }
-                    if (feedback == "close")
+                    if (feedback == "close") //contains?
                     {
+                        if(CloseEve != null)
+                        {
+                            this.CloseEve(this, new EventArgs());
+                        }
                         close = true;
                     }
                 }
                 
             });
             listenTask.Start();
+
         }
+
         private void FromJson(string str)
         {
             string ret = "";

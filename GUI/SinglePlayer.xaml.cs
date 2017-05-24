@@ -32,10 +32,19 @@ namespace GUI
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
+
+
             spvm.MazeCols = int.Parse(SUC.ColsValue.Text);
             spvm.MazeRows = int.Parse(SUC.RowsValue.Text);
             spvm.MazeName = SUC.NameValue.Text;
             SingleMaze m = new SingleMaze();
+            if (ConnectionError.isError)
+            {
+                MainWindow w = new MainWindow();
+                w.Show();
+                this.Close();
+                return;
+            }
             m.Show();
             this.Close();
         }

@@ -32,6 +32,7 @@ namespace GUI
         public EventHandler MovingLeft;
         public EventHandler MovingRight;
         public EventHandler MovingDown;
+        //public EventHandler Close;
         public Position Current
         {
             get
@@ -264,8 +265,8 @@ namespace GUI
 
         private void mazeCanvas_Loaded(object sender, RoutedEventArgs e)
         {
-            var window = Window.GetWindow(this);
-            window.KeyDown += Viewbox_KeyDown;
+            //var window = Window.GetWindow(this);
+            //window.KeyDown += Viewbox_KeyDown;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -361,6 +362,10 @@ namespace GUI
             {
                 SuccessWin win = new SuccessWin();
                 win.Show();
+                //if (Close != null)
+                //{
+                //    this.Close(this, new EventArgs());
+                //}
             }
             e.Handled = true;
 

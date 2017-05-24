@@ -13,6 +13,7 @@ namespace GUI
         private MultiPlayerMazeModel model;
         private string direction;
         public EventHandler ChangeOtherLoc;
+        //public EventHandler Close;
         public string Direction {
             get { return this.direction; }
             set
@@ -48,8 +49,21 @@ namespace GUI
                 JoinGame();
             }
             model.Move += new EventHandler(MoveVM);
+            model.CloseEve += new EventHandler(CloseVM);
         }
 
+        public EventHandler CloseEv;
+        public void CloseVM(object sender, EventArgs e)
+        {
+            if (CloseEv != null)
+            {
+                this.CloseEv(this, new EventArgs());
+            }
+        }
+        public void CloseSelf()
+        {
+            model.connect("close");
+        }
         private void MoveVM(object sender, EventArgs e)
         {
             Direction = model.Movement;

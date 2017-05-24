@@ -43,6 +43,7 @@ namespace GUI
             string command = "generate ";
             command += Properties.Settings.Default.MazeName + " " + Properties.Settings.Default.MazeRows + " " + Properties.Settings.Default.MazeCols;
             model.connect(command);
+            
         }
         public void SolveMaze()
         {

@@ -36,6 +36,10 @@ namespace GUI
         private void MultyPlayer(object sender, RoutedEventArgs e)
         {
             MultiPlayer mw = new MultiPlayer();
+            if (ConnectionError.isError)
+            {
+                return;
+            }
             mw.Show();
             this.Close();
         }
@@ -45,11 +49,6 @@ namespace GUI
             SettingsWindow sw = new SettingsWindow();
             sw.Show();
             this.Close();
-        }
-
-        private void Picture(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
