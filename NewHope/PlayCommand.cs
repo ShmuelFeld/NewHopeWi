@@ -44,12 +44,6 @@ namespace NewHope
         public string Execute(string[] args, TcpClient client)
         {
             string move = args[0];
-            //string moveString = null;
-            //if (move == Direction.Up) { moveString = "up"; }
-            //else if (move == Direction.Down) { moveString = "down"; }
-            //else if (move == Direction.Right) { moveString = "right"; }
-            //else if (move == Direction.Left) { moveString = "left"; }
-            //else { return "invalid move"; }
             if ((move != "up") && (move != "down") && (move != "right") && (move != "left")) { return "invalid move"; }
             MultiPlayerGame game = model.Play(move, client);
             TcpClient tcpOfOtherClient = null;

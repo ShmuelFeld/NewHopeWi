@@ -38,10 +38,6 @@ namespace GUI
         /// </summary>
         private TcpClient client;
         /// <summary>
-        /// flag for end of communication.
-        /// </summary>
-        private bool endOfCommunication;
-        /// <summary>
         /// The IPEndPoint.
         /// </summary>
         IPEndPoint ep;
@@ -52,20 +48,19 @@ namespace GUI
         public SingleMazeModel()
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
-            this.endOfCommunication = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public override void connect(string command)
         {
-
+            
             client = new TcpClient();
             client.Connect(ep);
 
-            NetworkStream stream = client.GetStream();
-            StreamReader reader = new StreamReader(stream);
-            StreamWriter writer = new StreamWriter(stream);
+            using (NetworkStream stream = client.GetStream())
+            using (StreamReader reader = new StreamReader(stream))
+            using (StreamWriter writer = new StreamWriter(stream))
             {
                 writer.WriteLine(command);
                 writer.Flush();
@@ -89,11 +84,8 @@ namespace GUI
                 {
                     FromJSON(feedback);
                 }
-                stream.Dispose();
-                writer.Dispose();
-                reader.Dispose();
-                return;
             }
+            client.Close();
         }
         private void FromJSON(string str)
         {

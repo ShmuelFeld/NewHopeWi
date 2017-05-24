@@ -140,7 +140,6 @@ namespace GUI
                   DispatcherPriority.Background,
                   new Action(() =>
                   {       
-                        //rectanglesArr[currentPos.Row, currentPos.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.Bisque);
                         Canvas.SetLeft(player, width * currentPos.Col);
                         Canvas.SetTop(player, height * currentPos.Row);
 
