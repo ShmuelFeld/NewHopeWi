@@ -45,41 +45,55 @@ namespace GUI
             Position temp;
             switch (mpVM.Direction)
             {
+               
                 case "up":
-                    Application.Current.Dispatcher.Invoke(
-                    DispatcherPriority.Background,
-                    new Action(() =>
-                    this.OtherBoard.Viewbox_KeyDown(this,
-                    new KeyEventArgs(
-                    Keyboard.PrimaryDevice,
-                    PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Up))));
+                    //Application.Current.Dispatcher.Invoke(
+                    //DispatcherPriority.Background,
+                    //new Action(() =>
+                    //this.OtherBoard.Viewbox_KeyDown(this,
+                    //new KeyEventArgs(
+                    //Keyboard.PrimaryDevice,
+                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Up))));
+                    temp = this.OtherBoard.Current;
+                    OtherBoard.Current = new Position(--temp.Row, temp.Col);
+                    OtherBoard.UpdateLoc();
                     break;
                 case "down":
-                    Application.Current.Dispatcher.Invoke(
-                    DispatcherPriority.Background,
-                    new Action(() =>
-                    this.OtherBoard.Viewbox_KeyDown(this,
-                    new KeyEventArgs(
-                    Keyboard.PrimaryDevice,
-                    PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Down))));
+                    //Application.Current.Dispatcher.Invoke(
+                    //DispatcherPriority.Background,
+                    //new Action(() =>
+                    //this.OtherBoard.Viewbox_KeyDown(this,
+                    //new KeyEventArgs(
+                    //Keyboard.PrimaryDevice,
+                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Down))));
+
+                    temp = this.OtherBoard.Current;
+                    OtherBoard.Current = new Position(++temp.Row, temp.Col);
+                    OtherBoard.UpdateLoc();
                     break;
                 case "left":
-                    Application.Current.Dispatcher.Invoke(
-                    DispatcherPriority.Background,
-                    new Action(() =>
-                    this.OtherBoard.Viewbox_KeyDown(this,
-                    new KeyEventArgs(
-                    Keyboard.PrimaryDevice,
-                    PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Left))));
+                    //Application.Current.Dispatcher.Invoke(
+                    //DispatcherPriority.Background,
+                    //new Action(() =>
+                    //this.OtherBoard.Viewbox_KeyDown(this,
+                    //new KeyEventArgs(
+                    //Keyboard.PrimaryDevice,
+                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Left))));
+                    temp = this.OtherBoard.Current;
+                    OtherBoard.Current = new Position(temp.Row, --temp.Col);
+                    OtherBoard.UpdateLoc();
                     break;
                 case "right":
-                    Application.Current.Dispatcher.Invoke(
-                    DispatcherPriority.Background,
-                    new Action(() =>
-                    this.OtherBoard.Viewbox_KeyDown(this,
-                    new KeyEventArgs(
-                    Keyboard.PrimaryDevice,
-                    PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Right))));
+                    //Application.Current.Dispatcher.Invoke(
+                    //DispatcherPriority.Background,
+                    //new Action(() =>
+                    //this.OtherBoard.Viewbox_KeyDown(this,
+                    //new KeyEventArgs(
+                    //Keyboard.PrimaryDevice,
+                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Right))));
+                    temp = this.OtherBoard.Current;
+                    OtherBoard.Current = new Position(temp.Row, ++temp.Col);
+                    OtherBoard.UpdateLoc();
                     break;
                 default:
                     break;
