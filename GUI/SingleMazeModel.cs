@@ -57,32 +57,30 @@ namespace GUI
             client = new TcpClient();
             client.Connect(ep);
 
-            using (NetworkStream stream = client.GetStream())
-            using (StreamReader reader = new StreamReader(stream))
-            using (StreamWriter writer = new StreamWriter(stream))
+            NetworkStream stream = client.GetStream();
+            StreamReader reader = new StreamReader(stream);
+            StreamWriter writer = new StreamWriter(stream);
+            writer.WriteLine(command);
+            writer.Flush();
+            string feedback = "";
+            while (true)
             {
-                writer.WriteLine(command);
-                writer.Flush();
-                string feedback = "";
-                while (true)
+                feedback += reader.ReadLine();
+                if (reader.Peek() == '@')
                 {
-                    feedback += reader.ReadLine();
-                    if (reader.Peek() == '@')
-                    {
-                        feedback.TrimEnd('\n');
-                        break;
-                    }
+                    feedback.TrimEnd('\n');
+                    break;
                 }
-                reader.ReadLine();
-                feedback += "\n";
-                if (command.Contains("generate"))
-                {
-                    this.MazeVM = Maze.FromJSON(feedback);
-                }
-                else if (command.Contains("solve"))
-                {
-                    FromJSON(feedback);
-                }
+            }
+            reader.ReadLine();
+            feedback += "\n";
+            if (command.Contains("generate"))
+            {
+                this.MazeVM = Maze.FromJSON(feedback);
+            }
+            else if (command.Contains("solve"))
+            {
+                FromJSON(feedback);
             }
         }
         private void FromJSON(string str)
