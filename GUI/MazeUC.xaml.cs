@@ -219,7 +219,7 @@ namespace GUI
                         rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
                         player = new Image()
                         {
-                            Source = new BitmapImage(new Uri(@"C:\Users\Sharon\Desktop\imageForMaze\prince.png")),
+                            Source = new BitmapImage(new Uri(@"C:\Users\USER\Source\Repos\NewHopeWi\resources\prince.png")),
                             Height = height,
                             Width = width,
                          };
@@ -235,7 +235,7 @@ namespace GUI
                         rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
                         dest = new Image()
                         {
-                            Source = new BitmapImage(new Uri(@"C:\Users\Sharon\Desktop\imageForMaze\cinderella.jpg")),
+                            Source = new BitmapImage(new Uri(@"C:\Users\USER\Source\Repos\NewHopeWi\resources\cinderella.jpg")),
                             Height = height,
                             Width = width,
                         };

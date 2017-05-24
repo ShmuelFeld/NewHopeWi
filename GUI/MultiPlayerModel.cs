@@ -30,20 +30,20 @@ namespace GUI
         {
             client = new TcpClient();
             client.Connect(ep);
-            NetworkStream stream = client.GetStream();
-            StreamReader reader = new StreamReader(stream);
-            StreamWriter writer = new StreamWriter(stream);
+            using (NetworkStream stream = client.GetStream())
+            using (StreamReader reader = new StreamReader(stream))
+            using (StreamWriter writer = new StreamWriter(stream))
             {
-                while (!endOfCommunication)
-                {
-                    if (!client.Connected)
-                    {
-                        client = new TcpClient();
-                        client.Connect(ep);
-                        stream = client.GetStream();
-                        reader = new StreamReader(stream);
-                        writer = new StreamWriter(stream);
-                    }
+                //while (!endOfCommunication)
+                //{
+                    //if (!client.Connected)
+                    //{
+                    //    client = new TcpClient();
+                    //    client.Connect(ep);
+                    //    //stream = client.GetStream();
+                    //    //reader = new StreamReader(stream);
+                    //    //writer = new StreamWriter(stream);
+                    //}
                     writer.WriteLine(command);
                     writer.Flush();
                     string feedback = "";
@@ -60,7 +60,7 @@ namespace GUI
                     feedback += "\n";
                     FromJSON(feedback);
                     return;
-                }
+                //}
             }
         }
         private void FromJSON(string str)
