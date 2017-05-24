@@ -11,6 +11,20 @@ namespace GUI
     class MultiPlayerMazeVM : ViewModel
     {
         private MultiPlayerMazeModel model;
+        private string direction;
+        public EventHandler ChangeOtherLoc;
+        public string Direction {
+            get { return this.direction; }
+            set
+            {
+                this.direction = value;
+                if (ChangeOtherLoc != null)
+                {
+                    this.ChangeOtherLoc(this, new EventArgs());
+                }
+
+            }
+        }
         public Maze MazeVM
         {
             get { return model.MazeVM; }
@@ -33,6 +47,12 @@ namespace GUI
             {
                 JoinGame();
             }
+            model.Move += new EventHandler(MoveVM);
+        }
+
+        private void MoveVM(object sender, EventArgs e)
+        {
+            Direction = model.Movement;
         }
 
         public void StartGame()

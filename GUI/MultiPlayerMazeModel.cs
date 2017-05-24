@@ -1,4 +1,5 @@
 ﻿using MazeLib;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,17 @@ namespace GUI
                 maze = value;
             }
         }
+        private string movement;
+        public EventHandler Move;
+        public string Movement {
+            get
+            { return movement; }
+            set
+            {
+                this.movement = value;
+                this.Move(this, new EventArgs());
+            }
+        }
         private Maze maze;
         /// <summary>
         /// The communication protocol.
@@ -38,36 +50,31 @@ namespace GUI
         /// Initializes a new instance of the <see cref="Client" /> class.
         /// </summary>
         /// 
+        private bool close;
         public MultiPlayerMazeModel()
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
             this.endOfCommunication = false;
+            this.close = false;
+            client = new TcpClient();
+            client.Connect(ep);
+            // connect("0");
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public override void connect(string command)
         {
-            client = new TcpClient();
-            client.Connect(ep);
-            bool isExecuted = true;
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
+            //client = new TcpClient();
+            //client.Connect(ep);
+            while (!endOfCommunication)
             {
-                while (!endOfCommunication)
+                writer.WriteLine(command);
+                writer.Flush();
+                string feedback = "";
+                if (!command.Contains("play"))
                 {
-                    bool isMulti = false;
-                    isExecuted = true;
-                    if (!client.Connected)
-                    {
-                        client = new TcpClient();
-                        client.Connect(ep);
-                        stream = client.GetStream();
-                        reader = new StreamReader(stream);
-                        writer = new StreamWriter(stream);
-                    }
-                    writer.WriteLine(command);
-                    writer.Flush();
-                    string feedback = "";
                     while (true)
                     {
                         feedback += reader.ReadLine();
@@ -82,74 +89,59 @@ namespace GUI
                     if (command.Contains("start") || command.Contains("join"))
                     {
                         MazeVM = Maze.FromJSON(feedback);
-                        //moveComunication(stream, reader, writer);
+                        ListenTask(reader);
                         return;
                     }
-                    
                 }
+                return;
             }
-        }
 
-        private void moveComunication(NetworkStream stream, StreamReader reader, StreamWriter writer)
+        }
+        private void ListenTask(StreamReader reader)
         {
-            bool close = false;
-            Task sendTask = new Task(() =>
-            {
-                string command;
-                while (!close)
-                {
-                    command = Console.ReadLine();
-                    if (command.Contains("close")) { close = true; }
-                    writer.WriteLine(command);
-                    writer.Flush();
-                }
-            });
+
             Task listenTask = new Task(() =>
             {
-                while (!close)
+                string feedback ="";
+                while (true)
                 {
-                    string feedback;
-                    while (true)
+                    feedback += reader.ReadLine();
+                    if (reader.Peek() == '@' && (feedback.Contains("up") || feedback.Contains("down")
+                    || feedback.Contains("left") || feedback.Contains("right")))
                     {
-                        feedback = reader.ReadLine();
-                        if (reader.Peek() == '@')
                         {
+                            if ((feedback != "close") && (feedback != "close your server"))
                             {
-                                if ((feedback != "close") && (feedback != "close your server"))
-                                {
-                                    Console.WriteLine("{0}", feedback);
-                                }
+                                FromJson(feedback);
+                                feedback = "";
                             }
-                            feedback.TrimEnd('\n');
-                            break;
                         }
-                        Console.WriteLine("{0}", feedback);
+                        //break;
                     }
-                    reader.ReadLine();
+                    //reader.ReadLine();
+                    if (feedback.Contains("other") || feedback.Contains("@"))
+                    {
+                        feedback = "";
+                    }
                     if (feedback == "close")
                     {
                         close = true;
                     }
-                    else if (feedback == "close your server")
-                    {
-                        writer.WriteLine(feedback);
-                        writer.Flush();
-                        close = true;
-                        //isExecuted = false;
-                    }
                 }
+                
             });
-            sendTask.Start();
             listenTask.Start();
-            sendTask.Wait();
-            listenTask.Wait();
+        }
+        private void FromJson(string str)
+        {
+            string ret = "";
+            JObject moveObj = JObject.Parse(str); ;
+            ret += moveObj["Name"];
+            ret += " ";
+            ret += moveObj["Direction"];
+            string[] arg = ret.Split(' ');
+            Movement = arg[1];
+        }
 
-            client.Close();
-
-            stream.Dispose();
-            writer.Dispose();
-            reader.Dispose();
-
-}
     }
 }
