@@ -115,7 +115,6 @@ namespace GUI
             string caption = "Error Detected in Input";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
-
             result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
         }
         /// <summary>
@@ -126,7 +125,7 @@ namespace GUI
         /// Connects the specified command.
         /// </summary>
         /// <param name="command">The command.</param>
-        public override void connect(string command)
+        public override void sendToServer(string command)
         {
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
@@ -171,7 +170,6 @@ namespace GUI
         /// <param name="reader">The reader.</param>
         private void ListenTask(StreamReader reader)
         {
-
             Task listenTask = new Task(() =>
             {
                 NetworkStream stream = client.GetStream();
@@ -211,9 +209,7 @@ namespace GUI
                 
             });
             listenTask.Start();
-
         }
-
         /// <summary>
         /// Froms the json.
         /// </summary>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GUI
 {
     /// <summary>
-    /// 
+    /// the multiPlaerModel interface
     /// </summary>
     interface IMultiPlayerModel
     {

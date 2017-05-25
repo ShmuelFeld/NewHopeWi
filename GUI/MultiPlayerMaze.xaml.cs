@@ -66,8 +66,10 @@ namespace GUI
         /// The mp vm
         /// </summary>
         private MultiPlayerMazeVM mpVM;
-
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerMaze"/> class.
+        /// </summary>
+        /// <param name="str">The string.</param>
         public MultiPlayerMaze(string str)
         {
             InitializeComponent();
@@ -78,24 +80,28 @@ namespace GUI
             MyBoard.MovingDown += new EventHandler(GoDown);
             MyBoard.MovingLeft += new EventHandler(GoLeft);
             MyBoard.MovingRight += new EventHandler(GoRight);
-            mpVM.ChangeOtherLoc += new EventHandler(moveOpponent);
+            mpVM.ChangeOtherLoc += new EventHandler(MoveOpponent);
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerMaze"/> class.
+        /// </summary>
+        /// <param name="rows">The rows.</param>
+        /// <param name="cols">The cols.</param>
+        /// <param name="name">The name.</param>
         public MultiPlayerMaze(int rows, int cols, string name)
         {
             InitializeComponent();
             mpVM = new MultiPlayerMazeVM(rows, cols, name);
             this.DataContext = mpVM;
             this.KeyDown += MyBoard.Viewbox_KeyDown;
-
             MyBoard.MovingUp += new EventHandler(GoUp);
             MyBoard.MovingDown += new EventHandler(GoDown);
             MyBoard.MovingLeft += new EventHandler(GoLeft);
             MyBoard.MovingRight += new EventHandler(GoRight);
-            mpVM.ChangeOtherLoc += new EventHandler(moveOpponent);
+            mpVM.ChangeOtherLoc += new EventHandler(MoveOpponent);
             mpVM.CloseEv += new EventHandler(CloseWin);
             this.Closing += MultiPlayerMaze_Closing;
         }
-
         /// <summary>
         /// Closes the win.
         /// </summary>
@@ -131,7 +137,7 @@ namespace GUI
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void moveOpponent(object sender, EventArgs e)
+        private void MoveOpponent(object sender, EventArgs e)
         {
             Position temp;
             switch (mpVM.Direction)
@@ -218,8 +224,11 @@ namespace GUI
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
+                mpVM.CloseSelf();
+                MainWindow mw = new MainWindow();
+                mw.Show();
                 this.Close();
-            }          
+            }        
             
         }
 

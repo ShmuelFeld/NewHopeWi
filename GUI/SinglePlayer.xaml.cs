@@ -46,14 +46,10 @@ namespace GUI
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-
-
             spvm.MazeCols = int.Parse(SUC.ColsValue.Text);
             spvm.MazeRows = int.Parse(SUC.RowsValue.Text);
             spvm.MazeName = SUC.NameValue.Text;
-
             SingleMaze m = new SingleMaze(spvm.MazeRows, spvm.MazeCols, spvm.MazeName);
-
             if (ConnectionError.isError)
             {
                 MainWindow w = new MainWindow();
