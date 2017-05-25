@@ -76,18 +76,6 @@ namespace GUI
         /// <summary>
         /// Initializes a new instance of the <see cref="SingleMaze"/> class.
         /// </summary>
-        public SingleMaze()
-        {
-            smVM = new SingleMazeVM();
-            if (ConnectionError.isError)
-            {
-                return;
-            }
-            InitializeComponent();
-            
-            this.DataContext = smVM;
-            this.KeyDown += userControl.Viewbox_KeyDown;
-        }
         public SingleMaze(int rows, int cols, string name)
         {
             InitializeComponent();

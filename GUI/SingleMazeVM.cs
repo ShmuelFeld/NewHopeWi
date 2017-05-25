@@ -51,13 +51,6 @@ namespace GUI
                 this.name = value;
             }
         }
-
-
-        /// <summary>
-        /// The model
-        /// </summary>
-        private SingleMazeModel model;
-
         /// <summary>
         /// Gets or sets the maze vm.
         /// </summary>
@@ -92,12 +85,6 @@ namespace GUI
         /// <summary>
         /// Initializes a new instance of the <see cref="SingleMazeVM"/> class.
         /// </summary>
-        public SingleMazeVM()
-        {
-            this.model = new SingleMazeModel();
-            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName); };
-            StartGame();
-        }
         public SingleMazeVM(int rows, int cols, string name)
         {
             this.model = new SingleMazeModel();
