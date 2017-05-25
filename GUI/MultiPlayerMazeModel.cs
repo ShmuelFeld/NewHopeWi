@@ -1,4 +1,4 @@
-﻿using MazeLib;
+using MazeLib;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace GUI
         /// </summary>
         public MultiPlayerMazeModel()
         {
-            ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
+            ep = new IPEndPoint(IPAddress.Parse(Properties.Settings.Default.ServerIP), Properties.Settings.Default.ServerPort);
             this.endOfCommunication = false;
             this.close = false;
             client = new TcpClient();
@@ -131,7 +131,6 @@ namespace GUI
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
-
             while (!endOfCommunication)
             {
                 writer.WriteLine(command);

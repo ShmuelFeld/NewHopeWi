@@ -38,9 +38,11 @@ namespace GUI
                 return;
             }
             SUC.ColsValue.Text = Properties.Settings.Default.MazeCols.ToString();
-            SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();           
+            SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();
+            SUC.NameValue.Text = Properties.Settings.Default.MazeName;
             this.DataContext = mpvm;
             InsertToComboBox(mpvm.ListOfGames);
+            ListOfGames.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -51,7 +53,8 @@ namespace GUI
         private void JoinGame_Click(object sender, RoutedEventArgs e)
         {
             mpvm.MazeName = ListOfGames.Text;
-            MultiPlayerMaze mpm = new MultiPlayerMaze("join");
+
+            MultiPlayerMaze mpm = new MultiPlayerMaze(mpvm.MazeName);
             if (ConnectionError.isError)
             {
                 MainWindow w = new MainWindow();
@@ -72,19 +75,30 @@ namespace GUI
             mpvm.MazeCols = int.Parse(SUC.ColsValue.Text);
             mpvm.MazeRows = int.Parse(SUC.RowsValue.Text);
             mpvm.MazeName = SUC.NameValue.Text;
-            WaitingWin w = new WaitingWin();
-            w.Show();
-            MultiPlayerMaze mpm = new MultiPlayerMaze("start");
-            w.Close();
-            if (ConnectionError.isError)
+
+            if (!NameExist(mpvm.MazeName))
+            {
+                WaitingWin w = new WaitingWin();
+                w.Show();
+                MultiPlayerMaze mpm = new MultiPlayerMaze(mpvm.MazeRows, mpvm.MazeCols, mpvm.MazeName);
+                w.Close();
+                mpm.Show();
+                this.Close();
+            }
+             else if (ConnectionError.isError)
             {
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();
                 return;
             }
-            mpm.Show();
-            this.Close();
+            else
+            {
+                ExistPopUp epp = new ExistPopUp();
+                epp.Show();
+                this.Close();
+            }
+
         }
         /// <summary>
         /// Inserts to ComboBox.
@@ -97,6 +111,23 @@ namespace GUI
                 ListOfGames.Items.Add(item);
             }
         }
+        private bool NameExist(string str)
+        {
+            foreach (string item in mpvm.ListOfGames)
+            {
+                if(item.Equals(str))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            mpvm.RefreshGameList();
+            InsertToComboBox(mpvm.ListOfGames);
+            ListOfGames.SelectedIndex = 0;
+        }
     }
 }

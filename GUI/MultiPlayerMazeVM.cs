@@ -1,4 +1,4 @@
-﻿using MazeLib;
+using MazeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,12 +26,48 @@ namespace GUI
         /// The change other loc
         /// </summary>
         public EventHandler ChangeOtherLoc;
+
+        public int MazeRows
+        {
+            get
+            {
+                return this.rows;
+            }
+            set
+            {
+                this.rows = value;
+            }
+        }
+        public int MazeCols
+        {
+            get
+            {
+                return this.cols;
+            }
+            set
+            {
+                this.cols = value;
+            }
+        }
+        public string MazeName
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+            }
+        }
+
         /// <summary>
         /// Gets or sets the direction.
         /// </summary>
         /// <value>
         /// The direction.
         /// </value>
+
         public string Direction {
             get { return this.direction; }
             set
@@ -63,26 +99,30 @@ namespace GUI
         /// The kind
         /// </summary>
         private string kind;
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MultiPlayerMazeVM"/> class.
-        /// </summary>
-        /// <param name="kind">The kind.</param>
-        public MultiPlayerMazeVM(string kind)
+
+        private int rows;
+        private int cols;
+        private string name;
+        public EventHandler Name;
+        public MultiPlayerMazeVM(string name)
         {
+            MazeName = name;
             this.model = new MultiPlayerMazeModel();
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName); };
-            if (kind == "start")
-            {
-                StartGame();
-            }
-            else
-            {
-                JoinGame();
-            }
+            JoinGame();
+            model.Move += new EventHandler(MoveVM);
+        }
+        public MultiPlayerMazeVM(int rows, int cols, string name)
+        {
+            MazeCols = cols;
+            MazeName = name;
+            MazeRows = rows;
+            this.model = new MultiPlayerMazeModel();
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName); };
+            StartGame();
             model.Move += new EventHandler(MoveVM);
             model.CloseEve += new EventHandler(CloseVM);
         }
-
         /// <summary>
         /// The close ev
         /// </summary>
@@ -122,7 +162,7 @@ namespace GUI
         public void StartGame()
         {
             string command = "start ";
-            command += Properties.Settings.Default.MazeName + " " + Properties.Settings.Default.MazeRows + " " + Properties.Settings.Default.MazeCols;
+            command += MazeName + " " + MazeRows + " " + MazeCols;
             model.connect(command);
         }
 
@@ -132,7 +172,7 @@ namespace GUI
         public void JoinGame()
         {
             string command = "join ";
-            command += Properties.Settings.Default.MazeName;
+            command += MazeName;
             model.connect(command);
         }
         /// <summary>

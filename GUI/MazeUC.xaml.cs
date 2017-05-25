@@ -367,7 +367,6 @@ namespace GUI
                 counter += 2;
             }
         }
-
         /// <summary>
         /// Handles the Loaded event of the UserControl control.
         /// </summary>
@@ -386,6 +385,7 @@ namespace GUI
         public void Viewbox_KeyDown(object sender, KeyEventArgs e)
         {
             Position temp = currentPos;
+
             switch (e.Key)
             {
                 case (Key.Up):

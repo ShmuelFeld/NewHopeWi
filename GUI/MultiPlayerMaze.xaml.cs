@@ -67,20 +67,26 @@ namespace GUI
         /// </summary>
         private MultiPlayerMazeVM mpVM;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MultiPlayerMaze"/> class.
-        /// </summary>
-        /// <param name="kind">The kind.</param>
-        public MultiPlayerMaze(string kind)
+
+        public MultiPlayerMaze(string str)
         {
             InitializeComponent();
-            mpVM = new MultiPlayerMazeVM(kind);
-            if (ConnectionError.isError)
-            {
-                return;
-            }
+            mpVM = new MultiPlayerMazeVM(str);
             this.DataContext = mpVM;
             this.KeyDown += MyBoard.Viewbox_KeyDown;
+            MyBoard.MovingUp += new EventHandler(GoUp);
+            MyBoard.MovingDown += new EventHandler(GoDown);
+            MyBoard.MovingLeft += new EventHandler(GoLeft);
+            MyBoard.MovingRight += new EventHandler(GoRight);
+            mpVM.ChangeOtherLoc += new EventHandler(moveOpponent);
+        }
+        public MultiPlayerMaze(int rows, int cols, string name)
+        {
+            InitializeComponent();
+            mpVM = new MultiPlayerMazeVM(rows, cols, name);
+            this.DataContext = mpVM;
+            this.KeyDown += MyBoard.Viewbox_KeyDown;
+
             MyBoard.MovingUp += new EventHandler(GoUp);
             MyBoard.MovingDown += new EventHandler(GoDown);
             MyBoard.MovingLeft += new EventHandler(GoLeft);
@@ -118,6 +124,7 @@ namespace GUI
            }));         
 
         }
+
 
         /// <summary>
         /// Moves the opponent.

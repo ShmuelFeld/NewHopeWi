@@ -88,6 +88,12 @@ namespace GUI
             this.DataContext = smVM;
             this.KeyDown += userControl.Viewbox_KeyDown;
         }
+        public SingleMaze(int rows, int cols, string name)
+        {
+            InitializeComponent();
+            smVM = new SingleMazeVM(rows, cols, name);
+            this.DataContext = smVM;
+        }
 
         /// <summary>
         /// Handles the Click event of the MainWin control.

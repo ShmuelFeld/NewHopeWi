@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,11 +28,19 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+
+            Properties.Settings.Default.MazeCols = 15;
+            Properties.Settings.Default.MazeRows = 15;
+            Properties.Settings.Default.MazeName = "Cinderella";
+            Properties.Settings.Default.ServerIP = "127.0.0.1";
+            Properties.Settings.Default.ServerPort = 8000;
+
+
             ImageBrush myBrush = new ImageBrush();
             myBrush.ImageSource =
                 new BitmapImage(new Uri("../../resources/palace.gif", UriKind.Relative));
             this.Background = myBrush;
-         
+
         }
 
         /// <summary>
@@ -72,7 +80,6 @@ namespace GUI
         {
             SettingsWindow sw = new SettingsWindow();
             sw.Show();
-            this.Close();
         }
     }
 }

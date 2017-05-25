@@ -15,28 +15,31 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock FontFamily="Pristina" FontSize="15">Server IP:</TextBlock>
-        <TextBox x:Name="txtIP" Grid.Column="1" FontFamily="Pristina" FontSize="15" Text="{Binding ServerIP}"></TextBox>
-        <TextBlock Grid.Row="1" FontFamily="Pristina" FontSize="15">Server Port:</TextBlock>
-        <TextBox x:Name="txtPort" FontFamily="Pristina" FontSize="15" Grid.Row="1" Grid.Column="2" Text="{Binding ServerPort}"></TextBox>
-        <TextBlock Grid.Row="2" FontFamily="Pristina" FontSize="15">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" FontFamily="Pristina" FontSize="15" Grid.Row="2" Grid.Column="2" Text="{Binding MazeRows}"></TextBox>
-        <TextBlock Grid.Row="3" FontFamily="Pristina" FontSize="15">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" FontFamily="Pristina" FontSize="15" Grid.Row="3" Grid.Column="2" Text="{Binding MazeCols}"></TextBox>
-        <TextBlock Grid.Row="4" FontFamily="Pristina" FontSize="15">Search algorithm:</TextBlock>
-        <ComboBox x:Name="cboSearchAlgo" FontFamily="Pristina" FontSize="15" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left"
-SelectedIndex="{Binding SearchAlgorithm}"  IsEditable="False">
+            <TextBlock FontFamily="Pristina" FontSize="15">Server IP:</TextBlock>
+            <TextBox x:Name="txtIP" Grid.Column="1" FontFamily="Pristina" FontSize="15" Text="{Binding ServerIP}"></TextBox>
+            <TextBlock Grid.Row="1" FontFamily="Pristina" FontSize="15">Server Port:</TextBlock>
+            <TextBox x:Name="txtPort" FontFamily="Pristina" FontSize="15" Grid.Row="1" Grid.Column="1" Text="{Binding ServerPort}"></TextBox>
+            <TextBlock FontFamily="Pristina"  Grid.Row="2" FontSize="15">Maze name:</TextBlock>
+            <TextBox x:Name="txtName" Grid.Row="2" Grid.Column="1" FontFamily="Pristina" FontSize="15" Text="{Binding MazeName}"></TextBox>
+            <TextBlock Grid.Row="3" FontFamily="Pristina" FontSize="15">Maze rows:</TextBlock>
+            <TextBox x:Name="txtRows" FontFamily="Pristina" FontSize="15" Grid.Row="3" Grid.Column="1" Text="{Binding MazeRows}"></TextBox>
+            <TextBlock Grid.Row="4" FontFamily="Pristina" FontSize="15">Maze columns:</TextBlock>
+            <TextBox x:Name="txtCols" FontFamily="Pristina" FontSize="15" Grid.Row="4" Grid.Column="1" Text="{Binding MazeCols}"></TextBox>
+            <TextBlock Grid.Row="5" FontFamily="Pristina" FontSize="15">Search algorithm:</TextBlock>
+        <ComboBox x:Name="cboSearchAlgo" FontFamily="Pristina" FontSize="15" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left"
+            SelectedIndex="{Binding SearchAlgorithm}"  IsEditable="False">
             <ComboBoxItem>BFS</ComboBoxItem>
             <ComboBoxItem>DFS</ComboBoxItem>
         </ComboBox>
-        <Button Content="OK" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Margin="0,67,10,54" VerticalAlignment="Center" Width="92" Padding="3" Height="39" Click="btnOK_Click" RenderTransformOrigin="0.23,0.444" Background="#FFEA8888" FontFamily="Pristina" BorderBrush="#FF8D1A1A" FontSize="20"/>
-            <Button Content="cancel" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="10,67,0,54" VerticalAlignment="Center" Width="92" Padding="3" Height="39" Click="btnCancel_Click" RenderTransformOrigin="0.23,0.444" Background="#FFEA8888" FontFamily="Pristina" BorderBrush="#FF8D1A1A" FontSize="20"/>
+        <Button Content="OK" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="0,67,10,54" VerticalAlignment="Center" Width="92" Padding="3" Height="39" Click="btnOK_Click" RenderTransformOrigin="0.23,0.444" Background="#FFEA8888" FontFamily="Pristina" BorderBrush="#FF8D1A1A" FontSize="20"/>
+            <Button Content="cancel" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Margin="10,67,0,54" VerticalAlignment="Center" Width="92" Padding="3" Height="39" Click="btnCancel_Click" RenderTransformOrigin="0.23,0.444" Background="#FFEA8888" FontFamily="Pristina" BorderBrush="#FF8D1A1A" FontSize="20"/>
     </Grid>
     </Viewbox>
 </Window>

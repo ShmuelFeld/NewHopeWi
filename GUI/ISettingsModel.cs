@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,9 +46,10 @@ namespace GUI
         /// The search algorithm.
         /// </value>
         int SearchAlgorithm { get; set; }
-        /// <summary>
-        /// Saves the settings.
-        /// </summary>
-        void SaveSettings();
+
+        string MazeName { get; set; }
+
+        void SaveSettings();
+
     }
 }

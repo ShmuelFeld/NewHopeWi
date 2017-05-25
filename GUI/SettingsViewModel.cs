@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -99,12 +99,23 @@ namespace GUI
                 NotifyPropertyChanged("SearchAlgorithm");
             }
         }
+        public string MazeName
+        {
+            get { return model.MazeName; }
+            set
+            {
+                model.MazeName = value;
+                NotifyPropertyChanged("MazeName");
+            }
+        }
+
         /// <summary>
         /// Saves the settings.
         /// </summary>
         public void SaveSettings()
         {
             model.SaveSettings();
-        }
+        }
+
     }
 }

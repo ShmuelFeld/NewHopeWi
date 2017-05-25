@@ -43,8 +43,6 @@ namespace GUI
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             vm.SaveSettings();
-            MainWindow win = new MainWindow();
-            win.Show();
             this.Close();
         }
         /// <summary>
@@ -54,8 +52,6 @@ namespace GUI
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow win = new MainWindow();
-            win.Show();
             this.Close();
         }
     }

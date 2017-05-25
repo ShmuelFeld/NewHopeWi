@@ -26,7 +26,7 @@ namespace GUI
         {
             this.model = model;
             list = new List<string>();
-            model.connect("list");
+            RefreshGameList();
         }
 
         /// <summary>
@@ -108,6 +108,10 @@ namespace GUI
                 model.MazeName = value;
                 NotifyPropertyChanged("MazeName");
             }
+        }
+        public void RefreshGameList()
+        {
+            model.connect("list");
         }
     }
 }
