@@ -22,6 +22,10 @@ namespace GUI
         public SuccessWin()
         {
             InitializeComponent();
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource =
+                new BitmapImage(new Uri("../../resources/winner.jpg", UriKind.Relative));
+            this.Background = myBrush;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

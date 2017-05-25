@@ -12,10 +12,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-            <Image Source="C:\Users\USER\Source\Repos\NewHopeWi\resources\winner.jpg" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="300" Width="300" Margin="-48,0,0,0"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
         </Grid>
     </Viewbox>
 </Window>

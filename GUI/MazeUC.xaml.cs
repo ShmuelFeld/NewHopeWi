@@ -348,6 +348,7 @@ namespace GUI
             if ((currentPos.Col == GoalPos.Col) && (currentPos.Row == GoalPos.Row))
             {
                 SuccessWin win = new SuccessWin();
+                win.Show();
             }
             e.Handled = true;
 

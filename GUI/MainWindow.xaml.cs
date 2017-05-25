@@ -23,10 +23,11 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
-            img = new Image()
-            {
-                Source = new BitmapImage(new Uri("/../../resources/palace.gif", UriKind.Relative))
-            };
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource =
+                new BitmapImage(new Uri("../../resources/palace.gif", UriKind.Relative));
+            this.Background = myBrush;
+         
         }
 
         private void SinglePlayer(object sender, RoutedEventArgs e)
