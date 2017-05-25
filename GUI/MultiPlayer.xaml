@@ -9,7 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -17,12 +17,10 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <Label FontSize="20" FontFamily="Pristina" >List of games:</Label>
-            <ComboBox x:Name="ListOfGames" FontSize="20" FontFamily="Pristina" Background="#FFEE8787" Margin="5" SelectedItem="0" Width="65"></ComboBox>
+            <ComboBox x:Name="ListOfGames" FontSize="20" FontFamily="Pristina" Background="#FFEE8787" Margin="10" SelectedItem="0" Width="Auto"></ComboBox>
         </DockPanel>
-        <Button x:Name="RefreshButton" Click="RefreshButton_Click" Width="50" Grid.Row="1">
-            <StackPanel>
-                <Image Source="C:\Users\Sharon\Desktop\imageForMaze\refresh.png"/>
-            </StackPanel>
+        <Button x:Name="RefreshButton" Click="RefreshButton_Click" Width="170" Grid.Row="1" Height="30">
+            Press to refresh the game list
         </Button> 
         <Button Content="Join Game" Click="JoinGame_Click" Width="100" FontSize="24" FontFamily="Pristina" Background="#FFEE8787" Grid.Row="2" Margin="5"/>
         <local:BasicUserControl FontSize="20" FontFamily="Pristina" x:Name="SUC" Grid.Row="3"/>

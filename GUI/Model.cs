@@ -31,6 +31,6 @@ namespace GUI
         /// Connects the specified command.
         /// </summary>
         /// <param name="command">The command.</param>
-        public abstract void connect(string command);
+        public abstract void sendToServer(string command);
     }
 }

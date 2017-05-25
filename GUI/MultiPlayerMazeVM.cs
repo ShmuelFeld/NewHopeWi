@@ -26,7 +26,9 @@ namespace GUI
         /// The change other loc
         /// </summary>
         public EventHandler ChangeOtherLoc;
-
+        /// <summary>
+        /// property for number of rows in the maze
+        /// </summary>
         public int MazeRows
         {
             get
@@ -38,6 +40,9 @@ namespace GUI
                 this.rows = value;
             }
         }
+        /// <summary>
+        /// property for number of columns in the maze
+        /// </summary>
         public int MazeCols
         {
             get
@@ -49,6 +54,9 @@ namespace GUI
                 this.cols = value;
             }
         }
+        /// <summary>
+        /// /// property for the name of the maze
+        /// </summary>
         public string MazeName
         {
             get
@@ -60,14 +68,12 @@ namespace GUI
                 this.name = value;
             }
         }
-
         /// <summary>
         /// Gets or sets the direction.
         /// </summary>
         /// <value>
         /// The direction.
         /// </value>
-
         public string Direction {
             get { return this.direction; }
             set
@@ -99,11 +105,26 @@ namespace GUI
         /// The kind
         /// </summary>
         private string kind;
-
+        /// <summary>
+        /// the rows
+        /// </summary>
         private int rows;
+        /// <summary>
+        /// the columns
+        /// </summary>
         private int cols;
+        /// <summary>
+        /// The name
+        /// </summary>
         private string name;
+        /// <summary>
+        /// The nameEvent
+        /// </summary>
         public EventHandler Name;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerMazeVM"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
         public MultiPlayerMazeVM(string name)
         {
             MazeName = name;
@@ -112,6 +133,12 @@ namespace GUI
             JoinGame();
             model.Move += new EventHandler(MoveVM);
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerMazeVM"/> class.
+        /// </summary>
+        /// <param name="rows">The rows.</param>
+        /// <param name="cols">The cols.</param>
+        /// <param name="name">The name.</param>
         public MultiPlayerMazeVM(int rows, int cols, string name)
         {
             MazeCols = cols;
@@ -144,7 +171,7 @@ namespace GUI
         /// </summary>
         public void CloseSelf()
         {
-            model.connect("close");
+            model.sendToServer("close");
         }
         /// <summary>
         /// Moves the vm.
@@ -163,7 +190,7 @@ namespace GUI
         {
             string command = "start ";
             command += MazeName + " " + MazeRows + " " + MazeCols;
-            model.connect(command);
+            model.sendToServer(command);
         }
 
         /// <summary>
@@ -173,7 +200,7 @@ namespace GUI
         {
             string command = "join ";
             command += MazeName;
-            model.connect(command);
+            model.sendToServer(command);
         }
         /// <summary>
         /// Movements the notify.
@@ -183,7 +210,7 @@ namespace GUI
         {
             string command = "play ";
             command += direction;
-            model.connect(command);
+            model.sendToServer(command);
         }
     }
 }

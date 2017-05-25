@@ -104,7 +104,7 @@ namespace GUI
         {
             string command = "generate ";
             command += MazeName + " " + MazeRows + " " + MazeCols;
-            model.connect(command);
+            model.sendToServer(command);
             
         }
         /// <summary>
@@ -114,7 +114,7 @@ namespace GUI
         {
             string command = "solve ";
             command += MazeName + " " + Properties.Settings.Default.SearchAlgorithm;
-            model.connect(command);
+            model.sendToServer(command);
         }
        
     }

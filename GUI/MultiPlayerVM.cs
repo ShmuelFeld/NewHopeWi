@@ -109,9 +109,12 @@ namespace GUI
                 NotifyPropertyChanged("MazeName");
             }
         }
+        /// <summary>
+        /// Refreshes the game list.
+        /// </summary>
         public void RefreshGameList()
         {
-            model.connect("list");
+            model.sendToServer("list");
         }
     }
 }

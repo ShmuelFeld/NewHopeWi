@@ -53,7 +53,10 @@ namespace GUI
         private void JoinGame_Click(object sender, RoutedEventArgs e)
         {
             mpvm.MazeName = ListOfGames.Text;
-
+            if (mpvm.MazeName == "")
+            {
+                return;
+            }
             MultiPlayerMaze mpm = new MultiPlayerMaze(mpvm.MazeName);
             if (ConnectionError.isError)
             {
@@ -122,7 +125,11 @@ namespace GUI
             }
             return false;
         }
-
+        /// <summary>
+        /// refresh the combe box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             mpvm.RefreshGameList();

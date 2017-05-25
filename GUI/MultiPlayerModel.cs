@@ -67,7 +67,7 @@ namespace GUI
         /// Connects the specified command.
         /// </summary>
         /// <param name="command">The command.</param>
-        public override void connect(string command)
+        public override void sendToServer(string command)
         {
             client = new TcpClient();
             try

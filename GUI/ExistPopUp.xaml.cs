@@ -23,7 +23,11 @@ namespace GUI
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// a winfow that represent in error
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MultiPlayer mp = new MultiPlayer();

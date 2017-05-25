@@ -99,6 +99,12 @@ namespace GUI
                 NotifyPropertyChanged("SearchAlgorithm");
             }
         }
+        /// <summary>
+        /// Gets or sets the name of the maze.
+        /// </summary>
+        /// <value>
+        /// The name of the maze.
+        /// </value>
         public string MazeName
         {
             get { return model.MazeName; }

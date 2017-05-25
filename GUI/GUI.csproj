@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -67,22 +67,13 @@
     </ApplicationDefinition>
     <Compile Include="ApplicationSettingsModel.cs" />
     <Compile Include="ApplicationSinglePlayerModel.cs" />
-    <Compile Include="BasicMPUC.xaml.cs">
-      <DependentUpon>BasicMPUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="BasicUC.xaml.cs">
-      <DependentUpon>BasicUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="BasicUserControl.xaml.cs">
       <DependentUpon>BasicUserControl.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="ExistPopUp.xaml.cs">
       <DependentUpon>ExistPopUp.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="ConnectionError.cs" />
-
     <Compile Include="IMultiPlayerModel.cs" />
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
@@ -123,14 +114,6 @@
     </Compile>
     <Compile Include="SinglePlayerVM.cs" />
     <Compile Include="ViewModel.cs" />
-    <Page Include="BasicMPUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="BasicUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="BasicUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

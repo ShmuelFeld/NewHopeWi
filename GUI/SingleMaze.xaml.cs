@@ -81,6 +81,7 @@ namespace GUI
             InitializeComponent();
             smVM = new SingleMazeVM(rows, cols, name);
             this.DataContext = smVM;
+            this.KeyDown += userControl.Viewbox_KeyDown;
         }
 
         /// <summary>

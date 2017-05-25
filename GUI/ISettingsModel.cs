@@ -46,9 +46,13 @@ namespace GUI
         /// The search algorithm.
         /// </value>
         int SearchAlgorithm { get; set; }
-
+        /// <summary>
+        /// the name of the maze
+        /// </summary>
         string MazeName { get; set; }
-
+        /// <summary>
+        /// save those properties in the config
+        /// </summary>
         void SaveSettings();
 
     }
