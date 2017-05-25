@@ -30,16 +30,6 @@ namespace GUI
         public Position GoalPos { get; set; }
         public string SolveString { get; set; }
 
-        //// cancel the control box of the window
-        //private const int GWL_STYLE = -16;
-        //private const int WS_SYSMENU = 0x80000;
-
-        //[DllImport("user32.dll", SetLastError = true)]
-        //private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
-        //[DllImport("user32.dll")]
-        //private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-
         private SingleMazeVM smVM;
 
         public SingleMaze()
@@ -63,7 +53,7 @@ namespace GUI
         private void BackToMain()
         {
             string message = "are you sure?";
-            string caption = "Error Detected in Input";
+            string caption = "warning!";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
 

@@ -57,10 +57,20 @@ namespace GUI
            DispatcherPriority.Background,
            new Action(() =>
            {
-               this.Closing -= MultiPlayerMaze_Closing;
-               MainWindow m = new MainWindow();
-               m.Show();
-               this.Close();
+               string message = "The other player has left the game, you will be moved to main window";
+               string caption = "warning";
+               MessageBoxButtons buttons = MessageBoxButtons.OK;
+               DialogResult result;
+
+               result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
+
+               if (result == System.Windows.Forms.DialogResult.OK)
+               {
+                   this.Closing -= MultiPlayerMaze_Closing;
+                   MainWindow m = new MainWindow();
+                   m.Show();
+                   this.Close();
+               }               
            }));         
 
         }
@@ -119,7 +129,7 @@ namespace GUI
         private void BackToMainWin_Click(object sender, RoutedEventArgs e)
         {
             string message = "are you sure?";
-            string caption = "Error Detected in Input";
+            string caption = "warning!";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
 

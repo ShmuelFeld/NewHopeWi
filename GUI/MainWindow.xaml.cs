@@ -23,6 +23,10 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+            img = new Image()
+            {
+                Source = new BitmapImage(new Uri("/../../resources/palace.gif", UriKind.Relative))
+            };
         }
 
         private void SinglePlayer(object sender, RoutedEventArgs e)
