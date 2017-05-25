@@ -21,52 +21,18 @@ namespace GUI
     /// <summary>
     /// Interaction logic for MazeUC.xaml
     /// </summary>
-    /// <seealso cref="System.Windows.Controls.UserControl" />
-    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class MazeUC : UserControl
     {
-        /// <summary>
-        /// The player
-        /// </summary>
-        private Rectangle player, dest;
-        /// <summary>
-        /// The rectangles arr
-        /// </summary>
+        private Image player, dest;
         public static Rectangle[,] rectanglesArr;
-        /// <summary>
-        /// The current position
-        /// </summary>
         private Position currentPos;
-        /// <summary>
-        /// The height
-        /// </summary>
         public static int height, width;
-        /// <summary>
-        /// The maze can
-        /// </summary>
         public static Canvas mazeCan;
-        /// <summary>
-        /// The moving up
-        /// </summary>
         public EventHandler MovingUp;
-        /// <summary>
-        /// The moving left
-        /// </summary>
         public EventHandler MovingLeft;
-        /// <summary>
-        /// The moving right
-        /// </summary>
         public EventHandler MovingRight;
-        /// <summary>
-        /// The moving down
-        /// </summary>
         public EventHandler MovingDown;
-        /// <summary>
-        /// Gets or sets the current.
-        /// </summary>
-        /// <value>
-        /// The current.
-        /// </value>
+        //public EventHandler Close;
         public Position Current
         {
             get
@@ -78,12 +44,6 @@ namespace GUI
                 this.currentPos = value;
             }
         }
-        /// <summary>
-        /// Gets or sets the maze rows.
-        /// </summary>
-        /// <value>
-        /// The maze rows.
-        /// </value>
         public int MazeRows
         {
             get
@@ -95,16 +55,7 @@ namespace GUI
                 SetValue(RowsProperty, value);
             }
         }
-        /// <summary>
-        /// The rows property
-        /// </summary>
         public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("MazeRows", typeof(int), typeof(MazeUC));
-        /// <summary>
-        /// Gets or sets the initial position.
-        /// </summary>
-        /// <value>
-        /// The initial position.
-        /// </value>
         public Position InitialPos
         {
             get
@@ -116,16 +67,7 @@ namespace GUI
                 SetValue(InitialPosProperty, value);
             }
         }
-        /// <summary>
-        /// The initial position property
-        /// </summary>
         public static readonly DependencyProperty InitialPosProperty = DependencyProperty.Register("InitialPos", typeof(Position), typeof(MazeUC));
-        /// <summary>
-        /// Gets or sets the goal position.
-        /// </summary>
-        /// <value>
-        /// The goal position.
-        /// </value>
         public Position GoalPos
         {
             get
@@ -137,16 +79,7 @@ namespace GUI
                 SetValue(GoalPosProperty, value);
             }
         }
-        /// <summary>
-        /// The goal position property
-        /// </summary>
         public static readonly DependencyProperty GoalPosProperty = DependencyProperty.Register("GoalPos", typeof(Position), typeof(MazeUC));
-        /// <summary>
-        /// Gets or sets the maze cols.
-        /// </summary>
-        /// <value>
-        /// The maze cols.
-        /// </value>
         public int MazeCols
         {
             get
@@ -158,17 +91,8 @@ namespace GUI
                 SetValue(ColsProperty, value);
             }
         }
-        /// <summary>
-        /// The cols property
-        /// </summary>
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("MazeCols", typeof(int), typeof(MazeUC));
-        /// <summary>
-        /// Gets or sets the name of the maze.
-        /// </summary>
-        /// <value>
-        /// The name of the maze.
-        /// </value>
         public string MazeName
         {
             get
@@ -180,18 +104,9 @@ namespace GUI
                 SetValue(MazeNameProperty, value);
             }
         }
-        /// <summary>
-        /// The maze name property
-        /// </summary>
         public static readonly DependencyProperty MazeNameProperty =
             DependencyProperty.Register("MazeName", typeof(string),
                 typeof(MazeUC));
-        /// <summary>
-        /// Gets or sets the maze string.
-        /// </summary>
-        /// <value>
-        /// The maze string.
-        /// </value>
         public string MazeString
         {
             get
@@ -203,18 +118,9 @@ namespace GUI
                 SetValue(MazeStringProperty, value);
             }
         }
-        /// <summary>
-        /// The maze string property
-        /// </summary>
         public static readonly DependencyProperty MazeStringProperty =
             DependencyProperty.Register("MazeString", typeof(string),
                 typeof(MazeUC));
-        /// <summary>
-        /// Gets or sets the solve string.
-        /// </summary>
-        /// <value>
-        /// The solve string.
-        /// </value>
         public string SolveString
         {
             get
@@ -226,26 +132,15 @@ namespace GUI
                 SetValue(SolveStringProperty, value);
             }
         }
-        /// <summary>
-        /// The solve string property
-        /// </summary>
         public static readonly DependencyProperty SolveStringProperty =
             DependencyProperty.Register("SolveString", typeof(string),
                 typeof(MazeUC), new PropertyMetadata(onSolvePropertyChanged));
 
-        /// <summary>
-        /// Ons the solve property changed.
-        /// </summary>
-        /// <param name="d">The d.</param>
-        /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
         private static void onSolvePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             ((MazeUC)d).SolveMaze();
         }
 
-        /// <summary>
-        /// Solves the maze.
-        /// </summary>
         private void SolveMaze()
         {
             rectanglesArr[currentPos.Row, currentPos.Col].Fill = new SolidColorBrush(System.Windows.Media.Colors.White);
@@ -288,17 +183,11 @@ namespace GUI
                 
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MazeUC"/> class.
-        /// </summary>
         public MazeUC()
         {
             InitializeComponent();
             mazeCan = mazeCanvas;
         }
-        /// <summary>
-        /// Draws the maze.
-        /// </summary>
         public void drawMaze()
         {
             int rows = MazeRows;
@@ -328,10 +217,13 @@ namespace GUI
                     }
                     else if (charArr[counter] == '*')
                     {
-                        player = rectanglesArr[i, j];
-                        ImageBrush playerImg = new ImageBrush();
-                        playerImg.ImageSource = new BitmapImage(new Uri(@"../../resources/prince.png", UriKind.Relative));
-                        player.Fill = playerImg;
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
+                        player = new Image()
+                        {
+                            Source = new BitmapImage(new Uri("../../resources/prince.png", UriKind.Relative)),
+                            Height = height,
+                            Width = width,
+                         };
                         mazeCanvas.Children.Add(player);
                         Canvas.SetLeft(player, width * j);
                         Canvas.SetTop(player, height * i);
@@ -341,10 +233,17 @@ namespace GUI
                     
                     else if (charArr[counter] == '#')
                     {
-                        dest = rectanglesArr[i, j];
-                        ImageBrush playerImg = new ImageBrush();
-                        playerImg.ImageSource = new BitmapImage(new Uri(@"..\..\resources\cinderella.jpg", UriKind.Relative));
-                        dest.Fill = playerImg;
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
+                        //ImageBrush playerImg = new ImageBrush();
+                        //playerImg.ImageSource = new BitmapImage(new Uri("../../resources/cinderella.jpg"));
+
+                            //playerImage 
+                        dest = new Image()
+                        {
+                            Source = new BitmapImage(new Uri("../../resources/cinderella.jpg", UriKind.Relative)),
+                            Height = height,
+                            Width = width,
+                        };
                         mazeCanvas.Children.Add(dest);
                         Canvas.SetLeft(dest, width * j);
                         Canvas.SetTop(dest, height * i);
@@ -367,25 +266,21 @@ namespace GUI
                 counter += 2;
             }
         }
-        /// <summary>
-        /// Handles the Loaded event of the UserControl control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+
+        private void mazeCanvas_Loaded(object sender, RoutedEventArgs e)
+        {
+            //var window = Window.GetWindow(this);
+            //window.KeyDown += Viewbox_KeyDown;
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             drawMaze();
 
         }
-        /// <summary>
-        /// Handles the KeyDown event of the Viewbox control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
         public void Viewbox_KeyDown(object sender, KeyEventArgs e)
         {
             Position temp = currentPos;
-
             switch (e.Key)
             {
                 case (Key.Up):
@@ -471,23 +366,21 @@ namespace GUI
             {
                 SuccessWin win = new SuccessWin();
                 win.Show();
+                //if (Close != null)
+                //{
+                //    this.Close(this, new EventArgs());
+                //}
             }
             e.Handled = true;
 
         }
 
-        /// <summary>
-        /// Starts the over.
-        /// </summary>
         public void startOver()
         {
             currentPos = InitialPos;
             Canvas.SetLeft(player, width * currentPos.Col);
             Canvas.SetTop(player, height * currentPos.Row);
         }
-        /// <summary>
-        /// Updates the loc.
-        /// </summary>
         public void UpdateLoc()
         {
             Application.Current.Dispatcher.Invoke(

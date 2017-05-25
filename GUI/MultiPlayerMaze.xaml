@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="MultiPlayerMaze" Height="300" Width="300">
+        Title="{Binding MazeVM.Name}" Height="300" Width="300">
     <Viewbox>
     <StackPanel>
         <Button FontSize="10" Width="100" Click="BackToMainWin_Click" Margin="5">

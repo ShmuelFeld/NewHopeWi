@@ -1,4 +1,4 @@
-﻿using MazeLib;
+using MazeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="GUI.ViewModel" />
     class SingleMazeVM : ViewModel
     {
+
         private int rows;
         private int cols;
         private string name;
@@ -46,6 +51,20 @@ namespace GUI
                 this.name = value;
             }
         }
+
+
+        /// <summary>
+        /// The model
+        /// </summary>
+        private SingleMazeModel model;
+
+        /// <summary>
+        /// Gets or sets the maze vm.
+        /// </summary>
+        /// <value>
+        /// The maze vm.
+        /// </value>
+
         public Maze MazeVM
         {
             get { return model.MazeVM; }
@@ -55,6 +74,12 @@ namespace GUI
                 NotifyPropertyChanged("MazeVM");
             }
         }
+        /// <summary>
+        /// Gets or sets the solve vm.
+        /// </summary>
+        /// <value>
+        /// The solve vm.
+        /// </value>
         public string SolveVM
         {
             get { return model.SolveVM; }
@@ -64,6 +89,9 @@ namespace GUI
                 NotifyPropertyChanged("SolveVM");
             }
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SingleMazeVM"/> class.
+        /// </summary>
         public SingleMazeVM()
         {
             this.model = new SingleMazeModel();
@@ -79,12 +107,22 @@ namespace GUI
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName); };
             StartGame();
         }
+
+
+        /// <summary>
+        /// Starts the game.
+        /// </summary>
+
         public void StartGame()
         {
             string command = "generate ";
             command += MazeName + " " + MazeRows + " " + MazeCols;
             model.connect(command);
+            
         }
+        /// <summary>
+        /// Solves the maze.
+        /// </summary>
         public void SolveMaze()
         {
             string command = "solve ";

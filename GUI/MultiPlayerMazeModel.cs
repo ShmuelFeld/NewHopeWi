@@ -1,4 +1,4 @@
-﻿using MazeLib;
+using MazeLib;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -9,11 +9,22 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GUI
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="GUI.Model" />
     class MultiPlayerMazeModel : Model
     {
+        /// <summary>
+        /// Gets or sets the maze vm.
+        /// </summary>
+        /// <value>
+        /// The maze vm.
+        /// </value>
         public Maze MazeVM
         {
             get { return maze; }
@@ -22,8 +33,24 @@ namespace GUI
                 maze = value;
             }
         }
+        /// <summary>
+        /// The movement
+        /// </summary>
         private string movement;
+        /// <summary>
+        /// The move
+        /// </summary>
         public EventHandler Move;
+        /// <summary>
+        /// The close eve
+        /// </summary>
+        public EventHandler CloseEve;
+        /// <summary>
+        /// Gets or sets the movement.
+        /// </summary>
+        /// <value>
+        /// The movement.
+        /// </value>
         public string Movement {
             get
             { return movement; }
@@ -33,6 +60,9 @@ namespace GUI
                 this.Move(this, new EventArgs());
             }
         }
+        /// <summary>
+        /// The maze
+        /// </summary>
         private Maze maze;
         /// <summary>
         /// The communication protocol.
@@ -49,18 +79,53 @@ namespace GUI
         /// <summary>
         /// Initializes a new instance of the <see cref="Client" /> class.
         /// </summary>
-        /// 
         private bool close;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerMazeModel"/> class.
+        /// </summary>
         public MultiPlayerMazeModel()
         {
             ep = new IPEndPoint(IPAddress.Parse(Properties.Settings.Default.ServerIP), Properties.Settings.Default.ServerPort);
             this.endOfCommunication = false;
             this.close = false;
             client = new TcpClient();
-            client.Connect(ep);
-            // connect("0");
+            try
+            {
+                client.Connect(ep);
+            }
+            catch (ArgumentNullException e)
+            {
+                ConnectionErrorMessage();
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                ConnectionErrorMessage();
+            }
+            catch(SocketException e)
+            {
+                ConnectionErrorMessage();
+            }
         }
+        /// <summary>
+        /// Connections the error message.
+        /// </summary>
+        private void ConnectionErrorMessage()
+        {
+            string message = "Error connecting to server, please return to main window";
+            string caption = "Error Detected in Input";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
+        }
+        /// <summary>
+        /// Occurs when [property changed].
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Connects the specified command.
+        /// </summary>
+        /// <param name="command">The command.</param>
         public override void connect(string command)
         {
             NetworkStream stream = client.GetStream();
@@ -71,7 +136,7 @@ namespace GUI
                 writer.WriteLine(command);
                 writer.Flush();
                 string feedback = "";
-                if (!command.Contains("play"))
+                if (!command.Contains("play") && !command.Contains("close"))
                 {
                     while (true)
                     {
@@ -91,17 +156,29 @@ namespace GUI
                         return;
                     }
                 }
+                if (command.Contains("close"))
+                {
+                    endOfCommunication = true;
+                }
                 return;
             }
+            return;
 
         }
+        /// <summary>
+        /// Listens the task.
+        /// </summary>
+        /// <param name="reader">The reader.</param>
         private void ListenTask(StreamReader reader)
         {
 
             Task listenTask = new Task(() =>
             {
+                NetworkStream stream = client.GetStream();
+                StreamWriter writer = new StreamWriter(stream);
+                bool close = false;
                 string feedback ="";
-                while (true)
+                while (!close)
                 {
                     feedback += reader.ReadLine();
                     if (reader.Peek() == '@' && (feedback.Contains("up") || feedback.Contains("down")
@@ -114,22 +191,33 @@ namespace GUI
                                 feedback = "";
                             }
                         }
-                        //break;
                     }
-                    //reader.ReadLine();
                     if (feedback.Contains("other") || feedback.Contains("@"))
                     {
                         feedback = "";
                     }
-                    if (feedback == "close")
+                    if (feedback == "close your server") 
                     {
+                        if(CloseEve != null)
+                        {
+                            this.CloseEve(this, new EventArgs());
+                        }
+                        writer.WriteLine(feedback);
+                        writer.Flush();
+                        close = true;
                         close = true;
                     }
                 }
                 
             });
             listenTask.Start();
+
         }
+
+        /// <summary>
+        /// Froms the json.
+        /// </summary>
+        /// <param name="str">The string.</param>
         private void FromJson(string str)
         {
             string ret = "";
