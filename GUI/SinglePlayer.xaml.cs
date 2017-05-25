@@ -17,9 +17,17 @@ namespace GUI
     /// <summary>
     /// Interaction logic for SinglePlayer.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class SinglePlayer : Window
     {
+        /// <summary>
+        /// The SPVM
+        /// </summary>
         private SinglePlayerVM spvm;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SinglePlayer"/> class.
+        /// </summary>
         public SinglePlayer()
         {
             InitializeComponent();
@@ -30,6 +38,11 @@ namespace GUI
             this.DataContext = spvm;
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnStart control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
 

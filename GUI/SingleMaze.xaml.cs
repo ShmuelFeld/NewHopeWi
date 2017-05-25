@@ -21,17 +21,61 @@ namespace GUI
     /// <summary>
     /// Interaction logic for SingleMaze.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class SingleMaze : Window
     {
+        /// <summary>
+        /// Gets or sets the maze rows.
+        /// </summary>
+        /// <value>
+        /// The maze rows.
+        /// </value>
         public int MazeRows { get; set; }
+        /// <summary>
+        /// Gets or sets the maze cols.
+        /// </summary>
+        /// <value>
+        /// The maze cols.
+        /// </value>
         public int MazeCols { get; set; }
+        /// <summary>
+        /// Gets or sets the maze string.
+        /// </summary>
+        /// <value>
+        /// The maze string.
+        /// </value>
         public string MazeString { get; set; }
+        /// <summary>
+        /// Gets or sets the initial position.
+        /// </summary>
+        /// <value>
+        /// The initial position.
+        /// </value>
         public Position InitialPos { get; set; }
+        /// <summary>
+        /// Gets or sets the goal position.
+        /// </summary>
+        /// <value>
+        /// The goal position.
+        /// </value>
         public Position GoalPos { get; set; }
+        /// <summary>
+        /// Gets or sets the solve string.
+        /// </summary>
+        /// <value>
+        /// The solve string.
+        /// </value>
         public string SolveString { get; set; }
 
+        /// <summary>
+        /// The sm vm
+        /// </summary>
         private SingleMazeVM smVM;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SingleMaze"/> class.
+        /// </summary>
         public SingleMaze()
         {
             smVM = new SingleMazeVM();
@@ -45,11 +89,19 @@ namespace GUI
             this.KeyDown += userControl.Viewbox_KeyDown;
         }
 
+        /// <summary>
+        /// Handles the Click event of the MainWin control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void MainWin_Click(object sender, RoutedEventArgs e)
         {
             BackToMain();
         }
 
+        /// <summary>
+        /// Backs to main.
+        /// </summary>
         private void BackToMain()
         {
             string message = "are you sure?";
@@ -71,12 +123,22 @@ namespace GUI
             
         }
 
+        /// <summary>
+        /// Handles the Click event of the solve control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void solve_Click(object sender, RoutedEventArgs e)
         {
             smVM.SolveMaze();
             userControl.SolveString = smVM.SolveVM;      
         }
 
+        /// <summary>
+        /// Handles the Click event of the startOver control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void startOver_Click(object sender, RoutedEventArgs e)
         {
             string message = "are you sure?";
@@ -93,16 +155,15 @@ namespace GUI
                     
         }
 
+        /// <summary>
+        /// Handles the Closing event of the Window control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow mw = new MainWindow();
             mw.Show();
         }
-
-        //private void Window_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    var hwnd = new WindowInteropHelper(this).Handle;
-        //    SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
-        //}
     }
 }

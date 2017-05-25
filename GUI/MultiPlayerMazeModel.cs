@@ -13,8 +13,18 @@ using System.Windows.Forms;
 
 namespace GUI
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="GUI.Model" />
     class MultiPlayerMazeModel : Model
     {
+        /// <summary>
+        /// Gets or sets the maze vm.
+        /// </summary>
+        /// <value>
+        /// The maze vm.
+        /// </value>
         public Maze MazeVM
         {
             get { return maze; }
@@ -23,9 +33,24 @@ namespace GUI
                 maze = value;
             }
         }
+        /// <summary>
+        /// The movement
+        /// </summary>
         private string movement;
+        /// <summary>
+        /// The move
+        /// </summary>
         public EventHandler Move;
+        /// <summary>
+        /// The close eve
+        /// </summary>
         public EventHandler CloseEve;
+        /// <summary>
+        /// Gets or sets the movement.
+        /// </summary>
+        /// <value>
+        /// The movement.
+        /// </value>
         public string Movement {
             get
             { return movement; }
@@ -35,6 +60,9 @@ namespace GUI
                 this.Move(this, new EventArgs());
             }
         }
+        /// <summary>
+        /// The maze
+        /// </summary>
         private Maze maze;
         /// <summary>
         /// The communication protocol.
@@ -51,8 +79,10 @@ namespace GUI
         /// <summary>
         /// Initializes a new instance of the <see cref="Client" /> class.
         /// </summary>
-        /// 
         private bool close;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerMazeModel"/> class.
+        /// </summary>
         public MultiPlayerMazeModel()
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
@@ -76,6 +106,9 @@ namespace GUI
                 ConnectionErrorMessage();
             }
         }
+        /// <summary>
+        /// Connections the error message.
+        /// </summary>
         private void ConnectionErrorMessage()
         {
             string message = "Error connecting to server, please return to main window";
@@ -85,7 +118,14 @@ namespace GUI
 
             result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
         }
+        /// <summary>
+        /// Occurs when [property changed].
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Connects the specified command.
+        /// </summary>
+        /// <param name="command">The command.</param>
         public override void connect(string command)
         {
             NetworkStream stream = client.GetStream();
@@ -126,6 +166,10 @@ namespace GUI
             return;
 
         }
+        /// <summary>
+        /// Listens the task.
+        /// </summary>
+        /// <param name="reader">The reader.</param>
         private void ListenTask(StreamReader reader)
         {
 
@@ -148,9 +192,7 @@ namespace GUI
                                 feedback = "";
                             }
                         }
-                        //break;
                     }
-                    //reader.ReadLine();
                     if (feedback.Contains("other") || feedback.Contains("@"))
                     {
                         feedback = "";
@@ -166,10 +208,6 @@ namespace GUI
                         close = true;
                         close = true;
                     }
-                    //else if (feedback == "close")
-                    //{
-                    //    close = true;
-                    //}
                 }
                 
             });
@@ -177,6 +215,10 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// Froms the json.
+        /// </summary>
+        /// <param name="str">The string.</param>
         private void FromJson(string str)
         {
             string ret = "";

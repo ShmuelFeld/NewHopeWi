@@ -17,8 +17,13 @@ namespace GUI
     /// <summary>
     /// Interaction logic for SuccessWin.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class SuccessWin : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SuccessWin"/> class.
+        /// </summary>
         public SuccessWin()
         {
             InitializeComponent();
@@ -28,6 +33,11 @@ namespace GUI
             this.Background = myBrush;
         }
 
+        /// <summary>
+        /// Handles the Click event of the Button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow w = new MainWindow();

@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace GUI
 {
+    /// <summary>
+    /// 
+    /// </summary>
     static class ConnectionError
     {
+        /// <summary>
+        /// The is error
+        /// </summary>
         public static bool isError = false;
     }
 }

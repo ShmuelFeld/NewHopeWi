@@ -13,8 +13,18 @@ using System.Windows.Forms;
 
 namespace GUI
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="GUI.Model" />
     class SingleMazeModel : Model
     {
+        /// <summary>
+        /// Gets or sets the maze vm.
+        /// </summary>
+        /// <value>
+        /// The maze vm.
+        /// </value>
         public Maze MazeVM
         {
             get { return maze; }
@@ -23,6 +33,12 @@ namespace GUI
                 maze = value;
             }
         }
+        /// <summary>
+        /// Gets or sets the solve vm.
+        /// </summary>
+        /// <value>
+        /// The solve vm.
+        /// </value>
         public string SolveVM
         {
             get { return solveString; }
@@ -32,7 +48,13 @@ namespace GUI
                 NotifyPropertyChanged("SolveVM");
             }
         }
+        /// <summary>
+        /// The solve string
+        /// </summary>
         private string solveString;
+        /// <summary>
+        /// The maze
+        /// </summary>
         private Maze maze;
         /// <summary>
         /// The communication protocol.
@@ -45,14 +67,19 @@ namespace GUI
         /// <summary>
         /// Initializes a new instance of the <see cref="Client" /> class.
         /// </summary>
-        /// 
         public SingleMazeModel()
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
         }
 
+        /// <summary>
+        /// Occurs when [property changed].
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Connections the error message.
+        /// </summary>
         private void ConnectionErrorMessage()
         {
             string message = "Error connecting to server, please return to main window";
@@ -63,6 +90,10 @@ namespace GUI
             result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
         }
 
+        /// <summary>
+        /// Connects the specified command.
+        /// </summary>
+        /// <param name="command">The command.</param>
         public override void connect(string command)
         {
             client = new TcpClient();
@@ -116,6 +147,10 @@ namespace GUI
             }
             return;
         }
+        /// <summary>
+        /// Froms the json.
+        /// </summary>
+        /// <param name="str">The string.</param>
         private void FromJSON(string str)
         {
             JObject solveObj = JObject.Parse(str);

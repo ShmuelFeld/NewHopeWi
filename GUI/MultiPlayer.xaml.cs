@@ -17,9 +17,17 @@ namespace GUI
     /// <summary>
     /// Interaction logic for MultiPlayer.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class MultiPlayer : Window
     {
+        /// <summary>
+        /// The MPVM
+        /// </summary>
         private MultiPlayerVM mpvm;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayer"/> class.
+        /// </summary>
         public MultiPlayer()
         {
             InitializeComponent();
@@ -35,6 +43,11 @@ namespace GUI
             InsertToComboBox(mpvm.ListOfGames);
         }
 
+        /// <summary>
+        /// Handles the Click event of the JoinGame control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void JoinGame_Click(object sender, RoutedEventArgs e)
         {
             mpvm.MazeName = ListOfGames.Text;
@@ -49,6 +62,11 @@ namespace GUI
             mpm.Show();
             this.Close();
         }
+        /// <summary>
+        /// Handles the Click event of the StartGame control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
             mpvm.MazeCols = int.Parse(SUC.ColsValue.Text);
@@ -68,6 +86,10 @@ namespace GUI
             mpm.Show();
             this.Close();
         }
+        /// <summary>
+        /// Inserts to ComboBox.
+        /// </summary>
+        /// <param name="list">The list.</param>
         private void InsertToComboBox(List<string> list)
         {
             foreach (string item in list)

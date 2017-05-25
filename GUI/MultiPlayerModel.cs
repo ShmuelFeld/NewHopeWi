@@ -11,23 +11,48 @@ using System.Windows.Forms;
 
 namespace GUI
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="GUI.Model" />
     class MultiPlayerModel : Model
     {
+        /// <summary>
+        /// The client
+        /// </summary>
         private TcpClient client;
+        /// <summary>
+        /// The end of communication
+        /// </summary>
         private bool endOfCommunication;
+        /// <summary>
+        /// The games
+        /// </summary>
         private List<string> games;
+        /// <summary>
+        /// The ep
+        /// </summary>
         IPEndPoint ep;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerModel"/> class.
+        /// </summary>
         public MultiPlayerModel()
         {
             ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
 
             this.endOfCommunication = false;
         }
+        /// <summary>
+        /// Saves the settings.
+        /// </summary>
         public void SaveSettings()
         {
             Properties.Settings.Default.Save();
         }
 
+        /// <summary>
+        /// Connections the error message.
+        /// </summary>
         private void ConnectionErrorMessage()
         {
             string message = "Error connecting to server, please return to main window";
@@ -38,6 +63,10 @@ namespace GUI
             result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
         }
 
+        /// <summary>
+        /// Connects the specified command.
+        /// </summary>
+        /// <param name="command">The command.</param>
         public override void connect(string command)
         {
             client = new TcpClient();
@@ -86,12 +115,20 @@ namespace GUI
                 return;
             }
         }
+        /// <summary>
+        /// Froms the json.
+        /// </summary>
+        /// <param name="str">The string.</param>
         private void FromJSON(string str)
         {
             JArray array = JArray.Parse(str);
             FromStringToList(array);
             
         }
+        /// <summary>
+        /// Froms the string to list.
+        /// </summary>
+        /// <param name="array">The array.</param>
         private void FromStringToList(JArray array)
         {
             List<string> list = new List<string>();
@@ -101,6 +138,12 @@ namespace GUI
             }
             ListOfGames = list;
         }
+        /// <summary>
+        /// Gets or sets the list of games.
+        /// </summary>
+        /// <value>
+        /// The list of games.
+        /// </value>
         public List<string> ListOfGames
         {
             get
@@ -113,25 +156,39 @@ namespace GUI
                 NotifyPropertyChanged("ListOfGames");
             }
         }
+        /// <summary>
+        /// Gets or sets the maze cols.
+        /// </summary>
+        /// <value>
+        /// The maze cols.
+        /// </value>
         public int MazeCols
         {
             get { return Properties.Settings.Default.MazeCols; }
             set { Properties.Settings.Default.MazeCols = value; }
         }
+        /// <summary>
+        /// Gets or sets the maze rows.
+        /// </summary>
+        /// <value>
+        /// The maze rows.
+        /// </value>
         public int MazeRows
         {
             get { return Properties.Settings.Default.MazeRows; }
             set { Properties.Settings.Default.MazeRows = value; }
         }
+        /// <summary>
+        /// Gets or sets the name of the maze.
+        /// </summary>
+        /// <value>
+        /// The name of the maze.
+        /// </value>
         public string MazeName
         {
             get { return Properties.Settings.Default.MazeName; }
             set { Properties.Settings.Default.MazeName = value; }
         }
-        //public void SaveSettings()
-        //{
-        //    Properties.Settings.Default.Save();
-        //}
     }
    
 }

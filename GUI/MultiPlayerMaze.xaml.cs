@@ -23,15 +23,54 @@ namespace GUI
     /// <summary>
     /// Interaction logic for MultiPlayerMaze.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class MultiPlayerMaze : Window
     {
+        /// <summary>
+        /// Gets or sets the maze rows.
+        /// </summary>
+        /// <value>
+        /// The maze rows.
+        /// </value>
         public int MazeRows { get; set; }
+        /// <summary>
+        /// Gets or sets the maze cols.
+        /// </summary>
+        /// <value>
+        /// The maze cols.
+        /// </value>
         public int MazeCols { get; set; }
+        /// <summary>
+        /// Gets or sets the maze string.
+        /// </summary>
+        /// <value>
+        /// The maze string.
+        /// </value>
         public string MazeString { get; set; }
+        /// <summary>
+        /// Gets or sets the initial position.
+        /// </summary>
+        /// <value>
+        /// The initial position.
+        /// </value>
         public Position InitialPos { get; set; }
+        /// <summary>
+        /// Gets or sets the goal position.
+        /// </summary>
+        /// <value>
+        /// The goal position.
+        /// </value>
         public Position GoalPos { get; set; }
+        /// <summary>
+        /// The mp vm
+        /// </summary>
         private MultiPlayerMazeVM mpVM;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerMaze"/> class.
+        /// </summary>
+        /// <param name="kind">The kind.</param>
         public MultiPlayerMaze(string kind)
         {
             InitializeComponent();
@@ -51,6 +90,11 @@ namespace GUI
             this.Closing += MultiPlayerMaze_Closing;
         }
 
+        /// <summary>
+        /// Closes the win.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void CloseWin(object sender, EventArgs e)
         {
             System.Windows.Application.Current.Dispatcher.Invoke(
@@ -75,6 +119,11 @@ namespace GUI
 
         }
 
+        /// <summary>
+        /// Moves the opponent.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void moveOpponent(object sender, EventArgs e)
         {
             Position temp;
@@ -106,26 +155,51 @@ namespace GUI
             }
         }
 
+        /// <summary>
+        /// Goes the right.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void GoRight(object sender, EventArgs e)
         {
             mpVM.MovementNotify("right");
         }
 
+        /// <summary>
+        /// Goes the left.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void GoLeft(object sender, EventArgs e)
         {
             mpVM.MovementNotify("left");
         }
 
+        /// <summary>
+        /// Goes down.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void GoDown(object sender, EventArgs e)
         {
             mpVM.MovementNotify("down");
         }
 
+        /// <summary>
+        /// Goes up.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void GoUp(object sender, EventArgs e)
         {
             mpVM.MovementNotify("up");
         }
 
+        /// <summary>
+        /// Handles the Click event of the BackToMainWin control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void BackToMainWin_Click(object sender, RoutedEventArgs e)
         {
             string message = "are you sure?";
@@ -142,6 +216,11 @@ namespace GUI
             
         }
 
+        /// <summary>
+        /// Handles the Closing event of the MultiPlayerMaze control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
         private void MultiPlayerMaze_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             mpVM.CloseSelf();

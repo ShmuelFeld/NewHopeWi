@@ -18,8 +18,13 @@ namespace GUI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +35,11 @@ namespace GUI
          
         }
 
+        /// <summary>
+        /// Singles the player.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void SinglePlayer(object sender, RoutedEventArgs e)
         {
             SinglePlayer sp = new SinglePlayer();
@@ -37,6 +47,11 @@ namespace GUI
             this.Close();
         }
 
+        /// <summary>
+        /// Multies the player.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void MultyPlayer(object sender, RoutedEventArgs e)
         {
             MultiPlayer mw = new MultiPlayer();
@@ -48,6 +63,11 @@ namespace GUI
             this.Close();
         }
 
+        /// <summary>
+        /// Settingses the specified sender.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Settings(object sender, RoutedEventArgs e)
         {
             SettingsWindow sw = new SettingsWindow();
