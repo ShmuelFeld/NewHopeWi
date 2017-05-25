@@ -76,6 +76,9 @@
     <Compile Include="BasicUserControl.xaml.cs">
       <DependentUpon>BasicUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExistPopUp.xaml.cs">
+      <DependentUpon>ExistPopUp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IMultiPlayerModel.cs" />
     <Compile Include="ISettingsModel.cs" />
     <Compile Include="ISinglePlayerModel.cs" />
@@ -125,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BasicUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExistPopUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

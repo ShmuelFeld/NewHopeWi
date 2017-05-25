@@ -26,15 +26,17 @@ namespace GUI
             MultiPlayerModel model = new MultiPlayerModel();
             mpvm = new MultiPlayerVM(model);
             SUC.ColsValue.Text = Properties.Settings.Default.MazeCols.ToString();
-            SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();           
+            SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();
+            SUC.NameValue.Text = Properties.Settings.Default.MazeName;
             this.DataContext = mpvm;
             InsertToComboBox(mpvm.ListOfGames);
+            ListOfGames.SelectedIndex = 0;
         }
 
         private void JoinGame_Click(object sender, RoutedEventArgs e)
         {
             mpvm.MazeName = ListOfGames.Text;
-            MultiPlayerMaze mpm = new MultiPlayerMaze("join");
+            MultiPlayerMaze mpm = new MultiPlayerMaze(mpvm.MazeName);
             mpm.Show();
             this.Close();
         }
@@ -43,12 +45,21 @@ namespace GUI
             mpvm.MazeCols = int.Parse(SUC.ColsValue.Text);
             mpvm.MazeRows = int.Parse(SUC.RowsValue.Text);
             mpvm.MazeName = SUC.NameValue.Text;
-            WaitingWin w = new WaitingWin();
-            w.Show();
-            MultiPlayerMaze mpm = new MultiPlayerMaze("start");
-            w.Close();
-            mpm.Show();
-            this.Close();
+            if (!NameExist(mpvm.MazeName))
+            {
+                WaitingWin w = new WaitingWin();
+                w.Show();
+                MultiPlayerMaze mpm = new MultiPlayerMaze(mpvm.MazeRows, mpvm.MazeCols, mpvm.MazeName);
+                w.Close();
+                mpm.Show();
+                this.Close();
+            }
+            else
+            {
+                ExistPopUp epp = new ExistPopUp();
+                epp.Show();
+                this.Close();
+            }
         }
         private void InsertToComboBox(List<string> list)
         {
@@ -57,6 +68,23 @@ namespace GUI
                 ListOfGames.Items.Add(item);
             }
         }
+        private bool NameExist(string str)
+        {
+            foreach (string item in mpvm.ListOfGames)
+            {
+                if(item.Equals(str))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            mpvm.RefreshGameList();
+            InsertToComboBox(mpvm.ListOfGames);
+            ListOfGames.SelectedIndex = 0;
+        }
     }
 }

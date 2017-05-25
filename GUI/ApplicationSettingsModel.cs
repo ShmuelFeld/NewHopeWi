@@ -30,8 +30,13 @@ namespace GUI
         }
         public int SearchAlgorithm
         {
-            get { return Properties.Settings.Default.MazeCols; }
-            set { Properties.Settings.Default.MazeCols = value; }
+            get { return Properties.Settings.Default.SearchAlgorithm; }
+            set { Properties.Settings.Default.SearchAlgorithm = value; }
+        }
+        public string MazeName
+        {
+            get { return Properties.Settings.Default.MazeName; }
+            set { Properties.Settings.Default.MazeName = value; }
         }
         public void SaveSettings()
         {

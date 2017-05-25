@@ -13,6 +13,7 @@ namespace GUI
         int MazeRows { get; set; }
         int MazeCols { get; set; }
         int SearchAlgorithm { get; set; }
+        string MazeName { get; set; }
         void SaveSettings();
     }
 }

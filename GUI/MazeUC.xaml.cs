@@ -265,8 +265,6 @@ namespace GUI
 
         private void mazeCanvas_Loaded(object sender, RoutedEventArgs e)
         {
-            var window = Window.GetWindow(this);
-            window.KeyDown += Viewbox_KeyDown;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -277,6 +275,7 @@ namespace GUI
         public void Viewbox_KeyDown(object sender, KeyEventArgs e)
         {
             Position temp = currentPos;
+
             switch (e.Key)
             {
                 case (Key.Up):

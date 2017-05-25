@@ -30,14 +30,10 @@ namespace GUI
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             vm.SaveSettings();
-            MainWindow win = new MainWindow();
-            win.Show();
             this.Close();
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow win = new MainWindow();
-            win.Show();
             this.Close();
         }
     }

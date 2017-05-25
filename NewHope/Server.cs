@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace NewHope
 {
@@ -34,13 +35,12 @@ namespace NewHope
         /// </summary>
         public Server()
         {
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8000);
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ConfigurationSettings.AppSettings["ip"]), Convert.ToInt32(ConfigurationSettings.AppSettings["port"]));
             listener = new TcpListener(ep);
             this.clientPool = new ClientPool(this);
             this.endOfCommunication = false;
             listener.Start();
         }
-
         /// <summary>
         /// Sets the controller.
         /// </summary>

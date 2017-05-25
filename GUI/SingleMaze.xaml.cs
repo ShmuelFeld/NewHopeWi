@@ -34,6 +34,12 @@ namespace GUI
             smVM = new SingleMazeVM();
             this.DataContext = smVM;
         }
+        public SingleMaze(int rows, int cols, string name)
+        {
+            InitializeComponent();
+            smVM = new SingleMazeVM(rows, cols, name);
+            this.DataContext = smVM;
+        }
 
         private void MainWin_Click(object sender, RoutedEventArgs e)
         {

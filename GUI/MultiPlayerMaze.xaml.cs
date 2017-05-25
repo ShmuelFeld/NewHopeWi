@@ -28,18 +28,30 @@ namespace GUI
         public Position GoalPos { get; set; }
         private MultiPlayerMazeVM mpVM;
 
-        public MultiPlayerMaze(string kind)
+        public MultiPlayerMaze(string str)
         {
             InitializeComponent();
-            mpVM = new MultiPlayerMazeVM(kind);
+            mpVM = new MultiPlayerMazeVM(str);
             this.DataContext = mpVM;
+            this.KeyDown += MyBoard.Viewbox_KeyDown;
             MyBoard.MovingUp += new EventHandler(GoUp);
             MyBoard.MovingDown += new EventHandler(GoDown);
             MyBoard.MovingLeft += new EventHandler(GoLeft);
             MyBoard.MovingRight += new EventHandler(GoRight);
             mpVM.ChangeOtherLoc += new EventHandler(moveOpponent);
         }
-
+        public MultiPlayerMaze(int rows, int cols, string name)
+        {
+            InitializeComponent();
+            mpVM = new MultiPlayerMazeVM(rows, cols, name);
+            this.DataContext = mpVM;
+            this.KeyDown += MyBoard.Viewbox_KeyDown;
+            MyBoard.MovingUp += new EventHandler(GoUp);
+            MyBoard.MovingDown += new EventHandler(GoDown);
+            MyBoard.MovingLeft += new EventHandler(GoLeft);
+            MyBoard.MovingRight += new EventHandler(GoRight);
+            mpVM.ChangeOtherLoc += new EventHandler(moveOpponent);
+        }
         private void moveOpponent(object sender, EventArgs e)
         {
             Position temp;
@@ -47,50 +59,21 @@ namespace GUI
             {
                
                 case "up":
-                    //Application.Current.Dispatcher.Invoke(
-                    //DispatcherPriority.Background,
-                    //new Action(() =>
-                    //this.OtherBoard.Viewbox_KeyDown(this,
-                    //new KeyEventArgs(
-                    //Keyboard.PrimaryDevice,
-                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Up))));
                     temp = this.OtherBoard.Current;
                     OtherBoard.Current = new Position(--temp.Row, temp.Col);
                     OtherBoard.UpdateLoc();
                     break;
                 case "down":
-                    //Application.Current.Dispatcher.Invoke(
-                    //DispatcherPriority.Background,
-                    //new Action(() =>
-                    //this.OtherBoard.Viewbox_KeyDown(this,
-                    //new KeyEventArgs(
-                    //Keyboard.PrimaryDevice,
-                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Down))));
-
                     temp = this.OtherBoard.Current;
                     OtherBoard.Current = new Position(++temp.Row, temp.Col);
                     OtherBoard.UpdateLoc();
                     break;
                 case "left":
-                    //Application.Current.Dispatcher.Invoke(
-                    //DispatcherPriority.Background,
-                    //new Action(() =>
-                    //this.OtherBoard.Viewbox_KeyDown(this,
-                    //new KeyEventArgs(
-                    //Keyboard.PrimaryDevice,
-                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Left))));
                     temp = this.OtherBoard.Current;
                     OtherBoard.Current = new Position(temp.Row, --temp.Col);
                     OtherBoard.UpdateLoc();
                     break;
                 case "right":
-                    //Application.Current.Dispatcher.Invoke(
-                    //DispatcherPriority.Background,
-                    //new Action(() =>
-                    //this.OtherBoard.Viewbox_KeyDown(this,
-                    //new KeyEventArgs(
-                    //Keyboard.PrimaryDevice,
-                    //PresentationSource.FromVisual((Visual)Keyboard.FocusedElement), 0, Key.Right))));
                     temp = this.OtherBoard.Current;
                     OtherBoard.Current = new Position(temp.Row, ++temp.Col);
                     OtherBoard.UpdateLoc();

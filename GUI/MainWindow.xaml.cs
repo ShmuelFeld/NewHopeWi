@@ -23,6 +23,11 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
+            Properties.Settings.Default.MazeCols = 15;
+            Properties.Settings.Default.MazeRows = 15;
+            Properties.Settings.Default.MazeName = "Cinderella";
+            Properties.Settings.Default.ServerIP = "127.0.0.1";
+            Properties.Settings.Default.ServerPort = 8000;
 
         }
 
@@ -44,7 +49,6 @@ namespace GUI
         {
             SettingsWindow sw = new SettingsWindow();
             sw.Show();
-            this.Close();
         }
 
         private void Picture(object sender, RoutedEventArgs e)

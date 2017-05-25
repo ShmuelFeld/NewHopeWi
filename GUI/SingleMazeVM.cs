@@ -10,9 +10,42 @@ namespace GUI
 {
     class SingleMazeVM : ViewModel
     {
-
+        private int rows;
+        private int cols;
+        private string name;
         private SingleMazeModel model;
-
+        public int MazeRows {
+            get
+            {
+                return this.rows;
+            }
+            set
+            {
+                this.rows = value;
+            }
+        }
+        public int MazeCols
+        {
+            get
+            {
+                return this.cols;
+            }
+            set
+            {
+                this.cols = value;
+            }
+        }
+        public string MazeName
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
+            }
+        }
         public Maze MazeVM
         {
             get { return model.MazeVM; }
@@ -37,17 +70,25 @@ namespace GUI
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName); };
             StartGame();
         }
-
+        public SingleMazeVM(int rows, int cols, string name)
+        {
+            this.model = new SingleMazeModel();
+            MazeCols = cols;
+            MazeRows = rows;
+            MazeName = name;
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) { NotifyPropertyChanged(e.PropertyName); };
+            StartGame();
+        }
         public void StartGame()
         {
             string command = "generate ";
-            command += Properties.Settings.Default.MazeName + " " + Properties.Settings.Default.MazeRows + " " + Properties.Settings.Default.MazeCols;
+            command += MazeName + " " + MazeRows + " " + MazeCols;
             model.connect(command);
         }
         public void SolveMaze()
         {
             string command = "solve ";
-            command += Properties.Settings.Default.MazeName + " " + Properties.Settings.Default.SearchAlgorithm;
+            command += MazeName + " " + Properties.Settings.Default.SearchAlgorithm;
             model.connect(command);
         }
        

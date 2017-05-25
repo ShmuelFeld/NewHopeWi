@@ -27,6 +27,7 @@ namespace GUI
             spvm = new SinglePlayerVM(model);
             SUC.ColsValue.Text = Properties.Settings.Default.MazeCols.ToString();
             SUC.RowsValue.Text = Properties.Settings.Default.MazeRows.ToString();
+            SUC.NameValue.Text = Properties.Settings.Default.MazeName;
             this.DataContext = spvm;
         }
 
@@ -35,7 +36,7 @@ namespace GUI
             spvm.MazeCols = int.Parse(SUC.ColsValue.Text);
             spvm.MazeRows = int.Parse(SUC.RowsValue.Text);
             spvm.MazeName = SUC.NameValue.Text;
-            SingleMaze m = new SingleMaze();
+            SingleMaze m = new SingleMaze(spvm.MazeRows, spvm.MazeCols, spvm.MazeName);
             m.Show();
             this.Close();
         }

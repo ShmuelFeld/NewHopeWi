@@ -58,6 +58,15 @@ namespace GUI
                 NotifyPropertyChanged("SearchAlgorithm");
             }
         }
+        public string MazeName
+        {
+            get { return model.MazeName; }
+            set
+            {
+                model.MazeName = value;
+                NotifyPropertyChanged("MazeName");
+            }
+        }
         public void SaveSettings()
         {
             model.SaveSettings();
