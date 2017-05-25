@@ -31,22 +31,6 @@ namespace GUI
         public Position InitialPos { get; set; }
         public Position GoalPos { get; set; }
         private MultiPlayerMazeVM mpVM;
-        // cancel the control box of the window
-        private const int GWL_STYLE = -16;
-        private const int WS_SYSMENU = 0x80000;
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
-        [DllImport("user32.dll")]
-        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-
-        private void singlePlayerMazeWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            var hwnd = new WindowInteropHelper(this).Handle;
-            SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
-        }
-        // public EventHandler CloseEve;
 
         public MultiPlayerMaze(string kind)
         {
@@ -64,7 +48,7 @@ namespace GUI
             MyBoard.MovingRight += new EventHandler(GoRight);
             mpVM.ChangeOtherLoc += new EventHandler(moveOpponent);
             mpVM.CloseEv += new EventHandler(CloseWin);
-            //MyBoard.Close += new EventHandler(CloseOther);
+            this.Closing += MultiPlayerMaze_Closing;
         }
 
         private void CloseWin(object sender, EventArgs e)
@@ -72,12 +56,12 @@ namespace GUI
             System.Windows.Application.Current.Dispatcher.Invoke(
            DispatcherPriority.Background,
            new Action(() =>
-           {                      
-               MainWindow mw = new MainWindow();
-               mw.Show();
+           {
+               this.Closing -= MultiPlayerMaze_Closing;
+               MainWindow m = new MainWindow();
+               m.Show();
                this.Close();
-           }));
-          
+           }));         
 
         }
 
@@ -143,11 +127,16 @@ namespace GUI
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                MainWindow mw = new MainWindow();
-                mw.Show();
                 this.Close();
-                mpVM.CloseSelf();
             }          
+            
+        }
+
+        private void MultiPlayerMaze_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mpVM.CloseSelf();
+            MainWindow mw = new MainWindow();
+            mw.Show();
             
         }
     }

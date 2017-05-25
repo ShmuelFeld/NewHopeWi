@@ -32,7 +32,6 @@ namespace GUI
         public EventHandler MovingLeft;
         public EventHandler MovingRight;
         public EventHandler MovingDown;
-        //public EventHandler Close;
         public Position Current
         {
             get
@@ -217,17 +216,10 @@ namespace GUI
                     }
                     else if (charArr[counter] == '*')
                     {
-                        //rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
                         player = rectanglesArr[i, j];
                         ImageBrush playerImg = new ImageBrush();
                         playerImg.ImageSource = new BitmapImage(new Uri(@"../../resources/prince.png", UriKind.Relative));
                         player.Fill = playerImg;
-                        //player = new Image()
-                        //{
-                        //    Source = new BitmapImage(new Uri("../../resources/prince.png", UriKind.Relative)),
-                        //    Height = height,
-                        //    Width = width,
-                        // };
                         mazeCanvas.Children.Add(player);
                         Canvas.SetLeft(player, width * j);
                         Canvas.SetTop(player, height * i);
@@ -237,18 +229,10 @@ namespace GUI
                     
                     else if (charArr[counter] == '#')
                     {
-                        //rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
                         dest = rectanglesArr[i, j];
                         ImageBrush playerImg = new ImageBrush();
                         playerImg.ImageSource = new BitmapImage(new Uri(@"..\..\resources\cinderella.jpg", UriKind.Relative));
                         dest.Fill = playerImg;
-                        //playerImage 
-                        //dest = new Image()
-                        //{
-                        //    Source = new BitmapImage(new Uri("../../resources/cinderella.jpg", UriKind.Relative)),
-                        //    Height = height,
-                        //    Width = width,
-                        //};
                         mazeCanvas.Children.Add(dest);
                         Canvas.SetLeft(dest, width * j);
                         Canvas.SetTop(dest, height * i);
@@ -270,12 +254,6 @@ namespace GUI
                 }
                 counter += 2;
             }
-        }
-
-        private void mazeCanvas_Loaded(object sender, RoutedEventArgs e)
-        {
-            //var window = Window.GetWindow(this);
-            //window.KeyDown += Viewbox_KeyDown;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -370,11 +348,6 @@ namespace GUI
             if ((currentPos.Col == GoalPos.Col) && (currentPos.Row == GoalPos.Row))
             {
                 SuccessWin win = new SuccessWin();
-                win.Show();
-                //if (Close != null)
-                //{
-                //    this.Close(this, new EventArgs());
-                //}
             }
             e.Handled = true;
 

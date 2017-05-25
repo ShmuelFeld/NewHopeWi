@@ -57,6 +57,11 @@ namespace GUI
 
         private void MainWin_Click(object sender, RoutedEventArgs e)
         {
+            BackToMain();
+        }
+
+        private void BackToMain()
+        {
             string message = "are you sure?";
             string caption = "Error Detected in Input";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -64,13 +69,16 @@ namespace GUI
 
             result = System.Windows.Forms.MessageBox.Show(message, caption, buttons);
 
+            if (result == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                MainWindow mw = new MainWindow();
-                mw.Show();
                 this.Close();
             }
-
+           
+            
         }
 
         private void solve_Click(object sender, RoutedEventArgs e)
@@ -93,6 +101,12 @@ namespace GUI
                 userControl.startOver();    
             }
                     
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
         }
 
         //private void Window_Loaded(object sender, RoutedEventArgs e)
