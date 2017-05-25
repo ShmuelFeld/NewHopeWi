@@ -23,7 +23,7 @@ namespace GUI
     /// </summary>
     public partial class MazeUC : UserControl
     {
-        private Rectangle player, dest;
+        private Image player, dest;
         public static Rectangle[,] rectanglesArr;
         private Position currentPos;
         public static int height, width;
@@ -217,17 +217,13 @@ namespace GUI
                     }
                     else if (charArr[counter] == '*')
                     {
-                        //rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
-                        player = rectanglesArr[i, j];
-                        ImageBrush playerImg = new ImageBrush();
-                        playerImg.ImageSource = new BitmapImage(new Uri(@"../../resources/prince.png", UriKind.Relative));
-                        player.Fill = playerImg;
-                        //player = new Image()
-                        //{
-                        //    Source = new BitmapImage(new Uri("../../resources/prince.png", UriKind.Relative)),
-                        //    Height = height,
-                        //    Width = width,
-                        // };
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
+                        player = new Image()
+                        {
+                            Source = new BitmapImage(new Uri("../../resources/prince.png", UriKind.Relative)),
+                            Height = height,
+                            Width = width,
+                         };
                         mazeCanvas.Children.Add(player);
                         Canvas.SetLeft(player, width * j);
                         Canvas.SetTop(player, height * i);
@@ -237,18 +233,17 @@ namespace GUI
                     
                     else if (charArr[counter] == '#')
                     {
-                        //rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
-                        dest = rectanglesArr[i, j];
-                        ImageBrush playerImg = new ImageBrush();
-                        playerImg.ImageSource = new BitmapImage(new Uri(@"..\..\resources\cinderella.jpg", UriKind.Relative));
-                        dest.Fill = playerImg;
-                        //playerImage 
-                        //dest = new Image()
-                        //{
-                        //    Source = new BitmapImage(new Uri("../../resources/cinderella.jpg", UriKind.Relative)),
-                        //    Height = height,
-                        //    Width = width,
-                        //};
+                        rectanglesArr[i, j].Fill = new SolidColorBrush(System.Windows.Media.Colors.Transparent);
+                        //ImageBrush playerImg = new ImageBrush();
+                        //playerImg.ImageSource = new BitmapImage(new Uri("../../resources/cinderella.jpg"));
+
+                            //playerImage 
+                        dest = new Image()
+                        {
+                            Source = new BitmapImage(new Uri("../../resources/cinderella.jpg", UriKind.Relative)),
+                            Height = height,
+                            Width = width,
+                        };
                         mazeCanvas.Children.Add(dest);
                         Canvas.SetLeft(dest, width * j);
                         Canvas.SetTop(dest, height * i);

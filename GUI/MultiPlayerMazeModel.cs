@@ -131,6 +131,8 @@ namespace GUI
 
             Task listenTask = new Task(() =>
             {
+                NetworkStream stream = client.GetStream();
+                StreamWriter writer = new StreamWriter(stream);
                 bool close = false;
                 string feedback ="";
                 while (!close)
@@ -153,14 +155,21 @@ namespace GUI
                     {
                         feedback = "";
                     }
-                    if (feedback == "close") //contains?
+                    if (feedback == "close your server") 
                     {
                         if(CloseEve != null)
                         {
                             this.CloseEve(this, new EventArgs());
                         }
+                        writer.WriteLine(feedback);
+                        writer.Flush();
+                        close = true;
                         close = true;
                     }
+                    //else if (feedback == "close")
+                    //{
+                    //    close = true;
+                    //}
                 }
                 
             });

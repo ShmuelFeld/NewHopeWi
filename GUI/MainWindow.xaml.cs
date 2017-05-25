@@ -23,7 +23,6 @@ namespace GUI
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private void SinglePlayer(object sender, RoutedEventArgs e)

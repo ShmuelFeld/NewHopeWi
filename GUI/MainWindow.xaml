@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Image Source="C:/Users/USER/Source/Repos/NewHopeWi/resources/palace.gif" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="-53,-120,-64,-120" Width="273" Grid.ColumnSpan="3" Grid.RowSpan="5"/>
+            <Image x:Name="img" Source="resources/palace.gif" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="-53,-120,-64,-120" Width="273" Grid.ColumnSpan="3" Grid.RowSpan="5"/>
             <Button Content="Single Player" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="30,1,33,5" VerticalAlignment="Center" Width="74" Padding="3" Click="SinglePlayer" FontFamily="Pristina" FontSize="13" FontWeight="Bold" Background="#FFDDDDDD" BorderBrush="#FF7E2C2C" Foreground="#FFA24444"/>
             <Button Content="Multy Player" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Width="75" Padding="3" Click="MultyPlayer" FontFamily="Pristina" FontSize="12" FontWeight="Bold" Background="#FFDDDDDD" BorderBrush="#FF7E2C2C" Foreground="#FFA24444"/>
             <Button Content="Settings" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Bottom" Width="74" Padding="3" Click="Settings" FontFamily="Pristina" FontSize="16" FontWeight="Bold" Background="#FFDDDDDD" BorderBrush="#FF7E2C2C" Foreground="#FFA24444"/>

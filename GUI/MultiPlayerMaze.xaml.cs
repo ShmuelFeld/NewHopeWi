@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GUI
 {
@@ -71,12 +72,13 @@ namespace GUI
             System.Windows.Application.Current.Dispatcher.Invoke(
            DispatcherPriority.Background,
            new Action(() =>
-           {
-               this.Close();
+           {                      
                MainWindow mw = new MainWindow();
                mw.Show();
+               this.Close();
            }));
-           
+          
+
         }
 
         private void moveOpponent(object sender, EventArgs e)
