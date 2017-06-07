@@ -330,7 +330,7 @@ namespace GUI
                     {
                         player = rectanglesArr[i, j];
                         ImageBrush playerImg = new ImageBrush();
-                        playerImg.ImageSource = new BitmapImage(new Uri(@"../../resources/prince.png", UriKind.Relative));
+                        playerImg.ImageSource = new BitmapImage(new Uri(@"resources/prince.png", UriKind.Relative));
                         player.Fill = playerImg;
                         mazeCanvas.Children.Add(player);
                         Canvas.SetLeft(player, width * j);
@@ -343,7 +343,7 @@ namespace GUI
                     {
                         dest = rectanglesArr[i, j];
                         ImageBrush playerImg = new ImageBrush();
-                        playerImg.ImageSource = new BitmapImage(new Uri(@"..\..\resources\cinderella.jpg", UriKind.Relative));
+                        playerImg.ImageSource = new BitmapImage(new Uri(@"resources\cinderella.jpg", UriKind.Relative));
                         dest.Fill = playerImg;
                         mazeCanvas.Children.Add(dest);
                         Canvas.SetLeft(dest, width * j);

@@ -29,7 +29,7 @@ namespace GUI
             InitializeComponent();
             ImageBrush myBrush = new ImageBrush();
             myBrush.ImageSource =
-                new BitmapImage(new Uri("../../resources/winner.jpg", UriKind.Relative));
+                new BitmapImage(new Uri("resources/winner.jpg", UriKind.Relative));
             this.Background = myBrush;
         }
 
