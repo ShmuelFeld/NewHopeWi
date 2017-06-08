@@ -79,6 +79,7 @@
     <Content Include="MainNavBar.js" />
     <Content Include="MenuBar.html" />
     <Content Include="MyStyle.css" />
+    <Content Include="Register.js" />
     <Content Include="RegisterPage.html" />
     <Content Include="SinglePlayerCSS.css" />
     <Content Include="SinglePlayerPage.html" />
