@@ -74,8 +74,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LoginPage.html" />
+    <Content Include="MainNavBarJavaScript.js" />
     <Content Include="MenuBar.html" />
     <Content Include="MyStyle.css" />
+    <Content Include="RegisterPage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
