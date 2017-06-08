@@ -1,12 +1,13 @@
-﻿body {
+body {
     background-color: lightblue;
 }
 #navBar {
     
+
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: cadetblue;
 }
 ul {
     list-style-type: none;
@@ -15,6 +16,7 @@ ul {
     list-style-type: none;
    align-items:center;
     float: right;
+    text-align: center;
 }
 #navItem {
     float: left;
