@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HomePage.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -75,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LoginPage.html" />
-    <Content Include="MainNavBarJavaScript.js" />
+    <Content Include="MainNavBar.js" />
     <Content Include="MenuBar.html" />
     <Content Include="MyStyle.css" />
     <Content Include="RegisterPage.html" />
