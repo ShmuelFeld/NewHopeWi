@@ -1,13 +1,13 @@
 ﻿body {
     background-color: lightblue;
-
 }
-div {
-    text-align:center;
+
+nav {
+    text-align: center;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: cadetblue;
 }
 ul {
     list-style-type: none;
