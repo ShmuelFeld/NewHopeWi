@@ -78,6 +78,7 @@
     <Content Include="MainNavBarJavaScript.js" />
     <Content Include="MenuBar.html" />
     <Content Include="MyStyle.css" />
+    <Content Include="Register.js" />
     <Content Include="RegisterPage.html" />
     <Content Include="Web.config" />
   </ItemGroup>
