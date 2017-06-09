@@ -5,6 +5,7 @@
     <title></title>
 </head>
 <body>
+    <script src="Register.js"></script>
     <div id="navigationBar">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
         <script>
@@ -14,11 +15,14 @@
     <form>
         <h1>Register</h1>
         <p>Please fill the next fields</p>
-        UserName: <input type="text" name="userName"><br />
-        Password: <input type="text" name="password"><br />
-        Password verification: <input type="text" name="passwordVeri"><br />
-        Email: <input type="text" name="Email"><br />
-        <input type="submit" value="Register" id="regBtn"/>
+        <fieldset>
+            UserName: <input type="text" name="userName" id="userName"><br />
+            Password: <input type="text" name="password" id="password"><br />
+            Password verification: <input type="text" name="passwordVeri" id="passwordVeri"><br />
+            Email: <input type="text" name="Email" id="Email"><br />
+            <input type="button" value="Register" id="regBtn" onclick="register()"/>
+        </fieldset>
+        <p id="demo"></p>
     </form>
 </body>
 </html>
