@@ -2,19 +2,73 @@
 <html>
 <head>
     <meta charset="utf-8" />
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <title></title>
+    <link href="Styles/bootstrap.css" rel="stylesheet" /> 
+    <link rel="stylesheet" type="text/css" href="SinglePlayerCSS.css">
 </head>
-<body>
-    <div id="navigationBar">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+<body> 
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="jquery.MazeJS.js"></script>
+    <div id="navigationBar">        
+
+    </div>   
+    <div class="container body-content">
+        <h2>Single Player Game</h2>
+        <div class="col-sm-4 form-horizontal">
+            <div class="form-group">
+                <label for="mazeName" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="mazeName" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mazeRows" class="col-sm-2 control-label">Rows</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="mazeRows" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mazeCols" class="col-sm-2 control-label">Cols</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="mazeCols" />
+                </div>
+            </div>
+            <div class="form-group">
+                <Butt><button class="btn btn-primary">Start New Game</button></Butt>
+            </div>
+
+            <div class="form-group">
+                <label for="Search Algorithm" class="col-sm-2 control-label">Search Algorithm</label>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button"
+                            id="dropdownMenu1" data-toggle="dropdown">
+                        Search Algorithm
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a>BFS</a></li>
+                        <li><a>DFS</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            
+        <!--the maze-->
+        <div class="col-sm-8 text-center">
+            <canvas id="mazeCanvas" style="border:2px black solid" tabindex="1" class="maze-board" width="500"
+                    height="500"></canvas>
+            <script>
+             $("#mazeCanvas").MazeJS();
+            </script>
+        </div>
+
         <script>
             $("#navigationBar").load("MenuBar.html");
         </script>
-    </div>     
-    <h1>Single Player Maze</h1>
-    <ul>
-        <li id="name"><label for="mazeName">Name</label></li>
-        <li id="rows"><label for="mazeRows">Rows</label></li>
-    </ul>
+    </div>
 </body>
 </html>
