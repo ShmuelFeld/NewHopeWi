@@ -1,3 +1,17 @@
 ﻿body {
 }
+* {
+    color: cadetblue;
+}
+input{
+    
+}
+Butt {
+    padding-left: 80px;
+    padding-bottom:10px;
+}
+.dropdown {
+    padding-left: 50px;
+}
+
 
