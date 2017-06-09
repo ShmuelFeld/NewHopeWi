@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SearchAlgoritmLib\SearchAlgorithmsLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MazeGeneratorLib">
+      <HintPath>..\..\..\..\Documents\Visual Studio 2017\Projects\ex1\ex1\bin\Debug\MazeGeneratorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MazeLib">
+      <HintPath>..\..\..\..\Documents\Visual Studio 2017\Projects\ex1\ex1\bin\Debug\MazeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Priority Queue">
+      <HintPath>..\..\..\..\Documents\Visual Studio 2017\Projects\ex1\ex1\bin\Debug\Priority Queue.dll</HintPath>
+    </Reference>
+    <Reference Include="SearchAlgoritmLib">
+      <HintPath>..\SearchAlgoritmLib\bin\Debug\SearchAlgoritmLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
