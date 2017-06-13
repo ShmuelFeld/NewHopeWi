@@ -1,23 +1,18 @@
-﻿function generate() {
-    var apiUrl = "../api/GenerateMaze/5";
+﻿
+function generate() {
+    var apiUrl = "../api/GenerateMaze";
     var maze = {
         Name: $("#mazeName").val(),
         Rows: $("#mazeRows").val(),
         Cols: $("#mazeCols").val()
     };
-    $.getJSON(apiUrl + "/" + maze)
-    //$.post(apiUrl, maze)
-        .done(function (product) {
-            $("#product").text(maze.Name + ": $" + maze.Rows + ": $" + maze.Cols)
+    var request = apiUrl + "/" + maze.Name + "/" + maze.Rows + "/" + maze.Cols;
+    $.getJSON(request)
+        .done(function (maze) {
+            $("#mazeCanvas").MazeJS(maze);
+        })
+        .fail(function (jqXHR, textStatus, err) {
+            alert("error");
         });
-}$("#btnGenerateMaze").click(function () {
-    var maze = {
-        Name: $("#mazeName").val(),
-        Rows: $("#mazeRows").val(),
-        Cols: $("#mazeCols").val()
-    };
-    $.getJSON(apiUrl, maze)
-        .done(function () {
-            alert("Product added successfully");
-        });
-});
+}function drawMaze() {    
+}
