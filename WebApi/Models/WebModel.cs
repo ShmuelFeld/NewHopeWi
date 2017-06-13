@@ -15,9 +15,9 @@ namespace WebApi.Models
             this.model = new Model();
         }
 
-        public Maze GenerateMaze(string name, int rows, int cols)
+        public string GenerateMaze(string name, int rows, int cols)
         {
-            return model.GenerateMaze(name, rows, cols);            
+            return model.GenerateMaze(name, rows, cols).ToJSON();            
         }
     }
 }

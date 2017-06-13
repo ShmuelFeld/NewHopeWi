@@ -1,30 +1,38 @@
 ﻿using MazeLib;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApi.Models;
 
 namespace WebApi.Controllers
 {
+
     public class GenerateMazeController : ApiController
     {
-        // GET: api/GenerateMaze
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        WebModel model = new WebModel();
+        List<Maze> mazes = new List<Maze>();
+        //// GET: api/GenerateMaze
+        //public IEnumerable<Maze> Get()
+        //{
+        //    return null;
+        //}
 
         // GET: api/GenerateMaze/5
-        public string Get(string str)
+        [HttpGet]
+        [Route("api/GenerateMaze/{name}/{rows}/{cols}")]
+        public JObject GenerateMaze(string name, int rows, int cols)
         {
-            return str;
+            Maze maze = Maze.FromJSON(model.GenerateMaze(name, rows, cols));
+            JObject obj = JObject.Parse(maze.ToJSON());
+            return obj;
         }
 
         // POST: api/GenerateMaze
-        [HttpPost]
-        public void GenerateMaze(Maze m)
+        public void Post(Maze m)
         {
 
         }
