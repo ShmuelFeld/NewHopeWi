@@ -11,9 +11,9 @@ function generate() {
         .done(function (maze) {
             gameOnBool = true
             $("#mazeCanvas").MazeJS(maze);
-            var player = document.getElementById("prince");
-            var dest = document.getElementById("cinderella");
-            $("#mazeCanvas").MazeJS(maze, player, dest);
+            //var player = document.getElementById("prince");
+            //var dest = document.getElementById("cinderella");
+            $("#mazeCanvas").MazeJS(maze);
         })
         .fail(function (jqXHR, textStatus, err) {
             alert("error");
