@@ -1,8 +1,9 @@
 ﻿(function ($) {
     $.fn.MazeJS = function (data, player, dest) {
         maze = data.Maze;
-    var myCanvas = document.getElementById("mazeCanvas");
-    var context = mazeCanvas.getContext("2d");
+        var myCanvas = document.getElementById("mazeCanvas");    
+        var context = mazeCanvas.getContext("2d");
+        context.clearRect(0, 0, myCanvas.width, myCanvas.height);
     var rows = data.Rows;
     var cols = data.Cols;
     var cellWidth = mazeCanvas.width / cols;
@@ -21,4 +22,28 @@
         cellWidth, cellHeight);
     return this;
 };
-})(jQuery);
+})(jQuery);function move(e) {    if (gameOnBool) {        var keynum;
+        if (window.event) { // IE                    
+            keynum = e.keyCode;
+            switch (keynum) {
+                //move left
+                case 37:
+                    break;
+                //move up
+                case 38:
+
+                    break;
+                //move right
+                case 39:
+
+                    break;
+                //move down
+                case 40:
+
+                    break;
+
+                default:
+                    break;
+            }
+            alert(String.fromCharCode(keynum));
+        }    }}
