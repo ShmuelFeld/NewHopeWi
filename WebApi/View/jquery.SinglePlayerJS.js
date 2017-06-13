@@ -9,7 +9,9 @@ function generate() {
     var request = apiUrl + "/" + maze.Name + "/" + maze.Rows + "/" + maze.Cols;
     $.getJSON(request)
         .done(function (maze) {
-            $("#mazeCanvas").MazeJS(maze);
+            var player = document.getElementById("prince");
+            var dest = document.getElementById("cinderella");
+            $("#mazeCanvas").MazeJS(maze, player, dest);
         })
         .fail(function (jqXHR, textStatus, err) {
             alert("error");
