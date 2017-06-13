@@ -99,6 +99,12 @@
     <Content Include="View\MyStyle.css" />
     <Content Include="View\Register.js" />
     <Content Include="View\RegisterPage.html" />
+    <Content Include="View\resources\cinderella.jpg" />
+    <Content Include="View\resources\MAZE logo.jpg" />
+    <Content Include="View\resources\palace.gif" />
+    <Content Include="View\resources\prince.png" />
+    <Content Include="View\resources\refresh.png" />
+    <Content Include="View\resources\winner.jpg" />
     <Content Include="View\SinglePlayerCSS.css" />
     <Content Include="View\SinglePlayerPage.html" />
     <Content Include="Web.config" />
@@ -116,6 +122,7 @@
     <Content Include="packages.config" />
     <Content Include="View\packages.config" />
     <Content Include="View\Web.config" />
+    <Content Include="View\resources\Thumbs.db" />
     <None Include="View\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
