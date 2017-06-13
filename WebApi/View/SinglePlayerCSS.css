@@ -1,10 +1,9 @@
-﻿body {
-}
+﻿
 * {
-    color: cadetblue;
+    color: darkslategray;
 }
-input{
-    
+h2 {
+    color: darkslategray;
 }
 Butt {
     padding-left: 80px;

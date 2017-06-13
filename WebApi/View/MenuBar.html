@@ -1,24 +1,32 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <title></title>
+    <link href="Styles/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="MyStyle.css">
 </head>
 <body>
 <script src="MainNavBarJavaScript.js"></script>
-    <div id="navBar">
-        <ul>
-            <li id="navItem"><a href="HomePage.html">Maze</a></li>
-            <li id="navItem"><a href="SinglePlayerPage.html">Single Game</a></li>
-            <li id="navItem"><a href="MultiplayerGame">Multiplayer Game</a></li>
-            <li id="navItem"><a href="Settings">Settings</a></li>
-            <li id="navItem"><a href="UserRankings">User Rankings</a></li>
-        </ul>
-        <ul id="right">
-            <li id="navItem"><a href="RegisterPage.html">Register</a></li>
-            <li id="navItem"><a href="LoginPage.html">Login</a></li>
-        </ul>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Maze</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Single Game</a></li>
+                <li><a href="#">Multiplayer Game</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">User Ranking</a></li>
+
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
     </div>
+    </nav>
 </body>
 </html>
