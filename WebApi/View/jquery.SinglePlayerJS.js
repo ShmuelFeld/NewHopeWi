@@ -6,13 +6,12 @@ function generate() {
         Rows: $("#mazeRows").val(),
         Cols: $("#mazeCols").val()
     };
+    //var title = document.getElementsByTagName("title");
+    //title.textStatus = maze.Name;
     var request = apiUrl + "/" + maze.Name + "/" + maze.Rows + "/" + maze.Cols;
     $.getJSON(request)
         .done(function (maze) {
             gameOnBool = true
-            $("#mazeCanvas").MazeJS(maze);
-            //var player = document.getElementById("prince");
-            //var dest = document.getElementById("cinderella");
             $("#mazeCanvas").MazeJS(maze);
         })
         .fail(function (jqXHR, textStatus, err) {

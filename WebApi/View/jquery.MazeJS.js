@@ -13,7 +13,7 @@
         var counter = 0;
         for (var i = 0; i < rows; i++) {
             for (var j = 0; j < cols; j++) {
-                if (maze[counter] == '1') {
+                if (maze[counter] === '1') {
                     context.fillRect(cellWidth * j, cellHeight * i,
                         cellWidth, cellHeight);
                 }
