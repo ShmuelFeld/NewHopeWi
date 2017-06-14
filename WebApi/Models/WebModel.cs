@@ -9,15 +9,20 @@ namespace WebApi.Models
 {
     public class WebModel
     {
-        private IModel model;
+        static private IModel model;
         public WebModel()
         {
-            this.model = new Model();
+            model = new Model();
         }
 
         public string GenerateMaze(string name, int rows, int cols)
         {
             return model.GenerateMaze(name, rows, cols).ToJSON();            
+        }
+
+        public MazeSolution SolveMaze(string name, int algorithm)
+        {
+            return model.SolveMaze(name, algorithm);
         }
     }
 }

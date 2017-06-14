@@ -1,4 +1,5 @@
 ﻿using MazeLib;
+using ModelCL;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,9 @@ using WebApi.Models;
 namespace WebApi.Controllers
 {
 
-    public class GenerateMazeController : ApiController
+    public class MazeController : ApiController
     {
-        WebModel model = new WebModel();
-        List<Maze> mazes = new List<Maze>();
+        static WebModel model = new WebModel();
         //// GET: api/GenerateMaze
         //public IEnumerable<Maze> Get()
         //{
@@ -28,6 +28,16 @@ namespace WebApi.Controllers
         {
             Maze maze = Maze.FromJSON(model.GenerateMaze(name, rows, cols));
             JObject obj = JObject.Parse(maze.ToJSON());
+            return obj;
+        }
+
+        [HttpGet]
+        [Route("api/SolveMaze/{name}/{algorithm}")]
+        public JObject SolveMaze(string name, int algorithm)
+        {
+            //model.GenerateMaze(name, 12, 12);
+            MazeSolution solution = model.SolveMaze(name, algorithm);
+            JObject obj = JObject.Parse(solution.ToJSON(name));
             return obj;
         }
 
