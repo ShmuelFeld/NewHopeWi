@@ -6,13 +6,23 @@ function generate() {
         Rows: $("#mazeRows").val(),
         Cols: $("#mazeCols").val()
     };
-    //var title = document.getElementsByTagName("title");
-    //title.textStatus = maze.Name;
     var request = apiUrl + "/" + maze.Name + "/" + maze.Rows + "/" + maze.Cols;
     $.getJSON(request)
-        .done(function (maze) {
+        .done(function (mazeAns) {
             gameOnBool = true
-            $("#mazeCanvas").MazeJS(maze);
+            $("#mazeCanvas").generateMaze(mazeAns);
+        })
+        .fail(function (jqXHR, textStatus, err) {
+            alert("error");
+        });
+}
+
+function solve() {
+    var apiUrl = "../api/SolveMaze";
+    var request = apiUrl + "/" + $("#mazeName").val() + "/0";
+    $.getJSON(request)
+        .done(function (solution) {
+            $("#mazeCanvas").solveMaze(solution);
         })
         .fail(function (jqXHR, textStatus, err) {
             alert("error");
