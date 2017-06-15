@@ -1,6 +1,7 @@
 ﻿var currentPosition;
-var goalPosition;
+var goalPosition, initPosition;
 var maze, rows, cols;
+var isDone = false;
 (function ($) {
     $.fn.generateMaze = function (data) {
         maze = data.Maze;
@@ -15,6 +16,7 @@ var maze, rows, cols;
         var cellHeight = mazeCanvas.height / rows;
         currentPosition = data.Start;
         goalPosition = data.End;
+        initPosition = data.Start;
         var counter = 0;
         for (var i = 0; i < rows; i++) {
             for (var j = 0; j < cols; j++) {
@@ -31,40 +33,72 @@ var maze, rows, cols;
             cellWidth, cellHeight);
         return this;
 };
-})(jQuery);(function ($) {
-    $.fn.solveMaze = function (data) {        alert(data);    };
-})(jQuery);function move(e) {    var myCanvas = document.getElementById("mazeCanvas");
-    var player = document.getElementById("prince");
-    var dest = document.getElementById("cinderella");
-    var context = mazeCanvas.getContext("2d");    var cellWidth = myCanvas.width / cols;
-    var cellHeight = myCanvas.height / rows;    if (gameOnBool) {        var keynum;
-        if (window.event) { // IE                    
-            keynum = e.keyCode;
-            switch (keynum) {
-                //move left
-                case 37:
-                    moveLeft();
-                    break;
-                //move up
-                case 38:
-                    moveUp();
-                    break;
-                //move right
-                case 39:
-                    moveRight();
-                    break;
-                //move down
-                case 40:
-                    moveDown();
-                    break;
+})(jQuery);(function ($){    $.fn.solveMaze = function (data) {
+        currentPosition.Row = initPosition.Row;
+        currentPosition.Col = initPosition.Col;
+        var id = setInterval(frame, 50);
+        function frame() {
+            for (var i = 0; i < data.solution.length; i++) {
+                switch (data.solution.charAt(i)) {
+                    //left
+                    case '0':
+                        moveLeft();
+                        break;
 
-                default:
-                    break;
+                    //right
+                    case '1':
+                        moveRight();
+                        break;
+
+                    //up
+                    case '2':
+                        moveUp();
+                        break;
+
+                    //down
+                    case '3':
+                        moveDown();
+                        break;
+                }
             }
+            clearInterval(id);
+        }
+        isDone = true;
+    };
+})(jQuery);function move(e) {    if (isDone == false) {        var myCanvas = document.getElementById("mazeCanvas");
+        var player = document.getElementById("prince");
+        var dest = document.getElementById("cinderella");
+        var context = mazeCanvas.getContext("2d");        var cellWidth = myCanvas.width / cols;
+        var cellHeight = myCanvas.height / rows;        if (gameOnBool) {            var keynum;
+            if (window.event) { // IE                    
+                keynum = e.keyCode;
+                switch (keynum) {
+                    //move left
+                    case 37:
+                        moveLeft();
+                        break;
+                    //move up
+                    case 38:
+                        moveUp();
+                        break;
+                    //move right
+                    case 39:
+                        moveRight();
+                        break;
+                    //move down
+                    case 40:
+                        moveDown();
+                        break;
 
-            if ((goalPosition.Row == currentPosition.Row) && (goalPosition.Col == currentPosition.Col)) { alert("wow you won!!!");}
-            
-        }    }}function moveLeft() {    var myCanvas = document.getElementById("mazeCanvas");
+                    default:
+                        break;
+                }
+
+                if ((goalPosition.Row === currentPosition.Row) && (goalPosition.Col === currentPosition.Col)) {
+                    alert("wow you won!!!");
+                    isDone = true;
+                }
+            }        }    }}function moveLeft() {    var myCanvas = document.getElementById("mazeCanvas");
     var player = document.getElementById("prince");
     var dest = document.getElementById("cinderella");
     var context = mazeCanvas.getContext("2d");    var cellWidth = myCanvas.width / cols;

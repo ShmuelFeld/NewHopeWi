@@ -19,7 +19,7 @@ function generate() {
 
 function solve() {
     var apiUrl = "../api/SolveMaze";
-    var request = apiUrl + "/" + $("#mazeName").val() + "/0";
+    var request = apiUrl + "/" + $("#mazeName").val() + "/" + $(".algo");
     $.getJSON(request)
         .done(function (solution) {
             $("#mazeCanvas").solveMaze(solution);
