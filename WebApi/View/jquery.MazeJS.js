@@ -33,7 +33,6 @@ var isDone = false;
             cellWidth, cellHeight);
         return this;
 };
-
 })(jQuery);
 
 (function ($) {
@@ -41,30 +40,7 @@ var isDone = false;
         alert("hey");
     };
 })(jQuery);
-function move(e) {
-    if (gameOnBool) {
-        var keynum;
-        if (window.event) { // IE                    
-            keynum = e.keyCode;
-            switch (keynum) {
-                //move left
-                case 37:
-                    moveLeft();
-                    break;
-                //move up
-                case 38:
-                    moveUp();
-                    break;
-                //move right
-                case 39:
-                    moveRight();
-                    break;
-                //move down
-                case 40:
-                    moveDown();
-                    break;
 
-})(jQuery);
 (function ($){
     $.fn.solveMaze = function (data) {
         currentPosition.Row = initPosition.Row;
@@ -95,7 +71,6 @@ function move(e) {
                 }
                 i++;
             }
-            
             if (i == data.solution.length) {
                 clearInterval(frameActivator);
                 isDone = true;
@@ -138,7 +113,6 @@ function move(e) {
                     default:
                         break;
                 }
-
                 if ((goalPosition.Row === currentPosition.Row) && (goalPosition.Col === currentPosition.Col)) {
                     alert("wow you won!!!");
                     isDone = true;
