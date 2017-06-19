@@ -17,6 +17,8 @@ function login() {
                 $("#register").attr("href", "#");
                 $("#login").text("Logout");
                 $("#login").attr("href", "#");
+                window.location.replace("HomePage.html");
+                
             } else {
                 alert("Not the Same Passwords");
             }
