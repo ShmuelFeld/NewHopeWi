@@ -25,10 +25,11 @@ namespace WebApi.Models
             return model.SolveMaze(name, algorithm);
         }
 
-        //public Maze StartMaze(string name, int rows, int cols)
-        //{
-        //    return model.StartGame(name, rows, cols);
 
-        //}
+        public Maze StartMaze(string name, int rows, int cols)
+        {
+            // return model.StartGame(name, rows, cols);
+            return null;
+        }
     }
 }
