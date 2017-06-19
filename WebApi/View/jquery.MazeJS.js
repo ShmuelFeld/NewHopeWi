@@ -33,12 +33,16 @@ var isDone = false;
             cellWidth, cellHeight);
         return this;
 };
-})(jQuery);(function ($){    $.fn.solveMaze = function (data) {
+})(jQuery);
+
+(function ($){
+    $.fn.solveMaze = function (data) {
         currentPosition.Row = initPosition.Row;
         currentPosition.Col = initPosition.Col;
-        var id = setInterval(frame, 50);
+        var frameActivator = window.setInterval(frame, 600);
+        var i = 0;
         function frame() {
-            for (var i = 0; i < data.solution.length; i++) {
+            if (i < data.solution.length) {
                 switch (data.solution.charAt(i)) {
                     //left
                     case '0':
@@ -60,16 +64,29 @@ var isDone = false;
                         moveDown();
                         break;
                 }
+                i++;
             }
-            clearInterval(id);
+            
+            if (i == data.solution.length) {
+                clearInterval(frameActivator);
+                isDone = true;
+            }       
         }
-        isDone = true;
+       
+        return this;
     };
-})(jQuery);function move(e) {    if (isDone == false) {        var myCanvas = document.getElementById("mazeCanvas");
+})(jQuery);
+
+function move(e) {
+    if (isDone == false) {
+        var myCanvas = document.getElementById("mazeCanvas");
         var player = document.getElementById("prince");
         var dest = document.getElementById("cinderella");
-        var context = mazeCanvas.getContext("2d");        var cellWidth = myCanvas.width / cols;
-        var cellHeight = myCanvas.height / rows;        if (gameOnBool) {            var keynum;
+        var context = mazeCanvas.getContext("2d");
+        var cellWidth = myCanvas.width / cols;
+        var cellHeight = myCanvas.height / rows;
+        if (gameOnBool) {
+            var keynum;
             if (window.event) { // IE                    
                 keynum = e.keyCode;
                 switch (keynum) {
@@ -98,11 +115,19 @@ var isDone = false;
                     alert("wow you won!!!");
                     isDone = true;
                 }
-            }        }    }}function moveLeft() {    var myCanvas = document.getElementById("mazeCanvas");
+            }
+        }
+    }
+}
+
+function moveLeft() {
+    var myCanvas = document.getElementById("mazeCanvas");
     var player = document.getElementById("prince");
     var dest = document.getElementById("cinderella");
-    var context = mazeCanvas.getContext("2d");    var cellWidth = myCanvas.width / cols;
-    var cellHeight = myCanvas.height / rows;    var i = maze[(currentPosition.Row * cols) + currentPosition.Col - 1];
+    var context = mazeCanvas.getContext("2d");
+    var cellWidth = myCanvas.width / cols;
+    var cellHeight = myCanvas.height / rows;
+    var i = maze[(currentPosition.Row * cols) + currentPosition.Col - 1];
     if (i == 0) {
         context.clearRect(currentPosition.Col * cellWidth, currentPosition.Row * cellHeight,
             cellWidth, cellHeight);
@@ -110,11 +135,16 @@ var isDone = false;
         context.drawImage(player, currentPosition.Col * cellWidth, currentPosition.Row * cellHeight,
             cellWidth, cellHeight);
     }
-}function moveUp() {    var myCanvas = document.getElementById("mazeCanvas");
+}
+
+function moveUp() {
+    var myCanvas = document.getElementById("mazeCanvas");
     var player = document.getElementById("prince");
     var dest = document.getElementById("cinderella");
-    var context = mazeCanvas.getContext("2d");    var cellWidth = myCanvas.width / cols;
-    var cellHeight = myCanvas.height / rows;    var i = maze[((currentPosition.Row - 1) * cols) + currentPosition.Col];
+    var context = mazeCanvas.getContext("2d");
+    var cellWidth = myCanvas.width / cols;
+    var cellHeight = myCanvas.height / rows;
+    var i = maze[((currentPosition.Row - 1) * cols) + currentPosition.Col];
     if (i == 0) {
         context.clearRect(currentPosition.Col * cellWidth, currentPosition.Row * cellHeight,
             cellWidth, cellHeight);
@@ -122,11 +152,16 @@ var isDone = false;
         context.drawImage(player, currentPosition.Col * cellWidth, currentPosition.Row * cellHeight,
             cellWidth, cellHeight);
     }
-}function moveRight() {    var myCanvas = document.getElementById("mazeCanvas");
+}
+
+function moveRight() {
+    var myCanvas = document.getElementById("mazeCanvas");
     var player = document.getElementById("prince");
     var dest = document.getElementById("cinderella");
-    var context = mazeCanvas.getContext("2d");    var cellWidth = myCanvas.width / cols;
-    var cellHeight = myCanvas.height / rows;    var i = maze[(currentPosition.Row * cols) + currentPosition.Col + 1];
+    var context = mazeCanvas.getContext("2d");
+    var cellWidth = myCanvas.width / cols;
+    var cellHeight = myCanvas.height / rows;
+    var i = maze[(currentPosition.Row * cols) + currentPosition.Col + 1];
     if (i == 0) {
         context.clearRect(currentPosition.Col * cellWidth, currentPosition.Row * cellHeight,
             cellWidth, cellHeight);
@@ -134,11 +169,16 @@ var isDone = false;
         context.drawImage(player, currentPosition.Col * cellWidth, currentPosition.Row * cellHeight,
             cellWidth, cellHeight);
     }
-}function moveDown() {    var myCanvas = document.getElementById("mazeCanvas");
+}
+
+function moveDown() {
+    var myCanvas = document.getElementById("mazeCanvas");
     var player = document.getElementById("prince");
     var dest = document.getElementById("cinderella");
-    var context = mazeCanvas.getContext("2d");    var cellWidth = myCanvas.width / cols;
-    var cellHeight = myCanvas.height / rows;    var i = maze[((currentPosition.Row + 1) * cols) + currentPosition.Col];
+    var context = mazeCanvas.getContext("2d");
+    var cellWidth = myCanvas.width / cols;
+    var cellHeight = myCanvas.height / rows;
+    var i = maze[((currentPosition.Row + 1) * cols) + currentPosition.Col];
     if (i == 0) {
         context.clearRect(currentPosition.Col * cellWidth, currentPosition.Row * cellHeight,
             cellWidth, cellHeight);
@@ -146,4 +186,4 @@ var isDone = false;
         context.drawImage(player, currentPosition.Col * cellWidth, currentPosition.Row * cellHeight,
             cellWidth, cellHeight);
     }
-}
+}

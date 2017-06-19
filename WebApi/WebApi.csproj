@@ -101,6 +101,8 @@
     <Content Include="View\LoginPage.html" />
     <Content Include="View\MainNavBar.js" />
     <Content Include="View\MenuBar.html" />
+    <Content Include="View\MultiPlayerCss.css" />
+    <Content Include="View\MultiPlayerJS.js" />
     <Content Include="View\MultiPlayerPage.html" />
     <Content Include="View\MyStyle.css" />
     <Content Include="View\Register.js" />

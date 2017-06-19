@@ -9,7 +9,7 @@ function generate() {
     var request = apiUrl + "/" + maze.Name + "/" + maze.Rows + "/" + maze.Cols;
     $.getJSON(request)
         .done(function (mazeAns) {
-            gameOnBool = true
+            gameOnBool = true;
             $("#mazeCanvas").generateMaze(mazeAns);
         })
         .fail(function (jqXHR, textStatus, err) {
@@ -19,7 +19,9 @@ function generate() {
 
 function solve() {
     var apiUrl = "../api/SolveMaze";
-    var request = apiUrl + "/" + $("#mazeName").val() + "/" + $(".algo");
+    var algo = $("#algoSelect").val();
+    var request = apiUrl + "/" + $("#mazeName").val() + "/" + algo;
+    var i;
     $.getJSON(request)
         .done(function (solution) {
             $("#mazeCanvas").solveMaze(solution);
