@@ -27,7 +27,8 @@ namespace WebApi.Models
 
         public Maze StartMaze(string name, int rows, int cols)
         {
-            return model.StartGame(name, rows, cols);
+            // return model.StartGame(name, rows, cols);
+            return null;
         }
     }
 }
