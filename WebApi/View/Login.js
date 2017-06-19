@@ -1,4 +1,5 @@
-﻿function login() {
+﻿
+function login() {
     var str1 = $("#userName").val();
     var str2 = $("#password").val();
     var password = SHA1(str2);
@@ -10,7 +11,9 @@
     $.getJSON(request, obj)
         .done(function (data) {
             if (data.Password.localeCompare(password) == 0) {
-                alert("success");
+                var hello = "Hello " + str1;
+                $("#register").text(hello);
+
             } else {
                 alert("Not the Same Passwords");
             }

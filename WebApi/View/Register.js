@@ -12,7 +12,7 @@
             EMail: Email,
             numberOfWins: 0,
             numberOfLoses: 0
-
+            //todo inset date
         };
         var apiUrl = "../api/Users/";
         var request = UserObject;
