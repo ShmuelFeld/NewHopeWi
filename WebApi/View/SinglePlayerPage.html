@@ -1,8 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-   
+    <meta charset="utf-8" />   
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <title></title>
@@ -38,24 +37,20 @@
                 </div>
             </div>
             <div class="form-group">
-                <Butt><input type="button" id="btnGenerateMaze" value="Start Game" onclick="generate()"/></Butt>
+                <Butt><input type="button" class="btn btn-default" id="btnGenerateMaze" value="Start Game" onclick="generate()"/></Butt>
             </div>
 
             <div class="form-group">
-                <label for="Search Algorithm" class="col-sm-2 control-label">Search Algorithm</label>
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button"
-                            id="dropdownMenu1" data-toggle="dropdown">
-                        Search Algorithm
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" for="btnSolve" class="btnSolve">BFS</a></li>
-                        <li><a href="#" for="btnSolve" class="btnSolve">DFS</a></li>
-                    </ul>
+                <label for="cols" class="col-sm-2 control-label">Search Algo</label>
+                <div class="col-sm-10">
+                    <select id="algoSelect" name="algo">
+                        <option value="0">BFS</option>
+                        <option value="1">DFS</option>
+                    </select>
+
                 </div>
             </div>
-            <Butt><input type="button" id="btnSolveMaze" value="Solve Game" onclick="solve()" /></Butt>
+            <Butt><input type="button" class="btn btn-default" id="btnSolveMaze" value="Solve Game" onclick="solve()" /></Butt>
             </div>
             
         <!--the maze-->
@@ -72,3 +67,22 @@
     </div>
 </body>
 </html>
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

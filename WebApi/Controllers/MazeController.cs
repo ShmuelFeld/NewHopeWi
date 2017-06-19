@@ -35,9 +35,17 @@ namespace WebApi.Controllers
         [Route("api/SolveMaze/{name}/{algorithm}")]
         public JObject SolveMaze(string name, int algorithm)
         {
-            //model.GenerateMaze(name, 12, 12);
             MazeSolution solution = model.SolveMaze(name, algorithm);
             JObject obj = JObject.Parse(solution.ToJSON(name));
+            return obj;
+        }
+
+        [HttpGet]
+        [Route("api/StartMaze/{name}/{rows}/{cols}")]
+        public JObject StartMaze(string name, int rows, int cols)
+        {
+            Maze maze = Maze.FromJSON(model.GenerateMaze(name, rows, cols));
+            JObject obj = JObject.Parse(maze.ToJSON());
             return obj;
         }
 
