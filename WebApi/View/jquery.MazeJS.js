@@ -32,12 +32,8 @@ var maze, rows, cols;
         return this;
 };
 })(jQuery);(function ($) {
-    $.fn.solveMaze = function (data) {        alert(data);    };
-})(jQuery);function move(e) {    var myCanvas = document.getElementById("mazeCanvas");
-    var player = document.getElementById("prince");
-    var dest = document.getElementById("cinderella");
-    var context = mazeCanvas.getContext("2d");    var cellWidth = myCanvas.width / cols;
-    var cellHeight = myCanvas.height / rows;    if (gameOnBool) {        var keynum;
+    $.fn.solveMaze = function (data) {        alert("hey");    };
+})(jQuery);function move(e) {    if (gameOnBool) {        var keynum;
         if (window.event) { // IE                    
             keynum = e.keyCode;
             switch (keynum) {
@@ -62,7 +58,13 @@ var maze, rows, cols;
                     break;
             }
 
-            if ((goalPosition.Row == currentPosition.Row) && (goalPosition.Col == currentPosition.Col)) { alert("wow you won!!!");}
+            if ((goalPosition.Row == currentPosition.Row) && (goalPosition.Col == currentPosition.Col)) {
+                alert("WOW you won!!!");
+                var myCanvas = document.getElementById("mazeCanvas");
+                var context = mazeCanvas.getContext("2d");
+                context.clearRect(0, 0, myCanvas.width, myCanvas.height);
+                gameOnBool = false;
+            }
             
         }    }}function moveLeft() {    var myCanvas = document.getElementById("mazeCanvas");
     var player = document.getElementById("prince");
