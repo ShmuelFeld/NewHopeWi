@@ -33,8 +33,38 @@ var isDone = false;
             cellWidth, cellHeight);
         return this;
 };
+
 })(jQuery);
 
+(function ($) {
+    $.fn.solveMaze = function (data) {
+        alert("hey");
+    };
+})(jQuery);
+function move(e) {
+    if (gameOnBool) {
+        var keynum;
+        if (window.event) { // IE                    
+            keynum = e.keyCode;
+            switch (keynum) {
+                //move left
+                case 37:
+                    moveLeft();
+                    break;
+                //move up
+                case 38:
+                    moveUp();
+                    break;
+                //move right
+                case 39:
+                    moveRight();
+                    break;
+                //move down
+                case 40:
+                    moveDown();
+                    break;
+
+})(jQuery);
 (function ($){
     $.fn.solveMaze = function (data) {
         currentPosition.Row = initPosition.Row;
@@ -48,7 +78,6 @@ var isDone = false;
                     case '0':
                         moveLeft();
                         break;
-
                     //right
                     case '1':
                         moveRight();
@@ -72,7 +101,6 @@ var isDone = false;
                 isDone = true;
             }       
         }
-       
         return this;
     };
 })(jQuery);
@@ -119,7 +147,6 @@ function move(e) {
         }
     }
 }
-
 function moveLeft() {
     var myCanvas = document.getElementById("mazeCanvas");
     var player = document.getElementById("prince");

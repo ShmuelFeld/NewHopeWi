@@ -1,12 +1,28 @@
 ﻿function register() {
-    var str1 = document.getElementById("password").value;
-    var str2 = document.getElementById("passwordVeri").value;
+    var str1 =$("#password").val();
+    var str2 = $("#passwordVeri").val();
     if (validPassword(str1, str2)) {
         document.getElementById("demo").innerHTML = "";
-        var userName = document.getElementById("userName").value;
-        var password = str1;
-        var Email = document.getElementById("Email").value;
-        //send a request to Server.
+        var userName = $("#userName").val();
+        var password = SHA1($("#password").val());
+        var Email = $("#Email").val();
+        var UserObject = {
+            UserName: userName,
+            Password: password,
+            EMail: Email,
+            numberOfWins: 0,
+            numberOfLoses: 0
+            //todo inset date
+        };
+        var apiUrl = "../api/Users/";
+        var request = UserObject;
+        $.post(apiUrl, UserObject)
+            .done(function (data) {
+                alert("success");
+            })
+            .fail(function (jqXHR, textStatus, err) {
+                alert("UserName is already exists. Please choose different name");
+            });
     } else {
         document.getElementById("demo").innerHTML = "there is a conflict between passwords";
         document.getElementById("password").value = "";
