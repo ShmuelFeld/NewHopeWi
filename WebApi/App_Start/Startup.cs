@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Owin;
 using Owin;
+using Microsoft.AspNet.SignalR.Hubs;
 
 [assembly: OwinStartup(typeof(WebApi.Startup))]
 

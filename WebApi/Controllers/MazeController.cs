@@ -14,7 +14,7 @@ namespace WebApi.Controllers
 
     public class MazeController : ApiController
     {
-        static WebModel model = new WebModel();
+        static private WebModel model = new WebModel();
         //// GET: api/GenerateMaze
         //public IEnumerable<Maze> Get()
         //{
@@ -41,12 +41,10 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/StartMaze/{name}/{rows}/{cols}")]
-        public JObject StartMaze(string name, int rows, int cols)
+        [Route("api/GetList")]
+        public IEnumerable<Maze> GetList()
         {
-            Maze maze = Maze.FromJSON(model.GenerateMaze(name, rows, cols));
-            JObject obj = JObject.Parse(maze.ToJSON());
-            return obj;
+            return model.GetList();
         }
 
         // POST: api/GenerateMaze

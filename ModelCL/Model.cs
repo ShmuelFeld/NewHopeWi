@@ -35,7 +35,7 @@ namespace ModelCL
         /// <summary>
         /// The waiting games
         /// </summary>
-        Dictionary<string, TcpClient> waitingGames;
+        Dictionary<string, string> waitingGames;
         /// <summary>
         /// The multi player games
         /// </summary>
@@ -58,7 +58,7 @@ namespace ModelCL
             //this.controller = controller;
             bfsSoliutions = new Dictionary<string, Solution<Position>>();
             dfsSoliutions = new Dictionary<string, Solution<Position>>();
-            waitingGames = new Dictionary<string, TcpClient>();
+            waitingGames = new Dictionary<string, string>();
             multiPlayerGames = new Dictionary<string, MultiPlayerGame>();
         }
 
@@ -133,7 +133,7 @@ namespace ModelCL
         /// <param name="cols">The cols.</param>
         /// <param name="tcpClient">The TCP client.</param>
         /// <returns></returns>
-        public Maze StartGame(string name, int rows, int cols, TcpClient tcpClient)
+        public Maze StartGame(string name, int rows, int cols, string tcpClient)
         {
             Maze maze;
             if (mazes.ContainsKey(name))
@@ -157,7 +157,7 @@ namespace ModelCL
         /// <returns></returns>
         public List<Maze> GetListOfAvailableGames()
         {
-            return availableGames;
+             return availableGames;
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace ModelCL
         /// <param name="name">The name.</param>
         /// <param name="tcpClient">The TCP client.</param>
         /// <returns></returns>
-        public Maze Join(string name, TcpClient tcpClient)
+        public Maze Join(string name, string tcpClient)
         {
             if (!waitingGames.ContainsKey(name)) { return null; }
             Maze maze = mazes[name];
@@ -183,7 +183,7 @@ namespace ModelCL
         /// <param name="move">The move.</param>
         /// <param name="client">The client.</param>
         /// <returns></returns>
-        public MultiPlayerGame Play(string move, TcpClient client)
+        public MultiPlayerGame Play(string move, string client)
         {
             foreach (MultiPlayerGame m in multiPlayerGames.Values)
             {
@@ -196,7 +196,7 @@ namespace ModelCL
         /// </summary>
         /// <param name="client">The client.</param>
         /// <returns></returns>
-        public TcpClient Close(TcpClient client)
+        public string Close(string client)
         {
             foreach (MultiPlayerGame m in multiPlayerGames.Values)
             {

@@ -161,11 +161,12 @@
       <DependentUpon>201706181049105_Initial1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\MultiModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WebApiContext.cs" />
     <Compile Include="Models\WebModel.cs" />
     <Compile Include="App_Start\Startup.cs" />
-    <Compile Include="Controllers\MultiPlayerHab.cs" />
+    <Compile Include="Controllers\MultiPlayerHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
