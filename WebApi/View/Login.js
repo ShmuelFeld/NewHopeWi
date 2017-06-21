@@ -8,7 +8,7 @@ function login() {
         name: str1
     }
     var request = apiUrl;
-    $.getJSON(request, obj)
+    $.getJSON(request, obj)//
         .done(function (data) {
             if (data.Password.localeCompare(password) == 0) {
                 sessionStorage.Name = str1;

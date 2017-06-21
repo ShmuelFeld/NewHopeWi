@@ -36,7 +36,7 @@ namespace ModelCL
         /// <param name="cols">The cols.</param>
         /// <param name="tcp">The TCP.</param>
         /// <returns></returns>
-        Maze StartGame(string name, int rows, int cols, TcpClient tcp);
+        Maze StartGame(string name, int rows, int cols, string tcp);
         /// <summary>
         /// Gets the list of available games.
         /// </summary>
@@ -48,19 +48,19 @@ namespace ModelCL
         /// <param name="name">The name.</param>
         /// <param name="tcp">The TCP.</param>
         /// <returns></returns>
-        Maze Join(string name, TcpClient tcp);
+        Maze Join(string name, string tcp);
         /// <summary>
         /// Plays the specified move.
         /// </summary>
         /// <param name="move">The move.</param>
         /// <param name="client">The client.</param>
         /// <returns></returns>
-        MultiPlayerGame Play(string move, TcpClient client);
+        MultiPlayerGame Play(string move, string client);
         /// <summary>
         /// Closes the specified client.
         /// </summary>
         /// <param name="client">The client.</param>
         /// <returns></returns>
-        TcpClient Close(TcpClient client);
+        string Close(string client);
     }
 }
