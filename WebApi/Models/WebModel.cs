@@ -39,5 +39,10 @@ namespace WebApi.Models
         {
             return model.Join(name, clientId);
         }
+
+        public MultiPlayerGame Play(string move, string clientId)
+        {
+            return model.Play(move, clientId);
+        }
     }
 }

@@ -1,9 +1,9 @@
 ﻿var multiplayer = $.connection.multiplayerHub;
+var gameOnBool = false;
 
 multiplayer.client.drawMaze = function (data) {
-    //var maze = FromJSON(data);
+    gameOnBool = true;
     $("#myMazeCanvas").generateMaze(data);
-    $("#otherMazeCanvas").generateMaze(data);
 };
 
 $.connection.hub.start().done(function () {
@@ -14,32 +14,24 @@ $.connection.hub.start().done(function () {
         multiplayer.server.start(name, rows, cols);
     });
     $("#btnJoinGame").click(function () {
-        multiplayer.server.join();
+        multiplayer.server.join($("#listDrpdwn").val());
     });
 });
 
-
+$("#body").keydown(function (e) {    multiplayer.server.play(e.key);    $("#myMazeCanvas").move(e, 'myMazeCanvas');});
 
 function getListOfGames() {
     var dropdowns = document.getElementsByClassName("dropdown-content");
-    var apiUrl = "../api/GetList";
-    $.getJSON(apiUrl)
-        .done(function (mazeAns) {
-            alert("hay");
-        })
-        .fail(function (jqXHR, textStatus, err) {
-            alert("error1");
-        });
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
+    multiplayer.server.list().done(function (result) {
+        if (result) {
+            $.each(result, function (i, item) {
+                $('#listDrpdwn').empty();
+                $('#listDrpdwn').append($('<option>', {
+                    value: item,
+                    text: item
+                }));
+            });
         }
-    }
-}
-
-function joinGame() {
-
+    });
 }
 
