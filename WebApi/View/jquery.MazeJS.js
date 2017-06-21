@@ -34,7 +34,6 @@ var isDone = false;
             context.drawImage(dest, data.End.Col * cellWidth, data.End.Row * cellHeight,
                 cellWidth, cellHeight);
         }
-
         if (myCanvas == null) {
             myCanvas = document.getElementById("myMazeCanvas");
             draw(myCanvas, data);
@@ -52,7 +51,7 @@ var isDone = false;
     };
 })(jQuery);
 
-(function ($) {
+(function ($){
     $.fn.solveMaze = function (data) {
         currentPosition.Row = initPosition.Row;
         currentPosition.Col = initPosition.Col;
