@@ -19,11 +19,11 @@ namespace ModelCL
         /// <value>
         /// The first player.
         /// </value>
-        public TcpClient FirstPlayer { get; set; }
+        public string FirstPlayer { get; set; }
         /// <summary>
         /// The second player
         /// </summary>
-        public TcpClient SecondPlayer { get; set; }
+        public string SecondPlayer { get; set; }
         /// <summary>
         /// Gets or sets the maze.
         /// </summary>
@@ -46,14 +46,14 @@ namespace ModelCL
         /// Gets the second player.
         /// </summary>
         /// <returns></returns>
-        public TcpClient GetSecondPlayer() { return SecondPlayer; }
+        public string GetSecondPlayer() { return SecondPlayer; }
         /// <summary>
         /// Starts the game.
         /// </summary>
         /// <param name="player1">The player1.</param>
         /// <param name="m">The m.</param>
         /// <returns></returns>
-        public bool StartGame(TcpClient player1, Maze m)
+        public bool StartGame(string player1, Maze m)
         {
             Maze = m;
             FirstPlayer = player1;
@@ -64,7 +64,7 @@ namespace ModelCL
         /// Joins the specified player2.
         /// </summary>
         /// <param name="player2">The player2.</param>
-        public void Join(TcpClient player2)
+        public void Join(string player2)
         {
             SecondPlayer = player2;
             isJoined = true;
