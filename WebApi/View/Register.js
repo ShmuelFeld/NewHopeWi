@@ -6,19 +6,31 @@
         var userName = $("#userName").val();
         var password = SHA1($("#password").val());
         var Email = $("#Email").val();
+        var dateObj = new Date();
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate();
+        var year = dateObj.getUTCFullYear();
+        var newdate = day + "/" + month + "/" + year;
         var UserObject = {
             UserName: userName,
             Password: password,
             EMail: Email,
-            numberOfWins: 0,
-            numberOfLoses: 0
-            //todo inset date
+            NumberOfWins: 0,
+            NumberOfLoses: 0,
+            Date: newdate 
         };
         var apiUrl = "../api/Users/";
         var request = UserObject;
         $.post(apiUrl, UserObject)
             .done(function (data) {
-                alert("success");
+                alert("Register succeeded");
+                sessionStorage.Name = userName;
+                var helloUser = "Hello " + userName;
+                $("#register").text(helloUser);
+                $("#register").attr("href", "#");
+                $("#login").text("Logout");
+                $("#login").attr("href", "#");
+                window.location.replace("HomePage.html");
             })
             .fail(function (jqXHR, textStatus, err) {
                 alert("UserName is already exists. Please choose different name");
