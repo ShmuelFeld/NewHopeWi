@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <title></title>
     <link href="Styles/bootstrap.css" rel="stylesheet" /> 
+    <link href="MyStyle.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="SinglePlayerCSS.css">
 </head>
 <body id="body"> 
@@ -48,9 +49,10 @@
             </div>
             <Butt><input type="button" class="btn btn-default" id="btnSolveMaze" value="Solve Game" onclick="solve()" /></Butt>
             </div>
-            
         <!--the maze-->
         <div class="col-sm-8 text-center">
+            <div class="loader span4 offset4" id="loader" hidden>
+            </div>
             <canvas id="mazeCanvas" style="border:2px black solid" tabindex="1" class="maze-board" width="500"
                     height="500">
             </canvas>

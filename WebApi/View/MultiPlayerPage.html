@@ -55,10 +55,10 @@
                     <Butt><input type="button" class="btn btn-default" id="btnStartGame" value="Start Game"/></Butt>
                 </div>
             </div></div>
-
         <!--my maze-->
         <div class="col-sm-4 text-center">
-            <label>My Board</label>
+
+            <label id="l" hidden>My Board</label>
             <canvas id="myMazeCanvas" style="border:2px black solid" tabindex="1" class="maze-board" width="350"
                     height="350"></canvas>
         </div>
@@ -67,12 +67,13 @@
 
         <!--Other Player's maze-->
         <div class="col-sm-4 text-center">
-            <label>Other Player's Board</label>
+            <label id="l1" hidden>Other Player's Board</label>
             <canvas id="otherMazeCanvas" style="border:2px black solid" tabindex="1" class="maze-board" width="350"
                     height="350"></canvas>
         </div>
     </div>
-    
+    <div class="loader span4 offset4" id="loader" hidden>
+    </div>
     <script src="jquery.MazeJS.js"></script>
     <script src="../Scripts/jquery.signalR-2.2.2.js"></script>
     <script src="../signalr/hubs"></script>

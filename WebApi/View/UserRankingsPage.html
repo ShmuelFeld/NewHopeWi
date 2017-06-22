@@ -6,6 +6,7 @@
     <title></title>
 </head>
 <body onload="displayRank()">
+    <link href="MyStyle.css" rel="stylesheet" />
     <script src="UserRanking.js"></script>
     <div id="navigationBar">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -13,7 +14,9 @@
             $("#navigationBar").load("MenuBar.html");
         </script>
     </div>
-    <div>
+    <div class="loader span4 offset4" id="loader">
+    </div>
+    <div id="myDiv">
         <table id="rankTable" class="table table-hover">
             <tr>
                 <th>Rank</th>

@@ -4,10 +4,18 @@ var gameOnBool = false;
 
 multiplayer.client.drawMaze = function (data) {
     gameOnBool = true;
+
+    $("#myMazeCanvas").generateMaze(data);
+    $("#myMazeCanvas").show();
+    $("#otherMazeCanvas").show();
+    $("l").show();
+    $("l1").show();
+    $("#loader").hide();
     var myCanvas = document.getElementById("myMazeCanvas");
     $("#myMazeCanvas").generateMaze(data, myCanvas);
     var otherCanvas = document.getElementById("otherMazeCanvas"); 
     $("#otherMazeCanvas").generateMaze(data, otherCanvas);
+
 };
 
 multiplayer.client.moveOther = function (move) {
@@ -16,19 +24,29 @@ multiplayer.client.moveOther = function (move) {
 
 $.connection.hub.start().done(function () {
     $("#btnStartGame").click(function () {
+        $("#myMazeCanvas").hide();
+        $("#otherMazeCanvas").hide();
+        $("#loader").show();
         var name = $("#mazeName").val();
         rows = $("#mazeRows").val();
         cols = $("#mazeCols").val();
         multiplayer.server.start(name, rows, cols);
     });
     $("#btnJoinGame").click(function () {
+        multiplayer.server.join($("#listDrpdwn").val());
+        $("#myMazeCanvas").hide();
+        $("#otherMazeCanvas").hide();
+        $("#loader").show();
         var algo = document.getElementById('listDrpdwn');
         var select = algo.options[algo.selectedIndex].value;
         multiplayer.server.join(select);
     });
 });
 
-$("#body").keydown(function (e) {    multiplayer.server.play(e.keyCode);        $("#myMazeCanvas").move(e.keyCode, 'myMazeCanvas');});
+$("#body").keydown(function (e) {
+    multiplayer.server.play(e.keyCode);    
+    $("#myMazeCanvas").move(e.keyCode, 'myMazeCanvas');
+});
 
 function getListOfGames() {
     //$('#listDrpdwn').empty();
