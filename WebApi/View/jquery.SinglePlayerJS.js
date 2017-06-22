@@ -1,5 +1,6 @@
 
 ﻿$("#navigationBar").load("MenuBar.html");
+document.title = "Singleplayer";
 var gameOnBool = false;
 function generate() {
     $("#mazeCanvas").hide();
@@ -19,6 +20,7 @@ function generate() {
             $("#mazeCanvas").generateMaze(mazeAns, myCanvas);
             $("#mazeCanvas").show();
             $("#loader").hide();
+            document.title = $("#mazeName").val();
             $("#mazeName").val("");
             $("#mazeRows").val("");
             $("#mazeCols").val("");

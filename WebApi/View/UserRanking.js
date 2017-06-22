@@ -1,5 +1,5 @@
 ﻿function displayRank() {
-   
+    document.title = "UserRanking";
     //here I want to request the users. and then to show the complete table
     $("#myDiv").hide();
     var apiUrl = "../api/Users";

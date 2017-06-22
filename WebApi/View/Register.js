@@ -1,5 +1,5 @@
 ﻿$("#navigationBar").load("MenuBar.html");
-
+document.title = "Register";
 function register() {
     var str1 =$("#password").val();
     var str2 = $("#passwordVeri").val();
