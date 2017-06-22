@@ -1,6 +1,7 @@
-﻿function init() {
-    sessionStorage.Name = "Maze";
-    sessionStorage.Rows = "12";
-    sessionStorage.Cols = "12";
-    sessionStorage.Algo = "0";
+﻿
+function init() {
+    localStorage.setItem("MazeName", "Cinderella");
+    localStorage.setItem("MazeRows", "12");
+    localStorage.setItem("MazeCols", "12");
+    localStorage.setItem("MazeAlgo", "0");
 }

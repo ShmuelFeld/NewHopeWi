@@ -1,6 +1,8 @@
 ﻿var gameOnBool = false;
 var mazeName;
 function generate() {
+    $("#mazeCanvas").hide();
+    $("#loader").show();
     var apiUrl = "../api/GenerateMaze";
     mazeName = $("#mazeName").val()
     var maze = {
@@ -13,6 +15,8 @@ function generate() {
         .done(function (mazeAns) {
             gameOnBool = true;
             $("#mazeCanvas").generateMaze(mazeAns);
+            $("#mazeCanvas").show();
+            $("#loader").hide();
             $("#mazeName").val("");
             $("#mazeRows").val("");
             $("#mazeCols").val("");
@@ -36,6 +40,11 @@ function solve() {
         });
 }
 
-$("#body").keydown(function (e) {    $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');});
+$("#body").keydown(function (e) {    $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');});$(document).ready(function () {
+    $("#mazeName").val(localStorage.getItem("MazeName"));
+    $("#mazeRows").val(localStorage.getItem("MazeRows"));
+    $("#mazeCols").val(localStorage.getItem("MazeCols"));
+    $("#algoSelect").val(localStorage.getItem("MazeAlgo"));
+});
 
 

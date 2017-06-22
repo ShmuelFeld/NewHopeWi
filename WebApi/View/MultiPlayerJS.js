@@ -4,6 +4,11 @@ var gameOnBool = false;
 multiplayer.client.drawMaze = function (data) {
     gameOnBool = true;
     $("#myMazeCanvas").generateMaze(data);
+    $("#myMazeCanvas").show();
+    $("#otherMazeCanvas").show();
+    $("l").show();
+    $("l1").show();
+    $("#loader").hide();
 };
 
 multiplayer.client.moveOther = function (move) {
@@ -12,6 +17,9 @@ multiplayer.client.moveOther = function (move) {
 
 $.connection.hub.start().done(function () {
     $("#btnStartGame").click(function () {
+        $("#myMazeCanvas").hide();
+        $("#otherMazeCanvas").hide();
+        $("#loader").show();
         var name = $("#mazeName").val();
         rows = $("#mazeRows").val();
         cols = $("#mazeCols").val();
@@ -19,6 +27,9 @@ $.connection.hub.start().done(function () {
     });
     $("#btnJoinGame").click(function () {
         multiplayer.server.join($("#listDrpdwn").val());
+        $("#myMazeCanvas").hide();
+        $("#otherMazeCanvas").hide();
+        $("#loader").show();
     });
 });
 
