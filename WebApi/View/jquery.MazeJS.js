@@ -134,16 +134,16 @@ var frameActivator;
                             break;
                     }
                     if ((goalPosition.Row === currentPosition.Row) && (goalPosition.Col === currentPosition.Col)) {
-                        alert("wow you won!!!");
                         isDone = true;
+                        return 2;
                     } else if ((goalPosition.Row === otherPosition.Row) && (goalPosition.Col === otherPosition.Col)) {
-                        alert("you lost :(");
                         isDone = true;
+                        return 3;
                     }
                 }
             }
         }
-        return this;
+        return 1;
     };
 })(jQuery);
 

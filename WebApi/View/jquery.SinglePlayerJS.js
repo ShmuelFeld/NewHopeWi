@@ -42,7 +42,17 @@ function solve() {
         });
 }
 $("#body").keydown(function (e) {
-    $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');
+    var a = $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');
+    switch (a) {
+        case 1:
+            break;
+        case 2:
+            alert("wow you won!!!");
+            break;
+        case 3:
+            alert("you lost :(");
+            break;
+    }
 });
 $(document).ready(function () {
     $("#mazeName").val(localStorage.getItem("MazeName"));

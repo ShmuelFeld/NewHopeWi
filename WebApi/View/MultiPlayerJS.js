@@ -2,9 +2,14 @@
 var multiplayer = $.connection.multiplayerHub;
 var gameOnBool = false;
 $(document).ready(function () {
-    $("#mazeName").val(localStorage.getItem("MazeName"));
-    $("#mazeRows").val(localStorage.getItem("MazeRows"));
-    $("#mazeCols").val(localStorage.getItem("MazeCols"));
+    if (localStorage.Name) {
+        $("#mazeName").val(localStorage.getItem("MazeName"));
+        $("#mazeRows").val(localStorage.getItem("MazeRows"));
+        $("#mazeCols").val(localStorage.getItem("MazeCols"));
+    } else {
+        alert("Please login first");
+        window.location.replace("LoginPage.html");
+    }
 });
 multiplayer.client.drawMaze = function (data) {
     gameOnBool = true;
@@ -46,7 +51,18 @@ $.connection.hub.start().done(function () {
 
 $("#body").keydown(function (e) {
     multiplayer.server.play(e.keyCode);    
-    $("#myMazeCanvas").move(e.keyCode, 'myMazeCanvas');
+    var a = $("#myMazeCanvas").move(e.keyCode, 'myMazeCanvas');
+    switch (a) {
+        case 1:
+            break;
+        case 2:
+            alert("wow you won!!!");
+
+            break;
+        case 3:
+            alert("you lost :(");
+            break;
+    }
 });
 
 function getListOfGames() {
