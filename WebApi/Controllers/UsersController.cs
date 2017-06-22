@@ -131,7 +131,7 @@ namespace WebApi.Controllers
         {
             return db.Users.Count(e => e.UserName == id) > 0;
         }
-        [Route("Lost")]
+        [Route("api/Users/Lost/{id}")]
         [HttpGet]
         // updateLost: api/Lost
         public async Task<IHttpActionResult> LostAsync(string id)

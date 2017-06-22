@@ -1,8 +1,9 @@
 ﻿$("#navigationBar").load("MenuBar.html");
 var multiplayer = $.connection.multiplayerHub;
 var gameOnBool = false;
+document.title = "Multiplayer";
 $(document).ready(function () {
-    if (localStorage.Name) {
+    if (sessionStorage.Name) {
         $("#mazeName").val(localStorage.getItem("MazeName"));
         $("#mazeRows").val(localStorage.getItem("MazeRows"));
         $("#mazeCols").val(localStorage.getItem("MazeCols"));
@@ -28,6 +29,17 @@ multiplayer.client.moveOther = function (move) {
     var a = $("#otherMazeCanvas").move(move, 'otherMazeCanvas');
     if (a == 3) {
         alert("you lost :(");
+        alert("wow you won!!!");
+        var apiUrl = "../api/Users/Lost/";
+        var str1 = sessionStorage.Name;
+        var request = apiUrl + str1;
+        $.getJSON(request)
+            .done(function (data) {
+                window.location.replace("HomePage.html");
+            })
+            .fail(function (jqXHR, textStatus, err) {
+                alert("couldn't update data");
+            });
     }
 };
 
@@ -58,11 +70,11 @@ $("#body").keydown(function (e) {
     if (a == 2) {
         alert("wow you won!!!");
         var apiUrl = "../api/Users/Win/";
-        var str1 = localStorage.Name;
+        var str1 = sessionStorage.Name;
         var request = apiUrl + str1;
         $.getJSON(request)
         .done(function (data) {
-            alert("updated");
+            window.location.replace("HomePage.html");
         })
         .fail(function (jqXHR, textStatus, err) {
             alert("couldn't update data");

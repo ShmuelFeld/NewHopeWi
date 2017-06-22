@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    document.title = "Settings";
     var a = localStorage.getItem("MazeName");
     var b = localStorage.getItem("MazeRows");
     var c = localStorage.getItem("MazeCols");
