@@ -10,7 +10,8 @@ function generate() {
     $.getJSON(request)
         .done(function (mazeAns) {
             gameOnBool = true;
-            $("#mazeCanvas").generateMaze(mazeAns);
+            var myCanvas = document.getElementById("mazeCanvas");
+            $("#mazeCanvas").generateMaze(mazeAns, myCanvas);
         })
         .fail(function (jqXHR, textStatus, err) {
             alert("error");

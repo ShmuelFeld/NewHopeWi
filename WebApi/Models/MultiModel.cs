@@ -11,6 +11,11 @@ namespace WebApi.Models
     {
         IModel model = new Model();
 
+        public MultiModel()
+        {
+            model = new Model();
+        }
+
         public Maze StartGame(string name, int rows, int cols, string clientId)
         {
             return model.StartGame(name, rows, cols, clientId);
@@ -19,6 +24,16 @@ namespace WebApi.Models
         public List<Maze> GetList()
         {
             return model.GetListOfAvailableGames();
+        }
+
+        public Maze JoinGame(string name, string clientId)
+        {
+            return model.Join(name, clientId);
+        }
+
+        public MultiPlayerGame Play(string clientId)
+        {
+            return model.Play(clientId);
         }
     }
 }
