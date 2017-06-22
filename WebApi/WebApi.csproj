@@ -136,6 +136,7 @@
     <Content Include="View\MultiPlayerJS.js" />
     <Content Include="View\MultiPlayerPage.html" />
     <Content Include="View\MyStyle.css" />
+    <Content Include="View\RegCSS.css" />
     <Content Include="View\Register.js" />
     <Content Include="View\RegisterPage.html" />
     <Content Include="View\resources\cinderella.jpg" />

@@ -26,7 +26,7 @@ function register() {
         $.post(apiUrl, UserObject)
             .done(function (data) {
                 alert("Register succeeded");
-                sessionStorage.Name = userName;
+                localStorage.setItem("Name", userName);
                 var helloUser = "Hello " + userName;
                 $("#register").text(helloUser);
                 $("#register").attr("href", "#");
