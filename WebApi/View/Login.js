@@ -4,15 +4,15 @@ function login() {
     var str1 = $("#userName").val();
     var str2 = $("#password").val();
     var password = SHA1(str2);
-    var apiUrl = "../api/Users/5/";
+    var apiUrl = "../api/Users/";
     var obj = {
         name: str1
     }
-    var request = apiUrl;
-    $.getJSON(request, obj)//
+    var request = apiUrl + str1;
+    $.getJSON(request)//
         .done(function (data) {
             if (data.Password.localeCompare(password) == 0) {
-                sessionStorage.Name = str1;
+                localStorage.setItem("Name", str1);
                 var hello = "Hello " + str1;
                 $("#register").text(hello);
                 $("#register").attr("href", "#");

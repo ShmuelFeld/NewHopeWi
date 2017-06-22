@@ -133,7 +133,7 @@ namespace WebApi.Controllers
         }
         [Route("Lost")]
         [HttpGet]
-        // updateLost: api/Users/Lost
+        // updateLost: api/Lost
         public async Task<IHttpActionResult> LostAsync(string id)
         {
             User user = await db.Users.FindAsync(id);
