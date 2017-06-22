@@ -7,14 +7,16 @@ namespace WebApi.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Users", "numberOfWins", c => c.Int(nullable: false));
-            AddColumn("dbo.Users", "numberOfLoses", c => c.Int(nullable: false));
+            AddColumn("dbo.Users", "NumberOfWins", c => c.Int(nullable: false));
+            AddColumn("dbo.Users", "NumberOfLoses", c => c.Int(nullable: false));
+            AddColumn("dbo.Users", "Date", c => c.String(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Users", "numberOfLoses");
-            DropColumn("dbo.Users", "numberOfWins");
+            DropColumn("dbo.Users", "NumberOfLoses");
+            DropColumn("dbo.Users", "NumberOfWins");
+            DropColumn("dbo.Users", "Date");
         }
     }
 }

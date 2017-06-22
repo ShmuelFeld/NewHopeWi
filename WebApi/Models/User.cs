@@ -25,12 +25,17 @@ namespace WebApi.Models
             get;
             set;
         }
-        public int numberOfWins
+        public int NumberOfWins
         {
             get;
             set;
         }
-        public int numberOfLoses
+        public int NumberOfLoses
+        {
+            get;
+            set;
+        }
+        public string Date
         {
             get;
             set;

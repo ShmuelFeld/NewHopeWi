@@ -39,7 +39,6 @@ var frameActivator;
             context.drawImage(dest, data.End.Col * cellWidth, data.End.Row * cellHeight,
                 cellWidth, cellHeight);
         }
-
         draw(myCanvas, data);
         return this;
     };
@@ -51,7 +50,7 @@ var frameActivator;
     };
 })(jQuery);
 
-(function ($) {
+(function ($){
     $.fn.solveMaze = function (data) {
         var myCanvas = document.getElementById("mazeCanvas");
 

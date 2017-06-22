@@ -1,9 +1,11 @@
+
 ﻿$("#navigationBar").load("MenuBar.html");
 var gameOnBool = false;
 function generate() {
     var apiUrl = "../api/GenerateMaze";
+    mazeName = $("#mazeName").val()
     var maze = {
-        Name: $("#mazeName").val(),
+        Name: mazeName,
         Rows: $("#mazeRows").val(),
         Cols: $("#mazeCols").val()
     };
@@ -13,6 +15,10 @@ function generate() {
             gameOnBool = true;
             var myCanvas = document.getElementById("mazeCanvas");
             $("#mazeCanvas").generateMaze(mazeAns, myCanvas);
+            $("#mazeCanvas").generateMaze(mazeAns);
+            $("#mazeName").val("");
+            $("#mazeRows").val("");
+            $("#mazeCols").val("");
         })
         .fail(function (jqXHR, textStatus, err) {
             alert("error");
@@ -22,7 +28,7 @@ function generate() {
 function solve() {
     var apiUrl = "../api/SolveMaze";
     var algo = $("#algoSelect").val();
-    var request = apiUrl + "/" + $("#mazeName").val() + "/" + algo;
+    var request = apiUrl + "/" + mazeName + "/" + algo;
     var i;
     $.getJSON(request)
         .done(function (solution) {
@@ -33,6 +39,9 @@ function solve() {
         });
 }
 
-$("#body").keydown(function (e) {    $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');});
+$("#body").keydown(function (e) {
+    $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');
+});
+
 
 
