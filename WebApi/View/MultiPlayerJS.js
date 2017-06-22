@@ -4,18 +4,15 @@ var gameOnBool = false;
 
 multiplayer.client.drawMaze = function (data) {
     gameOnBool = true;
-
-    $("#myMazeCanvas").generateMaze(data);
-    $("#myMazeCanvas").show();
-    $("#otherMazeCanvas").show();
-    $("l").show();
-    $("l1").show();
-    $("#loader").hide();
     var myCanvas = document.getElementById("myMazeCanvas");
     $("#myMazeCanvas").generateMaze(data, myCanvas);
     var otherCanvas = document.getElementById("otherMazeCanvas"); 
     $("#otherMazeCanvas").generateMaze(data, otherCanvas);
-
+    $("#myMazeCanvas").show();
+    $("#otherMazeCanvas").show();
+    $("#l").show();
+    $("#l1").show();
+    $("#loader").hide();
 };
 
 multiplayer.client.moveOther = function (move) {
