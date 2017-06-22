@@ -57,28 +57,17 @@ $("#body").keydown(function (e) {
     var a = $("#myMazeCanvas").move(e.keyCode, 'myMazeCanvas');
     if (a == 2) {
         alert("wow you won!!!");
-                  var apiUrl = "../api/Users/Win/";
-            var str1 = localStorage.Name;
-            var request = apiUrl + str1;
-            $.getJSON(request)
-                .done(function (data) {
-                    alert("updated");
-                })
-                .fail(function (jqXHR, textStatus, err) {
-                    alert("couldn't update data");
-                });
-
+        var apiUrl = "../api/Users/Win/";
+        var str1 = localStorage.Name;
+        var request = apiUrl + str1;
+        $.getJSON(request)
+        .done(function (data) {
+            alert("updated");
+        })
+        .fail(function (jqXHR, textStatus, err) {
+            alert("couldn't update data");
+        });
     }
-    //switch (a) {
-    //    case 1:
-    //        break;
-    //    case 2:
-    //        alert("wow you won!!!");
-    //        break;
-    //    case 3:
-    //        alert("you lost :(");
-    //        break;
-    //}
 });
 
 function getListOfGames() {
