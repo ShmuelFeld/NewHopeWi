@@ -6,6 +6,10 @@ multiplayer.client.drawMaze = function (data) {
     $("#myMazeCanvas").generateMaze(data);
 };
 
+multiplayer.client.moveOther = function (move) {
+    $("#otherMazeCanvas").move(move, 'otherMazeCanvas');
+};
+
 $.connection.hub.start().done(function () {
     $("#btnStartGame").click(function () {
         var name = $("#mazeName").val();
@@ -18,7 +22,7 @@ $.connection.hub.start().done(function () {
     });
 });
 
-$("#body").keydown(function (e) {    multiplayer.server.play(e.key);    $("#myMazeCanvas").move(e, 'myMazeCanvas');});
+$("#body").keydown(function (e) {    multiplayer.server.play(e.keyCode);        $("#myMazeCanvas").move(e.keyCode, 'myMazeCanvas');});
 
 function getListOfGames() {
     var dropdowns = document.getElementsByClassName("dropdown-content");

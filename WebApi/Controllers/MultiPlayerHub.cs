@@ -53,12 +53,12 @@ namespace WebApi
             return namesList;
         }
 
-        public void Play(string move)
+        public void Play(int move)
         {
-            if ((move == "ArrowUp") || (move == "ArrowDown") || (move == "ArrowRight") || (move == "ArrowLeft"))
+            if (move >= 37 && move <= 40)
             {
                 string client = Context.ConnectionId;
-                MultiPlayerGame game = model.Play(move, client);
+                MultiPlayerGame game = model.Play(client);
                 string otherClient = null;
                 if (game.FirstPlayer == client)
                 {
@@ -68,7 +68,7 @@ namespace WebApi
                 {
                     otherClient = game.FirstPlayer;
                 }
-                //view.SendToOtherClient(ToJSON(game.GetMazeName(), move), tcpOfOtherClient);
+                Clients.Client(otherClient).moveOther(move);
             }
         }
     }

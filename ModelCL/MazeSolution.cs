@@ -25,13 +25,12 @@ namespace ModelCL
         /// <param name="bt">The bt.</param>
         public MazeSolution(Stack<State<Position>> bt, int evaluated)
         {
-            //backTrace = new Stack<State<Position>>();
-            this.backTrace = bt;
-            //for (int i = 0; i < bt.Count(); i++)
-            //{
-            //    backTrace.Push(bt.Peek());
-            //    bt.Pop();
-            //}
+            backTrace = new Stack<State<Position>>();
+            //this.backTrace = bt;
+            for (int i = bt.Count() - 1; i >= 0; i--)
+            {
+                backTrace.Push(bt.ElementAt(i));
+            }
             this.evaluatedNodes = evaluated;
         }
         public void setBackTrace(Stack<State<Position>> bt) { backTrace = bt; }
