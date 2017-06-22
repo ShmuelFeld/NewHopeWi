@@ -57,7 +57,16 @@ $("#body").keydown(function (e) {
             break;
         case 2:
             alert("wow you won!!!");
-
+            var apiUrl = "../api/Users/Win/";
+            var str1 = localStorage.Name;
+            var request = apiUrl + str1;
+            $.getJSON(request)
+                .done(function (data) {
+                    alert("updated");
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    alert("couldn't update data");
+                });
             break;
         case 3:
             alert("you lost :(");
