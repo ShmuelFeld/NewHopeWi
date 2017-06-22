@@ -7,13 +7,67 @@
 <body>
     
     <div id="navigationBar"></div>
-        <h1>Log in</h1>
+
+    <div class="container" style="margin-top:30px">
+        <!--<div class="row">-->
+            <div class="col-md-5 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-lock"></span> Login
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label  class="col-sm-3 control-label">
+                                    User Name
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="userName" placeholder="User Name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-3 control-label">
+                                    Password
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="password" id="password" class="form-control" placeholder="Password" required>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" />
+                                            Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="form-group last">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <input  type="button" value="Login" onclick="login()" class="btn btn-success btn-sm">                                    
+                                    <button type="reset" class="btn btn-default btn-sm">
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-footer">
+                        Not Registred?! <a href="RegisterPage.html">Register here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--</div>-->
+
+        <!--<h1>Log in</h1>
         <p>Use a local account to log in.</p>
         <div>
             UserName: <input type="text" id="userName"><br />
             Password: <input type="password" id="password"><br />
             <input type="button" value="Login" onclick="login()" />
-        </div>
+        </div>-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="SHA-1.js"></script>
     <script src="Login.js"></script>
