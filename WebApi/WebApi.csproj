@@ -125,6 +125,7 @@
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="View\HomePage.html" />
+    <Content Include="View\HomePageCSS.css" />
     <Content Include="View\jquery.MazeJS.js" />
     <Content Include="View\jquery.SinglePlayerJS.js" />
     <Content Include="View\Login.js" />
@@ -135,9 +136,11 @@
     <Content Include="View\MultiPlayerJS.js" />
     <Content Include="View\MultiPlayerPage.html" />
     <Content Include="View\MyStyle.css" />
+    <Content Include="View\RegCSS.css" />
     <Content Include="View\Register.js" />
     <Content Include="View\RegisterPage.html" />
     <Content Include="View\resources\cinderella.jpg" />
+    <Content Include="View\HomePageJS.js" />
     <Content Include="View\resources\MAZE logo.jpg" />
     <Content Include="View\resources\palace.gif" />
     <Content Include="View\resources\prince.png" />

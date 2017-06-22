@@ -15,7 +15,7 @@ namespace WebApi
     [HubName("multiplayerHub")]
     public class MultiPlayerHub : Hub
     {
-        static private WebModel model = new WebModel();
+        static private MultiModel model = new MultiModel();
 
         public void Start(string name, int rows, int cols)
         {
@@ -49,6 +49,7 @@ namespace WebApi
             foreach (Maze m in list)
             {
                 namesList[i] = m.Name;
+                i++;
             }
             return namesList;
         }

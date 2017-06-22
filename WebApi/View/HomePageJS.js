@@ -1,0 +1,1 @@
+﻿$("#navigationBar").load("MenuBar.html");

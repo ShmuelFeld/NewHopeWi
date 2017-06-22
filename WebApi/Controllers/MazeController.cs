@@ -15,11 +15,6 @@ namespace WebApi.Controllers
     public class MazeController : ApiController
     {
         static private WebModel model = new WebModel();
-        //// GET: api/GenerateMaze
-        //public IEnumerable<Maze> Get()
-        //{
-        //    return null;
-        //}
 
         // GET: api/GenerateMaze/5
         [HttpGet]
@@ -40,12 +35,12 @@ namespace WebApi.Controllers
             return obj;
         }
 
-        [HttpGet]
-        [Route("api/GetList")]
-        public IEnumerable<Maze> GetList()
-        {
-            return model.GetList();
-        }
+        //[HttpGet]
+        //[Route("api/GetList")]
+        //public IEnumerable<Maze> GetList()
+        //{
+        //    return model.GetList();
+        //}
 
         // POST: api/GenerateMaze
         public void Post(Maze m)

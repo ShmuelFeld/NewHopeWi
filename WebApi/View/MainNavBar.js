@@ -1,12 +1,12 @@
 ﻿$(document).ready(function () {
     $("#login").click(function () {
-        if (sessionStorage.Name) {
-            sessionStorage.Name = "";
+        if (localStorage.Name) {
+            localStorage.Name = "";
             window.location.replace("HomePage.html");
         }
     });
-    if (sessionStorage.Name) {
-        var hello = "Hello " + sessionStorage.Name;
+    if (localStorage.Name) {
+        var hello = "Hello " + localStorage.Name;
         $("#register").text(hello);
         $("#register").attr("href", "#");
         $("#login").text("Logout");

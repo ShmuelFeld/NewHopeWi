@@ -1,4 +1,6 @@
-﻿function register() {
+﻿$("#navigationBar").load("MenuBar.html");
+
+function register() {
     var str1 =$("#password").val();
     var str2 = $("#passwordVeri").val();
     if (validPassword(str1, str2)) {
@@ -24,7 +26,7 @@
         $.post(apiUrl, UserObject)
             .done(function (data) {
                 alert("Register succeeded");
-                sessionStorage.Name = userName;
+                localStorage.setItem("Name", userName);
                 var helloUser = "Hello " + userName;
                 $("#register").text(helloUser);
                 $("#register").attr("href", "#");

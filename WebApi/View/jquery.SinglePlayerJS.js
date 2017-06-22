@@ -1,5 +1,6 @@
-﻿var gameOnBool = false;
-var mazeName;
+
+﻿$("#navigationBar").load("MenuBar.html");
+var gameOnBool = false;
 function generate() {
     $("#mazeCanvas").hide();
     $("#loader").show();
@@ -14,6 +15,8 @@ function generate() {
     $.getJSON(request)
         .done(function (mazeAns) {
             gameOnBool = true;
+            var myCanvas = document.getElementById("mazeCanvas");
+            $("#mazeCanvas").generateMaze(mazeAns, myCanvas);
             $("#mazeCanvas").generateMaze(mazeAns);
             $("#mazeCanvas").show();
             $("#loader").hide();
@@ -39,12 +42,14 @@ function solve() {
             alert("error");
         });
 }
-
-$("#body").keydown(function (e) {    $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');});$(document).ready(function () {
+$("#body").keydown(function (e) {
+    $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');
+});
+$(document).ready(function () {
     $("#mazeName").val(localStorage.getItem("MazeName"));
     $("#mazeRows").val(localStorage.getItem("MazeRows"));
     $("#mazeCols").val(localStorage.getItem("MazeCols"));
     $("#algoSelect").val(localStorage.getItem("MazeAlgo"));
-});
+});
 
 

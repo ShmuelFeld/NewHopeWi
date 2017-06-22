@@ -26,7 +26,6 @@ namespace ModelCL
         public MazeSolution(Stack<State<Position>> bt, int evaluated)
         {
             backTrace = new Stack<State<Position>>();
-            //this.backTrace = bt;
             for (int i = bt.Count() - 1; i >= 0; i--)
             {
                 backTrace.Push(bt.ElementAt(i));
