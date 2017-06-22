@@ -38,9 +38,9 @@ $.connection.hub.start().done(function () {
         $("#myMazeCanvas").hide();
         $("#otherMazeCanvas").hide();
         $("#loader").show();
-        var algo = document.getElementById('listDrpdwn');
-        var select = algo.options[algo.selectedIndex].value;
-        multiplayer.server.join(select);
+        //var algo = document.getElementById('listDrpdwn');
+        //var select = algo.options[algo.selectedIndex].value;
+        //multiplayer.server.join(select);
     });
 });
 
