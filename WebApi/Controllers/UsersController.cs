@@ -152,7 +152,7 @@ namespace WebApi.Controllers
             }
             return Ok(user);
         }
-        [Route("Win")]
+        [Route("api/Users/Win/{id}")]
         [HttpGet]
         public async Task<IHttpActionResult> WinAsync(string id)
         {
