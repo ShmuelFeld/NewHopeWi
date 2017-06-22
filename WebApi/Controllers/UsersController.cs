@@ -131,5 +131,46 @@ namespace WebApi.Controllers
         {
             return db.Users.Count(e => e.UserName == id) > 0;
         }
+        [Route("Lost")]
+        [HttpGet]
+        // updateLost: api/Users/Lost
+        public async Task<IHttpActionResult> LostAsync(string id)
+        {
+            User user = await db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            user.NumberOfLoses++;
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
+        [Route("Win")]
+        [HttpGet]
+        public async Task<IHttpActionResult> WinAsync(string id)
+        {
+            User user = await db.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            user.NumberOfWins++;
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
     }
 }
