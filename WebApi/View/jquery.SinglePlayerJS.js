@@ -17,7 +17,6 @@ function generate() {
             gameOnBool = true;
             var myCanvas = document.getElementById("mazeCanvas");
             $("#mazeCanvas").generateMaze(mazeAns, myCanvas);
-            $("#mazeCanvas").generateMaze(mazeAns);
             $("#mazeCanvas").show();
             $("#loader").hide();
             $("#mazeName").val("");
