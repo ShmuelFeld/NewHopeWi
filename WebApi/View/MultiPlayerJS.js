@@ -25,7 +25,10 @@ multiplayer.client.drawMaze = function (data) {
 };
 
 multiplayer.client.moveOther = function (move) {
-    $("#otherMazeCanvas").move(move, 'otherMazeCanvas');
+    var a = $("#otherMazeCanvas").move(move, 'otherMazeCanvas');
+    if (a == 3) {
+        alert("you lost :(");
+    }
 };
 
 $.connection.hub.start().done(function () {
@@ -52,25 +55,18 @@ $.connection.hub.start().done(function () {
 $("#body").keydown(function (e) {
     multiplayer.server.play(e.keyCode);    
     var a = $("#myMazeCanvas").move(e.keyCode, 'myMazeCanvas');
-    switch (a) {
-        case 1:
-            break;
-        case 2:
-            alert("wow you won!!!");
-            var apiUrl = "../api/Users/Win/";
-            var str1 = localStorage.Name;
-            var request = apiUrl + str1;
-            $.getJSON(request)
-                .done(function (data) {
-                    alert("updated");
-                })
-                .fail(function (jqXHR, textStatus, err) {
-                    alert("couldn't update data");
-                });
-            break;
-        case 3:
-            alert("you lost :(");
-            break;
+    if (a == 2) {
+        alert("wow you won!!!");
+        var apiUrl = "../api/Users/Win/";
+        var str1 = localStorage.Name;
+        var request = apiUrl + str1;
+        $.getJSON(request)
+        .done(function (data) {
+            alert("updated");
+        })
+        .fail(function (jqXHR, textStatus, err) {
+            alert("couldn't update data");
+        });
     }
 });
 
