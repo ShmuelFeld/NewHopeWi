@@ -36,6 +36,6 @@ function solve() {
         });
 }
 
-$("#body").keydown(function (e) {    $("#mazeCanvas").move(e, 'mazeCanvas');});
+$("#body").keydown(function (e) {    $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');});
 
 

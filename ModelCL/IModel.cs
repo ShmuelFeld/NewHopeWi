@@ -55,7 +55,7 @@ namespace ModelCL
         /// <param name="move">The move.</param>
         /// <param name="client">The client.</param>
         /// <returns></returns>
-        MultiPlayerGame Play(string move, string client);
+        MultiPlayerGame Play(string client);
         /// <summary>
         /// Closes the specified client.
         /// </summary>

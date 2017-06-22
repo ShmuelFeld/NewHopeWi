@@ -183,7 +183,7 @@ namespace ModelCL
         /// <param name="move">The move.</param>
         /// <param name="client">The client.</param>
         /// <returns></returns>
-        public MultiPlayerGame Play(string move, string client)
+        public MultiPlayerGame Play(string client)
         {
             foreach (MultiPlayerGame m in multiPlayerGames.Values)
             {
