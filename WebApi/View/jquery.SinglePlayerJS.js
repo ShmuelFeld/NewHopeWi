@@ -1,4 +1,5 @@
-﻿var gameOnBool = false;
+﻿$("#navigationBar").load("MenuBar.html");
+var gameOnBool = false;
 function generate() {
     var apiUrl = "../api/GenerateMaze";
     var maze = {

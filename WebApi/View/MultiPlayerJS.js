@@ -1,4 +1,5 @@
-﻿var multiplayer = $.connection.multiplayerHub;
+﻿$("#navigationBar").load("MenuBar.html");
+var multiplayer = $.connection.multiplayerHub;
 var gameOnBool = false;
 
 multiplayer.client.drawMaze = function (data) {

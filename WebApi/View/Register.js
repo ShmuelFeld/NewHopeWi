@@ -1,4 +1,6 @@
-﻿function register() {
+﻿$("#navigationBar").load("MenuBar.html");
+
+function register() {
     var str1 =$("#password").val();
     var str2 = $("#passwordVeri").val();
     if (validPassword(str1, str2)) {

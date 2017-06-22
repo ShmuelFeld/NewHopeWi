@@ -1,4 +1,5 @@
-﻿
+﻿$("#navigationBar").load("MenuBar.html");
+
 function login() {
     var str1 = $("#userName").val();
     var str2 = $("#password").val();

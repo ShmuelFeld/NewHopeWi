@@ -136,6 +136,7 @@
     <Content Include="View\Register.js" />
     <Content Include="View\RegisterPage.html" />
     <Content Include="View\resources\cinderella.jpg" />
+    <Content Include="View\HomePageJS.js" />
     <Content Include="View\resources\MAZE logo.jpg" />
     <Content Include="View\resources\palace.gif" />
     <Content Include="View\resources\prince.png" />
