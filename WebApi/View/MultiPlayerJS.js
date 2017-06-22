@@ -1,7 +1,11 @@
 ﻿$("#navigationBar").load("MenuBar.html");
 var multiplayer = $.connection.multiplayerHub;
 var gameOnBool = false;
-
+$(document).ready(function () {
+    $("#mazeName").val(localStorage.getItem("MazeName"));
+    $("#mazeRows").val(localStorage.getItem("MazeRows"));
+    $("#mazeCols").val(localStorage.getItem("MazeCols"));
+});
 multiplayer.client.drawMaze = function (data) {
     gameOnBool = true;
     var myCanvas = document.getElementById("myMazeCanvas");

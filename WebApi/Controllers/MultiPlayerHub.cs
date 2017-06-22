@@ -28,6 +28,8 @@ namespace WebApi
         {
             string clientId = Context.ConnectionId;
             Maze maze = model.JoinGame(name, clientId);
+            string j = maze.ToJSON();
+            JObject p = JObject.Parse(j);
             Clients.Client(clientId).drawMaze(JObject.Parse(maze.ToJSON()));
         }
 
