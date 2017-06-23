@@ -21,7 +21,7 @@ function login() {
                 $("#login").attr("href", "#");
                 window.location.replace("HomePage.html");
             } else {
-                alert("Not the Same Passwords");
+                alert("Not the Same Passwords");//
             }
         })
         .fail(function (jqXHR, textStatus, err) {
