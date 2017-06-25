@@ -111,7 +111,6 @@ var frameActivator;
             if (gameOnBool) {
                 var keynum;
                 if (window.event) { // IE                    
-                    //keynum = e.keyCode;
                     switch (keynum) {
                         //move left
                         case 37:

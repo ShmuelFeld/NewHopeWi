@@ -29,7 +29,6 @@ multiplayer.client.moveOther = function (move) {
     var a = $("#otherMazeCanvas").move(move, 'otherMazeCanvas');
     if (a == 3) {
         alert("you lost :(");
-        alert("wow you won!!!");
         var apiUrl = "../api/Users/Lost/";
         var str1 = sessionStorage.Name;
         var request = apiUrl + str1;
@@ -58,9 +57,6 @@ $.connection.hub.start().done(function () {
         $("#myMazeCanvas").hide();
         $("#otherMazeCanvas").hide();
         $("#loader").show();
-        //var algo = document.getElementById('listDrpdwn');
-        //var select = algo.options[algo.selectedIndex].value;
-        //multiplayer.server.join(select);
     });
 });
 
@@ -83,7 +79,6 @@ $("#body").keydown(function (e) {
 });
 
 function getListOfGames() {
-    //$('#listDrpdwn').empty();
     var dropdowns = document.getElementsByClassName("dropdown-content");
     multiplayer.server.list().done(function (result) {
         if (result) {
