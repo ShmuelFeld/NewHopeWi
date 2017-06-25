@@ -4,6 +4,7 @@ function register() {
     var str1 =$("#password").val();
     var str2 = $("#passwordVeri").val();
     if (validPassword(str1, str2)) {
+        $("#loader").show();
         document.getElementById("demo").innerHTML = "";
         var userName = $("#userName").val();
         var password = SHA1($("#password").val());
@@ -26,7 +27,8 @@ function register() {
         $.post(apiUrl, UserObject)
             .done(function (data) {
                 alert("Register succeeded");
-                localStorage.setItem("Name", userName);
+                $("#loader").hide();
+                sessionStorage.setItem("Name", userName);
                 var helloUser = "Hello " + userName;
                 $("#register").text(helloUser);
                 $("#register").attr("href", "#");
