@@ -21,12 +21,10 @@ function generate() {
             $("#mazeCanvas").show();
             $("#loader").hide();
             document.title = $("#mazeName").val();
-            $("#mazeName").val("");
-            $("#mazeRows").val("");
-            $("#mazeCols").val("");
         })
         .fail(function (jqXHR, textStatus, err) {
             alert("error");
+            $("#loader").hide();
         });
 }
 
@@ -41,6 +39,10 @@ function solve() {
         })
         .fail(function (jqXHR, textStatus, err) {
             alert("error");
+            $("#mazeName").val(localStorage.getItem("MazeName"));
+            $("#mazeRows").val(localStorage.getItem("MazeRows"));
+            $("#mazeCols").val(localStorage.getItem("MazeCols"));
+            $("#algoSelect").val(localStorage.getItem("MazeAlgo"));
         });
 }
 $("#body").keydown(function (e) {
