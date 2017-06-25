@@ -14,4 +14,5 @@ function save() {
     localStorage.MazeRows = $("#mazeRows").val();
     localStorage.MazeCols = $("#mazeCols").val();
     localStorage.MazeAlgo = $("#algoSelect").val();
+    alert("Settings saved");
 }
