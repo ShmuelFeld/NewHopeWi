@@ -1,4 +1,5 @@
 ﻿/**
+* encrypt script
 *  Secure Hash Algorithm (SHA1)
 *  http://www.webtoolkit.info/
 **/

@@ -1,4 +1,7 @@
-﻿$(document).ready(function () {
+﻿/*
+* this function initilaize the settings values;
+*/
+$(document).ready(function () {
     document.title = "Settings";
     var a = localStorage.getItem("MazeName");
     var b = localStorage.getItem("MazeRows");
@@ -9,6 +12,9 @@
     document.getElementById("mazeCols").value = c;
     document.getElementById("algoSelect").value = d;
 });
+/*
+* this function saves the settings values;
+*/
 function save() {
     localStorage.MazeName = $("#mazeName").val();
     localStorage.MazeRows = $("#mazeRows").val();
