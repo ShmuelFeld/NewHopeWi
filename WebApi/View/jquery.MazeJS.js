@@ -6,6 +6,9 @@ var cellWidth, cellHeight;
 var isDone = false;
 var frameActivator;
 
+/*
+draws the maze
+*/
 (function ($) {
     $.fn.generateMaze = function (data, myCanvas) {
         maze = data.Maze;
@@ -44,12 +47,9 @@ var frameActivator;
     };
 })(jQuery);
 
-(function ($) {
-    $.fn.solveMaze = function (data) {
-        alert("hey");
-    };
-})(jQuery);
-
+/*
+solves the maze and moves the player from start to end (to the princess).
+*/
 (function ($){
     $.fn.solveMaze = function (data) {
         var myCanvas = document.getElementById("mazeCanvas");
@@ -101,6 +101,9 @@ var frameActivator;
     };
 })(jQuery);
 
+/*
+moves the player according to the event (sent by keynum).
+*/
 (function ($) {
     $.fn.move = function (keynum, canvasId) {
         if (isDone == false) {
@@ -146,6 +149,9 @@ var frameActivator;
     };
 })(jQuery);
 
+/*
+moves the player left
+*/
 function moveLeft(myCanvas, player, dest, context, cellWidth, cellHeight) {
     if (myCanvas.id == "otherMazeCanvas") {
         var i = maze[(otherPosition.Row * cols) + otherPosition.Col - 1];
@@ -169,6 +175,9 @@ function moveLeft(myCanvas, player, dest, context, cellWidth, cellHeight) {
     }
 }
 
+/*
+moves the player up
+*/
 function moveUp(myCanvas, player, dest, context, cellWidth, cellHeight) {
     if (myCanvas.id == "otherMazeCanvas") {
         var i = maze[((otherPosition.Row - 1) * cols) + otherPosition.Col];
@@ -189,10 +198,12 @@ function moveUp(myCanvas, player, dest, context, cellWidth, cellHeight) {
             context.drawImage(player, currentPosition.Col * cellWidth, currentPosition.Row * cellHeight,
                 cellWidth, cellHeight);
         }
-    }
-    
+    }    
 }
 
+/*
+moves the player right
+*/
 function moveRight(myCanvas, player, dest, context, cellWidth, cellHeight) {
     if (myCanvas.id == "otherMazeCanvas") {
         var i = maze[(otherPosition.Row * cols) + otherPosition.Col + 1];
@@ -216,6 +227,9 @@ function moveRight(myCanvas, player, dest, context, cellWidth, cellHeight) {
     }    
 }
 
+/*
+moves the player down.
+*/
 function moveDown(myCanvas, player, dest, context, cellWidth, cellHeight) {
     if (myCanvas.id == "otherMazeCanvas") {
         var i = maze[((otherPosition.Row + 1) * cols) + otherPosition.Col];

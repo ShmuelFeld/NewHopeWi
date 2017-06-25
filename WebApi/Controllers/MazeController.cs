@@ -12,11 +12,25 @@ using WebApi.Models;
 namespace WebApi.Controllers
 {
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class MazeController : ApiController
     {
+        /// <summary>
+        /// The model
+        /// </summary>
         static private WebModel model = new WebModel();
 
         // GET: api/GenerateMaze/5
+        /// <summary>
+        /// Generates the maze.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="rows">The rows.</param>
+        /// <param name="cols">The cols.</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/GenerateMaze/{name}/{rows}/{cols}")]
         public JObject GenerateMaze(string name, int rows, int cols)
@@ -26,6 +40,12 @@ namespace WebApi.Controllers
             return obj;
         }
 
+        /// <summary>
+        /// Solves the maze.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="algorithm">The algorithm.</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/SolveMaze/{name}/{algorithm}")]
         public JObject SolveMaze(string name, int algorithm)
@@ -33,29 +53,6 @@ namespace WebApi.Controllers
             MazeSolution solution = model.SolveMaze(name, algorithm);
             JObject obj = JObject.Parse(solution.ToJSON(name));
             return obj;
-        }
-
-        //[HttpGet]
-        //[Route("api/GetList")]
-        //public IEnumerable<Maze> GetList()
-        //{
-        //    return model.GetList();
-        //}
-
-        // POST: api/GenerateMaze
-        public void Post(Maze m)
-        {
-
-        }
-
-        // PUT: api/GenerateMaze/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/GenerateMaze/5
-        public void Delete(int id)
-        {
         }
     }
 }

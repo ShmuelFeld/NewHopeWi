@@ -1,7 +1,13 @@
-
+/*
+loads the nav bar's script.
+*/
 ﻿$("#navigationBar").load("MenuBar.html");
 document.title = "Singleplayer";
 var gameOnBool = false;
+
+/*
+generates the maze
+*/
 function generate() {
     $("#mazeCanvas").hide();
     $("#loader").show();
@@ -28,6 +34,9 @@ function generate() {
         });
 }
 
+/*
+solves the maze
+*/
 function solve() {
     var apiUrl = "../api/SolveMaze";
     var algo = $("#algoSelect").val();
@@ -45,6 +54,10 @@ function solve() {
             $("#algoSelect").val(localStorage.getItem("MazeAlgo"));
         });
 }
+
+/*
+moves the player according to the event (e).
+*/
 $("#body").keydown(function (e) {
     var a = $("#mazeCanvas").move(e.keyCode, 'mazeCanvas');
     switch (a) {
@@ -58,6 +71,10 @@ $("#body").keydown(function (e) {
             break;
     }
 });
+
+/*
+loads the dwfault settings into the inputs.
+*/
 $(document).ready(function () {
     $("#mazeName").val(localStorage.getItem("MazeName"));
     $("#mazeRows").val(localStorage.getItem("MazeRows"));

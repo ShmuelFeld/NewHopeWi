@@ -13,11 +13,22 @@ using WebApi.Models;
 
 namespace WebApi.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class UsersController : ApiController
     {
+        /// <summary>
+        /// The database
+        /// </summary>
         private WebApiContext db = new WebApiContext();
 
         // GET: api/Users
+        /// <summary>
+        /// Gets the users.
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<User> GetUsers()
         {
             //sort by wins - loses
@@ -25,6 +36,11 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Users/5
+        /// <summary>
+        /// Gets the user.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> GetUser(string id)
         {
@@ -38,6 +54,12 @@ namespace WebApi.Controllers
         }
 
         // PUT: api/Users/5
+        /// <summary>
+        /// Puts the user.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutUser(string id, User user)
         {
@@ -73,6 +95,11 @@ namespace WebApi.Controllers
         }
 
         // POST: api/Users
+        /// <summary>
+        /// Posts the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> PostUser(User user)
         {
@@ -103,6 +130,11 @@ namespace WebApi.Controllers
         }
 
         // DELETE: api/Users/5
+        /// <summary>
+        /// Deletes the user.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> DeleteUser(string id)
         {
@@ -118,6 +150,10 @@ namespace WebApi.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Releases the unmanaged resources that are used by the object and, optionally, releases the managed resources.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -127,10 +163,20 @@ namespace WebApi.Controllers
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// Users the exists.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool UserExists(string id)
         {
             return db.Users.Count(e => e.UserName == id) > 0;
         }
+        /// <summary>
+        /// Losts the asynchronous.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [Route("api/Users/Lost/{id}")]
         [HttpGet]
         // updateLost: api/Lost
@@ -152,6 +198,11 @@ namespace WebApi.Controllers
             }
             return Ok(user);
         }
+        /// <summary>
+        /// Wins the asynchronous.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [Route("api/Users/Win/{id}")]
         [HttpGet]
         public async Task<IHttpActionResult> WinAsync(string id)
