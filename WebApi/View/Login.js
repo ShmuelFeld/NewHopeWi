@@ -1,4 +1,11 @@
-﻿$("#navigationBar").load("MenuBar.html");
+﻿/*
+loads the nav bar's script.
+*/
+$("#navigationBar").load("MenuBar.html");
+
+/*
+log the user into the data base, in case his data is correct.
+*/
 document.title = "Login";
 function login() {
     $("#loader").show();

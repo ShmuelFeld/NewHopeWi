@@ -1,7 +1,14 @@
-﻿$("#navigationBar").load("MenuBar.html");
+﻿
+/*
+loads the nav bar's script.
+*/$("#navigationBar").load("MenuBar.html");
 var multiplayer = $.connection.multiplayerHub;
 var gameOnBool = false;
 document.title = "Multiplayer";
+
+/*
+loads the default settings into the input.
+*/
 $(document).ready(function () {
     if (sessionStorage.Name) {
         $("#mazeName").val(localStorage.getItem("MazeName"));
@@ -12,6 +19,10 @@ $(document).ready(function () {
         window.location.replace("LoginPage.html");
     }
 });
+
+/*
+draws  the maze
+*/
 multiplayer.client.drawMaze = function (data) {
     gameOnBool = true;
     var myCanvas = document.getElementById("myMazeCanvas");
@@ -25,6 +36,9 @@ multiplayer.client.drawMaze = function (data) {
     $("#loader").hide();
 };
 
+/*
+moves the other player according to what other player moved.
+*/
 multiplayer.client.moveOther = function (move) {
     var a = $("#otherMazeCanvas").move(move, 'otherMazeCanvas');
     if (a == 3) {
@@ -42,7 +56,13 @@ multiplayer.client.moveOther = function (move) {
     }
 };
 
+/*
+start when connection is done
+*/
 $.connection.hub.start().done(function () {
+    /*
+    start a multiplayer.
+    */
     $("#btnStartGame").click(function () {
         $("#myMazeCanvas").hide();
         $("#otherMazeCanvas").hide();
@@ -52,6 +72,9 @@ $.connection.hub.start().done(function () {
         cols = $("#mazeCols").val();
         multiplayer.server.start(name, rows, cols);
     });
+    /*
+    joins an existing game.
+    */
     $("#btnJoinGame").click(function () {
         multiplayer.server.join($("#listDrpdwn").val());
         $("#myMazeCanvas").hide();
@@ -60,6 +83,10 @@ $.connection.hub.start().done(function () {
     });
 });
 
+/*
+moves the player accoding to the event (e), and send to other player to move his
+"other board".
+*/
 $("#body").keydown(function (e) {
     multiplayer.server.play(e.keyCode);    
     var a = $("#myMazeCanvas").move(e.keyCode, 'myMazeCanvas');
@@ -78,6 +105,9 @@ $("#body").keydown(function (e) {
     }
 });
 
+/*
+gets list of joinable games from the server and puts them on the dropdown's list.
+*/
 function getListOfGames() {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     multiplayer.server.list().done(function (result) {
@@ -95,6 +125,9 @@ function getListOfGames() {
     });
 }
 
+/*
+runs over the list and checks if item is in it.
+*/
 function isContains(list, item) {
     for (var i = 0; i < list.length; i++){
         if (list[i].text == item) {

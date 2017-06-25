@@ -12,11 +12,24 @@ using ModelCL;
 
 namespace WebApi
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNet.SignalR.Hub" />
     [HubName("multiplayerHub")]
     public class MultiPlayerHub : Hub
     {
+        /// <summary>
+        /// The model
+        /// </summary>
         static private MultiModel model = new MultiModel();
 
+        /// <summary>
+        /// Starts the specified name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="rows">The rows.</param>
+        /// <param name="cols">The cols.</param>
         public void Start(string name, int rows, int cols)
         {
             string clientId = Context.ConnectionId;
@@ -24,6 +37,10 @@ namespace WebApi
             Clients.Client(clientId).drawMaze(JObject.Parse(maze.ToJSON()));
         }
 
+        /// <summary>
+        /// Joins the specified name.
+        /// </summary>
+        /// <param name="name">The name.</param>
         public void Join(string name)
         {
             string clientId = Context.ConnectionId;
@@ -33,6 +50,10 @@ namespace WebApi
             Clients.Client(clientId).drawMaze(JObject.Parse(maze.ToJSON()));
         }
 
+        /// <summary>
+        /// Lists this instance.
+        /// </summary>
+        /// <returns></returns>
         public string[] List()
         {
             List<Maze> list = model.GetList();
@@ -56,6 +77,10 @@ namespace WebApi
             return namesList;
         }
 
+        /// <summary>
+        /// Plays the specified move.
+        /// </summary>
+        /// <param name="move">The move.</param>
         public void Play(int move)
         {
             if (move >= 37 && move <= 40)

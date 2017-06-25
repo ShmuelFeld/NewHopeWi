@@ -1,1 +1,4 @@
-﻿$("#navigationBar").load("MenuBar.html");
+﻿/*
+loads the nav bar's script.
+*/
+$("#navigationBar").load("MenuBar.html");
